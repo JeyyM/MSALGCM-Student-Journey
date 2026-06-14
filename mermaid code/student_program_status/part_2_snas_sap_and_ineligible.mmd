@@ -1,0 +1,16 @@
+stateDiagram-v2
+    state "P1.0 - Eligible" as P1_0
+    state "P1.1 - Probationary" as P1_1
+    state "P1.2 - SNAS" as P1_2
+    state "P1.3 - Strict Probationary (IS only)" as P1_3
+    state "P1.4 - Ineligible [Terminal]" as P1_4
+
+    P1_0 --> P1_2: SNAS criteria reached
+    P1_2 --> P1_0: SNAS criteria not reached
+    P1_1 --> P1_3: Strict probation (IS)
+    P1_3 --> P1_0: Criteria met - eligible
+    P1_0 --> P1_4: Retention rules breached
+    P1_1 --> P1_4: Retention rules breached
+    P1_2 --> P1_4: Retention rules breached
+    P1_3 --> P1_4: Retention / SAP failure
+    P1_4 --> [*]

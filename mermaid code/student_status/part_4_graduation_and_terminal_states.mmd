@@ -1,0 +1,12 @@
+stateDiagram-v2
+    state "S2.0 - Active" as S2_0
+    state "S4.0 - Graduated [Terminal?]" as S4_0
+    state "S4.1 - Exited on Good Standing [Terminal]" as S4_1
+    state "S4.2 - Exited - Permanent Disqualification [Terminal]" as S4_2
+
+    S2_0 --> S4_0: All programs graduated
+    S2_0 --> S4_1: University exit (good standing)
+    S2_0 --> S4_2: Disqualification verdict
+    S4_0 --> [*]
+    S4_1 --> [*]
+    S4_2 --> [*]

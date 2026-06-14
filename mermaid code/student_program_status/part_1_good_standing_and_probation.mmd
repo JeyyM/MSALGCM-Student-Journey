@@ -1,0 +1,9 @@
+stateDiagram-v2
+    state "P1.0 - Eligible" as P1_0
+    state "P1.1 - Probationary" as P1_1
+
+    [*] --> P1_0: Normal admission
+    [*] --> P1_1: Probationary admission offer
+    P1_0 --> P1_1: Academic standards not met
+    P1_1 --> P1_0: Probation lifted
+    P1_0 --> [*]: Continues in Parts 2-3

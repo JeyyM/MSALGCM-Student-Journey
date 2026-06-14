@@ -1,0 +1,7 @@
+stateDiagram-v2
+    state "S1.0 - Active - Without Enrollment" as S1_0
+    state "S2.0 - Active" as S2_0
+
+    [*] --> S1_0: Officially admitted (from A7.x)
+    S1_0 --> S2_0: Enrolled / enlisted
+    S2_0 --> [*]: Continues in Parts 2-4

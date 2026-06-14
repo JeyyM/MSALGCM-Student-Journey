@@ -1,0 +1,12 @@
+stateDiagram-v2
+    state "P1.0 - Eligible" as P1_0
+    state "P2.0 - Candidate for Graduation" as P2_0
+    state "P3.0 - Graduated [Terminal]" as P3_0
+    state "P3.1 - Incomplete [Terminal]" as P3_1
+
+    P1_0 --> P2_0: First graduation check passed
+    P2_0 --> P3_0: Final check + commencement
+    P1_0 --> P3_1: University exit
+    P2_0 --> P3_1: University exit
+    P3_0 --> [*]
+    P3_1 --> [*]

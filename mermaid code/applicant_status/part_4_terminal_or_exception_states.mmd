@@ -1,0 +1,23 @@
+stateDiagram-v2
+    state "A6.0 - Reserved" as A6_0
+    state "A7.0 - Officially Admitted" as A7_0
+    state "A7.1 - Provisionally Admitted" as A7_1
+    state "A3.2 - Not Qualified (initial eval) [Terminal]" as A3_2
+    state "A4.2 - Not Qualified (no exam) [Terminal]" as A4_2
+    state "A5.5 - Not Qualified [Terminal]" as A5_5
+    state "A6.1 - Cancelled - non-payment of fee [Terminal]" as A6_1
+    state "A8.0 - Cancelled - non-submission of reqs [Terminal]" as A8_0
+    state "A7.2 - Deferred" as A7_2
+    state "A8.1 - Cancelled - Withdrawal" as A8_1
+
+    A6_0 --> A6_1: Did not pay fee (lapsed)
+    A6_0 --> A7_2: Did not enroll
+    A7_1 --> A8_0: 1 year lapsed, no reqs
+    A7_0 --> A8_1: Withdrew in admission term
+    A7_1 --> A8_1: Withdrew in admission term
+    A3_2 --> [*]
+    A4_2 --> [*]
+    A5_5 --> [*]
+    A6_1 --> [*]
+    A8_0 --> [*]
+    A8_1 --> [*]

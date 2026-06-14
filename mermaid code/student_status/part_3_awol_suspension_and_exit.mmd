@@ -1,0 +1,18 @@
+stateDiagram-v2
+    state "S1.0 - Active - Without Enrollment" as S1_0
+    state "S2.0 - Active" as S2_0
+    state "S3.1 - Inactive - AWOL" as S3_1
+    state "S3.2 - Inactive - Suspended" as S3_2
+    state "S4.1 - Exited on Good Standing [Terminal]" as S4_1
+    state "S4.2 - Exited - Permanent Disqualification [Terminal]" as S4_2
+
+    S2_0 --> S3_1: Did not enroll, no LOA
+    S3_1 --> S1_0: Returnee approved [Tentative]
+    S2_0 --> S3_2: Disciplinary suspension
+    S3_2 --> S2_0: Suspension served [Tentative]
+    S2_0 --> S4_1: University exit (good standing)
+    S3_1 --> S4_1: University exit (good standing)
+    S2_0 --> S4_2: Disqualification verdict
+    S3_2 --> S4_2: Disqualification verdict
+    S4_1 --> [*]
+    S4_2 --> [*]

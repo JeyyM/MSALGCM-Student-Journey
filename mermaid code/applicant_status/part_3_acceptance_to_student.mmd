@@ -1,0 +1,18 @@
+stateDiagram-v2
+    state "A5.0 - Offered" as A5_0
+    state "A5.1 - Offered - Probationary" as A5_1
+    state "A5.2 - Offered - Redirected" as A5_2
+    state "A6.0 - Reserved" as A6_0
+    state "A7.0 - Officially Admitted [Terminal for admission]" as A7_0
+    state "A7.1 - Provisionally Admitted" as A7_1
+    state "S1.0 - Active - Without Enrollment (Student)" as S1_0
+
+    A5_0 --> A6_0: Acceptance fee paid/waived
+    A5_1 --> A6_0: Acceptance fee paid/waived
+    A5_2 --> A6_0: Acceptance fee paid/waived
+    A6_0 --> A7_0: Requirements complete
+    A6_0 --> A7_1: Requirements pending
+    A7_1 --> A7_0: Requirements completed
+    A7_0 --> S1_0: Becomes student
+    A7_1 --> S1_0: Becomes student (provisional)
+    S1_0 --> [*]: Continues in Student Status

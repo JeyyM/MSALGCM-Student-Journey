@@ -1,0 +1,13 @@
+stateDiagram-v2
+    state "A0 - Draft" as A0
+    state "A1.0 - Submitted Form" as A1_0
+    state "A2.0 - Submitted - Complete Requirements" as A2_0
+    state "A2.1 - Submitted - Deficiencies" as A2_1
+
+    [*] --> A0: Account created
+    A0 --> A1_0: Application submitted
+    A1_0 --> A2_0: Requirements complete
+    A1_0 --> A2_1: Deficiencies found
+    A2_1 --> A2_0: Requirements completed
+    A2_0 --> A2_1: Resubmission required
+    A2_0 --> [*]: Continues in Part 2

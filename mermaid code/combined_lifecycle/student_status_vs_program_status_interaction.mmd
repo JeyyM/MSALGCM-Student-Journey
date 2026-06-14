@@ -1,0 +1,5 @@
+flowchart TD
+    PALL[All programs reach P3.0 Graduated] -->|forces| SGRAD[Student becomes S4.0 Graduated]
+    SEXIT[Student submits University Exit while program active] -->|forces| PINC[Program becomes P3.1 Incomplete]
+    PINE[Program becomes P1.4 Ineligible + shift pending] -->|forces| SAWE[Student becomes S1.0 Active - Without Enrollment]
+    SAWE -->|shift approved| SACT[Student returns to S2.0 Active]

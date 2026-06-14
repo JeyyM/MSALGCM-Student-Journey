@@ -1,0 +1,14 @@
+stateDiagram-v2
+    state "S1.0 - Active - Without Enrollment" as S1_0
+    state "S2.0 - Active" as S2_0
+    state "S2.1 - Active - Residency" as S2_1
+    state "S2.2 - Active - Under LOA" as S2_2
+    state "S2.3 - Inactive - Prolonged Leave" as S2_3
+
+    S2_0 --> S2_1: Registered for residency
+    S2_1 --> S2_0: Re-enrolled
+    S2_0 --> S2_2: LOA approved (within max)
+    S2_0 --> S2_3: LOA period exceeded
+    S2_2 --> S1_0: Returnee approved
+    S2_3 --> S1_0: Returnee approved
+    S1_0 --> S2_0: Enrolled / enlisted

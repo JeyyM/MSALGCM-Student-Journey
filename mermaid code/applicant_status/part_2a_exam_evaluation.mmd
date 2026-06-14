@@ -1,0 +1,22 @@
+stateDiagram-v2
+    state "A2.0 - Submitted - Complete Requirements" as A2_0
+    state "A3.0 - Exam Required" as A3_0
+    state "A3.1 - Exam Exempted" as A3_1
+    state "A3.2 - Not Qualified (initial eval) [Terminal]" as A3_2
+    state "A4.0 - Exam Taken" as A4_0
+    state "A4.1 - Exam Pending" as A4_1
+    state "A4.2 - Not Qualified (no exam) [Terminal]" as A4_2
+    state "A4.3 - Further Evaluation Required" as A4_3
+
+    A2_0 --> A3_0: Exam required
+    A2_0 --> A3_1: Exam exempted
+    A2_0 --> A3_2: Failed initial evaluation
+    A2_0 --> A4_3: Exam not required
+    A3_0 --> A4_0: Exam taken
+    A3_0 --> A4_1: Exam pending
+    A3_0 --> A4_2: Exam window lapsed
+    A4_1 --> A4_0: Exam taken
+    A4_1 --> A4_2: Exam window lapsed
+    A4_0 --> A4_3: Further screening
+    A3_2 --> [*]
+    A4_2 --> [*]

@@ -1,0 +1,13 @@
+stateDiagram-v2
+    state "A7.0 - Officially Admitted [Terminal for admission]" as A7_0
+    state "A7.1 - Provisionally Admitted" as A7_1
+    state "S1.0 - Active - Without Enrollment" as S1_0
+    state "S2.0 - Active" as S2_0
+    state "P1.0 - Eligible (initial program status)" as P1_0
+    state "P1.1 - Probationary (initial program status)" as P1_1
+
+    A7_0 --> S1_0: Becomes student
+    A7_1 --> S1_0: Becomes student (provisional)
+    S1_0 --> S2_0: Enrolled / enlisted
+    S1_0 --> P1_0: Normal admission
+    S1_0 --> P1_1: Probationary offer (was A5.1)

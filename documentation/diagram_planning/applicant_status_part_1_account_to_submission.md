@@ -28,7 +28,7 @@ Show the earliest admission funnel: account creation, draft, submission, and the
 | APP-T003 | A1_0 | A2_0 | Requirements complete | High | |
 | APP-T004 | A1_0 | A2_1 | Deficiencies found | High | |
 | APP-T005 | A2_1 | A2_0 | Requirements completed | High | Loop |
-| APP-T006 | A2_0 | A2_1 | Resubmission required | High | Exception loop |
+| APP-T006 | A2_0 | A2_1 | OAS requires resubmit | High | Exception loop |
 
 ## Excluded States or Transitions
 

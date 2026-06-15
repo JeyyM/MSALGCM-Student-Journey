@@ -9,6 +9,7 @@ Simplified cross-dimension diagrams. These intentionally **do not** show every s
 | [`high_level_lifecycle_overview.md`](high_level_lifecycle_overview.md) | `flowchart TD` | End-to-end phases: applicant → student → graduation/exit |
 | [`applicant_to_student_bridge.md`](applicant_to_student_bridge.md) | `stateDiagram-v2` | The hand-off: admission `A7.x` → student `S1.0`/`S2.0` + initial program status |
 | [`student_status_vs_program_status_interaction.md`](student_status_vs_program_status_interaction.md) | `flowchart TD` + tables | How Student Status and Program Status relate (parallel dimensions) and allowed/blocked combinations |
+| [`parallel_student_program_constrained_fsm.md`](parallel_student_program_constrained_fsm.md) | `flowchart TB` | **Integrated model:** parallel Student + Program FSMs, validation matrix layer, COMBO cross-impacts |
 
 ## Why these use overviews / tables
 

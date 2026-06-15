@@ -31,6 +31,7 @@ The spreadsheet is fundamentally about **states, allowed previous statuses, tran
 Only for **broad process overviews** where formal state semantics would mislead:
 
 - [`combined_lifecycle/high_level_lifecycle_overview.md`](combined_lifecycle/high_level_lifecycle_overview.md)
+- [`combined_lifecycle/parallel_student_program_constrained_fsm.md`](combined_lifecycle/parallel_student_program_constrained_fsm.md) — integrated parallel FSM + combination-tab validation
 - [`combined_lifecycle/student_status_vs_program_status_interaction.md`](combined_lifecycle/student_status_vs_program_status_interaction.md) (the two dimensions run in parallel, not as one sequence)
 
 ## How to read terminal states

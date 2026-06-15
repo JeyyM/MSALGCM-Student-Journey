@@ -91,8 +91,8 @@ Entry assumed from **A2.0** (complete requirements) from APP-01.
 
 ### APP-03 Boundaries
 
-**Includes:** All A5.x decision outcomes.  
-**Excludes:** Official acceptance (APP-04). Many inbound edges — consider **grouping** inbound as "From evaluation (APP-02)" pseudo-note to reduce clutter.
+**Includes:** All A5.x decision outcomes with explicit inbound edges from `A3_1`, `A4_0`, and `A4_3` (per transition table).  
+**Excludes:** Official acceptance (APP-04).
 
 ## Recommended Mermaid Type
 
@@ -100,8 +100,8 @@ Entry assumed from **A2.0** (complete requirements) from APP-01.
 
 ## Complexity Safeguards
 
-- APP-02: 8 states — at limit; do not add A5 preview nodes.
-- APP-03: collapse inbound from A3_1/A4_0/A4_3 into **three labeled entry points** max, or use a composite `EVAL_DONE` node (overview style only — document choice in validation checklist).
+- APP-02: 8 states — at limit; do not add A5 preview nodes. Use boundary markers (`To admission results`) for exits to APP-03.
+- APP-03: 8 states (three entry points + five result states) — at limit; all inbound edges from `A3_1`/`A4_0`/`A4_3` are drawn explicitly (no representative-entry collapse).
 
 ## Open Questions
 

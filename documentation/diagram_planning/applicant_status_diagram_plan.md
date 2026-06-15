@@ -16,7 +16,7 @@ Master blueprint for splitting the admission application lifecycle (`A*` codes) 
 | Part file | Diagram ID | States (approx.) | Transitions (approx.) |
 |---|---|---|---|
 | [`applicant_status_part_1_account_to_submission.md`](applicant_status_part_1_account_to_submission.md) | APP-01 | 4 | 6 |
-| [`applicant_status_part_2_evaluation_to_decision.md`](applicant_status_part_2_evaluation_to_decision.md) | APP-02, APP-03 | 7 + 8 | 12 + 14 |
+| [`applicant_status_part_2_evaluation_to_decision.md`](applicant_status_part_2_evaluation_to_decision.md) | APP-02, APP-03 | 8 + 8 (13 combined) | 14 + 16 (30 combined) |
 | [`applicant_status_part_3_acceptance_to_student.md`](applicant_status_part_3_acceptance_to_student.md) | APP-04, APP-05 | 8 + 3 | 12 + 3 |
 
 ## Excluded globally (all applicant diagrams)

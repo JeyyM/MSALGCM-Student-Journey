@@ -7,7 +7,7 @@ State/transition counts include `[*]` start/terminal markers and boundary edges 
 | Diagram File | Mermaid Type | # States | # Transitions | Valid IDs? | Terminal Labels? | Transition Details? | Unclear Items Listed? | Status |
 |---|---|---:|---:|---|---|---|---|---|
 | applicant_status/part_1_account_to_submission | stateDiagram-v2 | 4 | 7 | Yes | N/A (none terminal) | Yes | Yes | Ready |
-| applicant_status/part_2_evaluation_to_decision | stateDiagram-v2 | 13 | 19 | Yes | Yes (A3.2, A4.2, A5.5) | Yes | Yes | Ready |
+| applicant_status/part_2_evaluation_to_decision | stateDiagram-v2 | 13 | 30 | Yes | Yes (A3.2, A4.2, A5.5) | Yes | Yes | Ready |
 | applicant_status/part_3_acceptance_to_student | stateDiagram-v2 | 7 | 9 | Yes | Yes (A7.0) | Yes | Yes | Ready |
 | applicant_status/part_4_terminal_or_exception_states | stateDiagram-v2 | 10 | 11 | Yes | Yes (A3.2, A4.2, A5.5, A6.1, A8.0) | Yes | Yes | Ready |
 | student_status/part_1_active_and_enrollment | stateDiagram-v2 | 2 | 3 | Yes | N/A | Yes | Yes | Ready |
@@ -20,6 +20,7 @@ State/transition counts include `[*]` start/terminal markers and boundary edges 
 | combined_lifecycle/high_level_lifecycle_overview | flowchart TD | 8 | 10 | Yes | Yes (OUTCOME/END) | Yes | Yes | Ready |
 | combined_lifecycle/applicant_to_student_bridge | stateDiagram-v2 | 6 | 5 | Yes | Yes (A7.0) | Yes | Yes | Needs Review |
 | combined_lifecycle/student_status_vs_program_status_interaction | flowchart TD + tables | 7 | 4 (+ tables) | Yes | N/A (impact flow) | Yes | Yes | Needs Stakeholder Confirmation |
+| combined_lifecycle/parallel_student_program_constrained_fsm | flowchart TB (LR lanes) | 16 | 21 (+ matrix summary) | Yes | N/A (constraint layer) | Yes | Yes | Needs Stakeholder Confirmation |
 
 ## Status legend
 

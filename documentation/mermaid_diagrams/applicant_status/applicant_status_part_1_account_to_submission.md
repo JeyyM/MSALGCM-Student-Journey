@@ -29,7 +29,7 @@ stateDiagram-v2
     A1_0 --> A2_0: Requirements complete
     A1_0 --> A2_1: Deficiencies found
     A2_1 --> A2_0: Requirements completed
-    A2_0 --> A2_1: Resubmission required
+    A2_0 --> A2_1: OAS requires resubmit
     A2_0 --> [*]: Continues in Part 2
 ```
 
@@ -51,7 +51,7 @@ stateDiagram-v2
 | A1_0 → A2_0 | Requirements complete | Mandatory requirements for admission application completed | High |
 | A1_0 → A2_1 | Deficiencies found | Pending mandatory requirements | High |
 | A2_1 → A2_0 | Requirements completed | Applicant resubmits/completes the missing requirements | High |
-| A2_0 → A2_1 | Resubmission required | OAS/OASIS requires applicant to resubmit | High |
+| A2_0 → A2_1 | OAS requires resubmit | OAS/OASIS requires applicant to resubmit | High |
 
 ## Excluded or Unclear Transitions
 

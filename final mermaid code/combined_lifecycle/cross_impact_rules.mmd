@@ -1,0 +1,8 @@
+%% COMBO cross-dimension impacts only (subset of parallel_student_program_constrained_fsm.mmd)
+%% Use this file alone for a minimal draw.io insert; use parallel_* for full integrated model.
+
+flowchart TD
+    PALL[All programs reach P3.0 Graduated] -->|COMBO-T001 forces| SGRAD[Student becomes S4.0 Graduated]
+    SEXIT[Student submits University Exit while program active] -->|COMBO-T003 forces| PINC[Program becomes P3.1 Incomplete]
+    PINE[Program becomes P1.4 Ineligible + shift pending] -->|COMBO-T004 forces| SAWE[Student becomes S1.0 Active - Without Enrollment]
+    SAWE -->|COMBO-T005 shift approved| SACT[Student returns to S2.0 Active]

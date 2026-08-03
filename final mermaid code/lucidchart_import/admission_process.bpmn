@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  id="Definitions_DLSU_Admission"
+  targetNamespace="http://dlsu.edu.ph/student-journey">
+
+  <bpmn:collaboration id="Collaboration_1">
+    <bpmn:participant id="Participant_Admissions" name="Admissions Office" processRef="Process_Admission" />
+    <bpmn:participant id="Participant_Applicant" name="Applicant" processRef="Process_ApplicantActions" />
+  </bpmn:collaboration>
+
+  <bpmn:process id="Process_Admission" isExecutable="false">
+    <bpmn:startEvent id="Start_Admission" name="Application received" />
+    <bpmn:task id="Task_ReviewRequirements" name="Review requirements (A1.0 to A2.x)" />
+    <bpmn:exclusiveGateway id="Gateway_Requirements" name="Complete?" />
+    <bpmn:task id="Task_Evaluation" name="Evaluate application (A3.x / A4.x)" />
+    <bpmn:exclusiveGateway id="Gateway_AdmissionDecision" name="Admission decision" />
+    <bpmn:task id="Task_IssueOffer" name="Issue offer (A5.x)" />
+    <bpmn:task id="Task_ReserveSeat" name="Reserve seat (A6.0)" />
+    <bpmn:task id="Task_FinalAdmit" name="Officially admit (A7.0)" />
+    <bpmn:endEvent id="End_StudentCreated" name="Student S1.0 created" />
+    <bpmn:endEvent id="End_NotQualified" name="Not qualified / terminal" />
+
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_Admission" targetRef="Task_ReviewRequirements" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_ReviewRequirements" targetRef="Gateway_Requirements" />
+    <bpmn:sequenceFlow id="Flow_3" name="Deficiencies" sourceRef="Gateway_Requirements" targetRef="Task_ReviewRequirements" />
+    <bpmn:sequenceFlow id="Flow_4" name="Complete" sourceRef="Gateway_Requirements" targetRef="Task_Evaluation" />
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_Evaluation" targetRef="Gateway_AdmissionDecision" />
+    <bpmn:sequenceFlow id="Flow_6" name="Qualified" sourceRef="Gateway_AdmissionDecision" targetRef="Task_IssueOffer" />
+    <bpmn:sequenceFlow id="Flow_7" name="Not qualified" sourceRef="Gateway_AdmissionDecision" targetRef="End_NotQualified" />
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="Task_IssueOffer" targetRef="Task_ReserveSeat" />
+    <bpmn:sequenceFlow id="Flow_9" sourceRef="Task_ReserveSeat" targetRef="Task_FinalAdmit" />
+    <bpmn:sequenceFlow id="Flow_10" sourceRef="Task_FinalAdmit" targetRef="End_StudentCreated" />
+  </bpmn:process>
+
+  <bpmn:process id="Process_ApplicantActions" isExecutable="false">
+    <bpmn:startEvent id="Start_Applicant" name="Create account (A0)" />
+    <bpmn:task id="Task_SubmitForm" name="Submit application (A1.0)" />
+    <bpmn:task id="Task_PayAcceptance" name="Pay / waive acceptance fee" />
+    <bpmn:endEvent id="End_ApplicantDone" name="Await enrollment" />
+    <bpmn:sequenceFlow id="Flow_A1" sourceRef="Start_Applicant" targetRef="Task_SubmitForm" />
+    <bpmn:sequenceFlow id="Flow_A2" sourceRef="Task_SubmitForm" targetRef="Task_PayAcceptance" />
+    <bpmn:sequenceFlow id="Flow_A3" sourceRef="Task_PayAcceptance" targetRef="End_ApplicantDone" />
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="Participant_Admissions_di" bpmnElement="Participant_Admissions" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="920" height="280" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_Applicant_di" bpmnElement="Participant_Applicant" isHorizontal="true">
+        <dc:Bounds x="160" y="400" width="920" height="160" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Start_Admission_di" bpmnElement="Start_Admission">
+        <dc:Bounds x="212" y="182" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ReviewRequirements_di" bpmnElement="Task_ReviewRequirements">
+        <dc:Bounds x="290" y="160" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_Requirements_di" bpmnElement="Gateway_Requirements" isMarkerVisible="true">
+        <dc:Bounds x="455" y="175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Evaluation_di" bpmnElement="Task_Evaluation">
+        <dc:Bounds x="550" y="160" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_AdmissionDecision_di" bpmnElement="Gateway_AdmissionDecision" isMarkerVisible="true">
+        <dc:Bounds x="715" y="175" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_IssueOffer_di" bpmnElement="Task_IssueOffer">
+        <dc:Bounds x="810" y="160" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ReserveSeat_di" bpmnElement="Task_ReserveSeat">
+        <dc:Bounds x="960" y="160" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_FinalAdmit_di" bpmnElement="Task_FinalAdmit">
+        <dc:Bounds x="810" y="260" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_StudentCreated_di" bpmnElement="End_StudentCreated">
+        <dc:Bounds x="972" y="282" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_NotQualified_di" bpmnElement="End_NotQualified">
+        <dc:Bounds x="722" y="282" width="36" height="36" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Start_Applicant_di" bpmnElement="Start_Applicant">
+        <dc:Bounds x="212" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_SubmitForm_di" bpmnElement="Task_SubmitForm">
+        <dc:Bounds x="290" y="430" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_PayAcceptance_di" bpmnElement="Task_PayAcceptance">
+        <dc:Bounds x="460" y="430" width="140" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_ApplicantDone_di" bpmnElement="End_ApplicantDone">
+        <dc:Bounds x="652" y="452" width="36" height="36" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="248" y="200" />
+        <di:waypoint x="290" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="410" y="200" />
+        <di:waypoint x="455" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="480" y="175" />
+        <di:waypoint x="480" y="120" />
+        <di:waypoint x="350" y="120" />
+        <di:waypoint x="350" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="505" y="200" />
+        <di:waypoint x="550" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="670" y="200" />
+        <di:waypoint x="715" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="765" y="200" />
+        <di:waypoint x="810" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="740" y="225" />
+        <di:waypoint x="740" y="282" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="930" y="200" />
+        <di:waypoint x="960" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9">
+        <di:waypoint x="1010" y="240" />
+        <di:waypoint x="1010" y="300" />
+        <di:waypoint x="930" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10">
+        <di:waypoint x="930" y="300" />
+        <di:waypoint x="972" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_A1_di" bpmnElement="Flow_A1">
+        <di:waypoint x="248" y="470" />
+        <di:waypoint x="290" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_A2_di" bpmnElement="Flow_A2">
+        <di:waypoint x="410" y="470" />
+        <di:waypoint x="460" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_A3_di" bpmnElement="Flow_A3">
+        <di:waypoint x="600" y="470" />
+        <di:waypoint x="652" y="470" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,10 @@
+Student Code,Program Code,Valid?,Rule / Reason
+S4.0,P3.0,Yes,Graduated student with graduated program
+S4.1,P3.1,Yes,Exited on good standing; program becomes Incomplete
+S1.0,P2.0,No,Cannot be graduation candidate before enrolling
+S1.0,P3.0,No,Without-enrollment student cannot have graduated program
+S2.0,P3.0,No,Graduated program should drive student to S4.0
+S2.2,P1.4,No,Ineligible not allowed while on LOA
+S2.1,P1.1,Yes?,Residency x Probationary - deferred in workbook
+S2.2,P1.2,Yes?,LOA x SNAS - deferred in workbook
+*,*,Yes default,Independent dimensions unless rule above matches

@@ -1,0 +1,20 @@
+flowchart LR
+    subgraph OFFERS[Admission offers]
+        A5_0[A5.0 Offered]
+        A5_1[A5.1 Probationary]
+        A5_2[A5.2 Redirected]
+    end
+
+    A5_0 --> A6_0
+    A5_1 --> A6_0
+    A5_2 --> A6_0
+
+    A6_0[A6.0 Reserved] --> GW{Requirements complete?}
+    GW -->|Yes| A7_0[A7.0 Officially admitted]
+    GW -->|Pending| A7_1[A7.1 Provisionally admitted]
+    A7_1 --> A7_0
+
+    A7_0 --> S1_0[S1.0 Active - without enrollment]
+    A7_1 --> S1_0
+
+    S1_0 --> NEXT([Student status continues])

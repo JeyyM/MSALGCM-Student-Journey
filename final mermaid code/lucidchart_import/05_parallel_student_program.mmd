@@ -1,0 +1,52 @@
+flowchart TB
+    HANDOFF([Admitted from A7.x]) --> S1_0
+
+    subgraph STUDENT[Student FSM - university standing]
+        direction LR
+        S1_0[S1.0 Without enrollment]
+        S2_0[S2.0 Active]
+        S2_2[S2.2 Under LOA]
+        S3_1[S3.1 AWOL]
+        S4_0[S4.0 Graduated]
+        S4_1[S4.1 Exited]
+
+        S1_0 -->|enrolled| S2_0
+        S2_0 -->|LOA approved| S2_2
+        S2_0 -->|no enroll, no LOA| S3_1
+        S2_2 -->|returnee| S1_0
+        S3_1 -->|returnee| S1_0
+        S2_0 -->|exit| S4_1
+    end
+
+    subgraph PROGRAM[Program FSM - academic standing]
+        direction LR
+        P1_0[P1.0 Eligible]
+        P1_1[P1.1 Probationary]
+        P1_2[P1.2 SNAS]
+        P1_4[P1.4 Ineligible]
+        P2_0[P2.0 Candidate for graduation]
+        P3_0[P3.0 Graduated]
+        P3_1[P3.1 Incomplete]
+
+        P1_0 -->|SNAS| P1_2
+        P1_2 -->|cleared| P1_0
+        P1_1 -->|met requirements| P1_0
+        P1_0 -->|retention breach| P1_4
+        P1_0 -->|grad check| P2_0
+        P2_0 -->|commencement| P3_0
+    end
+
+    subgraph VALID[Combination tab - V S,P]
+        direction LR
+        CONFIG[Runtime S and P] --> MATRIX[Valid / Invalid / Yes?]
+    end
+
+    S2_0 --> CONFIG
+    P1_0 --> CONFIG
+
+    S1_0 -.->|initial| P1_0
+    S1_0 -.->|probationary offer| P1_1
+    P3_0 -.->|COMBO-T001| S4_0
+    S4_1 -.->|COMBO-T003| P3_1
+    P1_4 -.->|COMBO-T004| S1_0
+    S1_0 -.->|COMBO-T005| S2_0

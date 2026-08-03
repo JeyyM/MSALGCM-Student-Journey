@@ -1,0 +1,210 @@
+<?xml version="1.0" ?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" id="Definitions_Student_Part3_AWOLSuspensionExit" targetNamespace="http://dlsu.edu.ph/student-journey">
+  <bpmn:collaboration id="Collaboration_Student_Part3_AWOLSuspensionExit">
+    <bpmn:participant id="Participant_Student_Part3_AWOLSuspensionExit" name="S — Part 3: AWOL, Suspension &amp; Exit" processRef="Student_Part3_AWOLSuspensionExit"/>
+  </bpmn:collaboration>
+  <bpmn:process id="Student_Part3_AWOLSuspensionExit" name="S — Part 3: AWOL, Suspension &amp; Exit" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Student_Part3_AWOLSuspensionExit">
+      <bpmn:lane id="Lane_student" name="Student">
+        <bpmn:flowNodeRef>S4_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_registrar" name="Enrollment &amp; Records">
+        <bpmn:flowNodeRef>S1_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S2_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S3_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_disciplinary" name="Disciplinary Office">
+        <bpmn:flowNodeRef>S3_2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S4_2</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:serviceTask id="S1_0" name="S1.0 — Without Enrollment [Registrar]">
+      <bpmn:extensionElements>
+        <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#EDE9FE</color:background-color>
+        <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#7C3AED</color:border-color>
+        <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#EDE9FE"/>
+        <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#7C3AED"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="S2_0" name="S2.0 — Active [Registrar]">
+      <bpmn:extensionElements>
+        <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#EDE9FE</color:background-color>
+        <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#7C3AED</color:border-color>
+        <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#EDE9FE"/>
+        <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#7C3AED"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="S3_1" name="S3.1 — AWOL [Registrar]">
+      <bpmn:extensionElements>
+        <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#EDE9FE</color:background-color>
+        <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#7C3AED</color:border-color>
+        <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#EDE9FE"/>
+        <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#7C3AED"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="S3_2" name="S3.2 — Suspended [Disciplinary]">
+      <bpmn:extensionElements>
+        <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#FEE2E2</color:background-color>
+        <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#DC2626</color:border-color>
+        <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#FEE2E2"/>
+        <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#DC2626"/>
+      </bpmn:extensionElements>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="S4_1" name="S4.1 — Exited (good standing) [Student]">
+      <bpmn:extensionElements>
+        <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#FEE2E2</color:background-color>
+        <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#DC2626</color:border-color>
+        <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#FEE2E2"/>
+        <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#DC2626"/>
+      </bpmn:extensionElements>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="S4_2" name="S4.2 — Disqualified [Disciplinary]">
+      <bpmn:extensionElements>
+        <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#FEE2E2</color:background-color>
+        <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#DC2626</color:border-color>
+        <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#FEE2E2"/>
+        <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#DC2626"/>
+      </bpmn:extensionElements>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="S2_0" targetRef="S3_1" name="Did not enroll, no LOA"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="S3_1" targetRef="S1_0" name="Returnee approved"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="S2_0" targetRef="S3_2" name="Disciplinary suspension"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="S3_2" targetRef="S2_0" name="Suspension served"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="S2_0" targetRef="S4_1" name="University exit"/>
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="S3_1" targetRef="S4_1" name="University exit"/>
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="S2_0" targetRef="S4_2" name="Disqualification"/>
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="S3_2" targetRef="S4_2" name="Disqualification"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Student_Part3_AWOLSuspensionExit">
+    <bpmndi:BPMNPlane id="BPMNPlane_Student_Part3_AWOLSuspensionExit" bpmnElement="Collaboration_Student_Part3_AWOLSuspensionExit">
+      <bpmndi:BPMNShape id="Participant_Student_Part3_AWOLSuspensionExit_di" bpmnElement="Participant_Student_Part3_AWOLSuspensionExit" isHorizontal="true">
+        <dc:Bounds x="190" y="60" width="660" height="430"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_student_di" bpmnElement="Lane_student" isHorizontal="true">
+        <dc:Bounds x="220" y="80" width="630" height="130"/>
+        <bpmn:extensionElements>
+          <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#FEF3C7</color:background-color>
+          <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#D97706</color:border-color>
+          <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#FEF3C7"/>
+          <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#D97706"/>
+        </bpmn:extensionElements>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_registrar_di" bpmnElement="Lane_registrar" isHorizontal="true">
+        <dc:Bounds x="220" y="210" width="630" height="130"/>
+        <bpmn:extensionElements>
+          <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#EDE9FE</color:background-color>
+          <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#7C3AED</color:border-color>
+          <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#EDE9FE"/>
+          <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#7C3AED"/>
+        </bpmn:extensionElements>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_disciplinary_di" bpmnElement="Lane_disciplinary" isHorizontal="true">
+        <dc:Bounds x="220" y="340" width="630" height="130"/>
+        <bpmn:extensionElements>
+          <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#FEE2E2</color:background-color>
+          <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#DC2626</color:border-color>
+          <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#FEE2E2"/>
+          <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#DC2626"/>
+        </bpmn:extensionElements>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S1_0_di" bpmnElement="S1_0">
+        <dc:Bounds x="220" y="240" width="150" height="70"/>
+        <bpmn:extensionElements>
+          <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#EDE9FE</color:background-color>
+          <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#7C3AED</color:border-color>
+          <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#EDE9FE"/>
+          <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#7C3AED"/>
+        </bpmn:extensionElements>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S2_0_di" bpmnElement="S2_0">
+        <dc:Bounds x="400" y="240" width="150" height="70"/>
+        <bpmn:extensionElements>
+          <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#EDE9FE</color:background-color>
+          <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#7C3AED</color:border-color>
+          <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#EDE9FE"/>
+          <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#7C3AED"/>
+        </bpmn:extensionElements>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S3_1_di" bpmnElement="S3_1">
+        <dc:Bounds x="580" y="240" width="150" height="70"/>
+        <bpmn:extensionElements>
+          <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#EDE9FE</color:background-color>
+          <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#7C3AED</color:border-color>
+          <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#EDE9FE"/>
+          <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#7C3AED"/>
+        </bpmn:extensionElements>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S3_2_di" bpmnElement="S3_2">
+        <dc:Bounds x="220" y="370" width="150" height="70"/>
+        <bpmn:extensionElements>
+          <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#FEE2E2</color:background-color>
+          <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#DC2626</color:border-color>
+          <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#FEE2E2"/>
+          <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#DC2626"/>
+        </bpmn:extensionElements>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S4_1_di" bpmnElement="S4_1">
+        <dc:Bounds x="220" y="110" width="36" height="36"/>
+        <bpmn:extensionElements>
+          <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#FEE2E2</color:background-color>
+          <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#DC2626</color:border-color>
+          <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#FEE2E2"/>
+          <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#DC2626"/>
+        </bpmn:extensionElements>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S4_2_di" bpmnElement="S4_2">
+        <dc:Bounds x="400" y="370" width="36" height="36"/>
+        <bpmn:extensionElements>
+          <color:background-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#FEE2E2</color:background-color>
+          <color:border-color xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0">#DC2626</color:border-color>
+          <bioc:fill xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#FEE2E2"/>
+          <bioc:stroke xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" color="#DC2626"/>
+        </bpmn:extensionElements>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="475" y="275"/>
+        <di:waypoint x="655" y="275"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="655" y="275"/>
+        <di:waypoint x="295" y="275"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="475" y="275"/>
+        <di:waypoint x="385" y="275"/>
+        <di:waypoint x="385" y="405"/>
+        <di:waypoint x="295" y="405"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="295" y="405"/>
+        <di:waypoint x="385" y="405"/>
+        <di:waypoint x="385" y="275"/>
+        <di:waypoint x="475" y="275"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="475" y="275"/>
+        <di:waypoint x="356" y="275"/>
+        <di:waypoint x="356" y="128"/>
+        <di:waypoint x="238" y="128"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="655" y="275"/>
+        <di:waypoint x="446" y="275"/>
+        <di:waypoint x="446" y="128"/>
+        <di:waypoint x="238" y="128"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="475" y="275"/>
+        <di:waypoint x="446" y="275"/>
+        <di:waypoint x="446" y="388"/>
+        <di:waypoint x="418" y="388"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="295" y="405"/>
+        <di:waypoint x="356" y="405"/>
+        <di:waypoint x="356" y="388"/>
+        <di:waypoint x="418" y="388"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

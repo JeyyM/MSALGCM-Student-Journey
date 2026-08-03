@@ -1,0 +1,8 @@
+flowchart TD
+    START([Account created]) --> A0[A0 Draft]
+    A0 --> A1_0[A1.0 Submitted form]
+    A1_0 --> A2_0[A2.0 Complete requirements]
+    A1_0 --> A2_1[A2.1 Deficiencies]
+    A2_1 --> A2_0[Requirements completed]
+    A2_0 --> A2_1[OAS requires resubmit]
+    A2_0 --> NEXT([Continues to evaluation])

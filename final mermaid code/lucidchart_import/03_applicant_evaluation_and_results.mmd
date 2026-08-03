@@ -1,0 +1,30 @@
+flowchart TD
+    IN([From A2.0 complete]) --> GW1{Initial evaluation?}
+
+    GW1 -->|Exam required| A3_0[A3.0 Exam required]
+    GW1 -->|Exam exempted| A3_1[A3.1 Exam exempted]
+    GW1 -->|Failed review| A3_2[A3.2 Not qualified]
+    GW1 -->|Further screening only| A4_3[A4.3 Further evaluation]
+
+    A3_0 --> A4_0[A4.0 Exam taken]
+    A3_0 --> A4_1[A4.1 Exam pending]
+    A3_0 --> A4_2[A4.2 Not qualified - no exam]
+    A4_1 --> A4_0
+    A4_1 --> A4_2
+    A4_0 --> A4_3
+
+    A3_1 --> GW2{Admission decision}
+    A4_0 --> GW2
+    A4_3 --> GW2
+
+    GW2 -->|Within cutoff| A5_0[A5.0 Offered]
+    GW2 -->|Probationary| A5_1[A5.1 Offered - probationary]
+    GW2 -->|Redirected| A5_2[A5.2 Offered - redirected]
+    GW2 -->|Waitlisted| A5_3[A5.3 Waitlisted]
+    GW2 -->|Outside cutoff| A5_5[A5.5 Not qualified]
+
+    A5_3 -->|Slot opened| A5_0
+
+    A3_2 --> END1([Terminal])
+    A4_2 --> END1
+    A5_5 --> END1

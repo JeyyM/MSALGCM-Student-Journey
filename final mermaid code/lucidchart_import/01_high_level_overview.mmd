@@ -1,0 +1,11 @@
+flowchart TD
+    START([Start]) --> APPLICANT[Applicant phase<br/>A0 to A5.x]
+    APPLICANT -->|Admitted / reserved| ACCEPTED[Accepted applicant<br/>A6.0 to A7.x]
+    APPLICANT -->|Rejected / cancelled| OUTCOME[Graduation / exit / terminal]
+    ACCEPTED -->|Becomes student, enrolls| ACTIVE[Active student<br/>S1.0 / S2.0 / S2.1]
+    ACTIVE -.->|Academic standing per program| PROGRAM[Program standing<br/>P1.0 to P2.0]
+    ACTIVE -->|Leave / absence / discipline| DISRUPT[LOA / AWOL / suspended<br/>S2.2 / S2.3 / S3.x]
+    DISRUPT -->|Returnee re-enrolls| ACTIVE
+    ACTIVE -->|Graduate or exit| OUTCOME
+    PROGRAM -.->|All programs graduated| OUTCOME
+    OUTCOME --> END([Terminal])

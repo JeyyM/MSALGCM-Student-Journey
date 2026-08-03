@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="def_applicant_status_part_2b_admission_results"
+             name="DMN applicant_status part_2b_admission_results"
+             namespace="https://studentjourneymatrix.local/applicant_status_part_2b_admission_results">
+  <decision id="decision_applicant_status_part_2b_admission_results" name="Applicant Status — Part 2B: Admission Results">
+    <decisionTable id="dt_applicant_status_part_2b_admission_results" hitPolicy="UNIQUE">
+      <input id="in1_applicant_status_part_2b_admission_results" label="Current State">
+        <inputExpression id="in1e_applicant_status_part_2b_admission_results" typeRef="string">
+          <text>current_state</text>
+        </inputExpression>
+      </input>
+      <input id="in2_applicant_status_part_2b_admission_results" label="Event / Outcome">
+        <inputExpression id="in2e_applicant_status_part_2b_admission_results" typeRef="string">
+          <text>event</text>
+        </inputExpression>
+      </input>
+      <output id="out1_applicant_status_part_2b_admission_results" label="Next State" name="next_state" typeRef="string"/>
+      <rule id="row_applicant_status_part_2b_admission_results_1">
+        <inputEntry id="row_applicant_status_part_2b_admission_results_1_i1"><text>"(from Part 2A evaluation)"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_2b_admission_results_1_i2"><text>"Within cutoff"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_2b_admission_results_1_o1"><text>"A5.0 — Offered [OAS]"</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_2b_admission_results_2">
+        <inputEntry id="row_applicant_status_part_2b_admission_results_2_i1"><text>"(from Part 2A evaluation)"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_2b_admission_results_2_i2"><text>"Probationary"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_2b_admission_results_2_o1"><text>"A5.1 — Probationary [OAS]"</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_2b_admission_results_3">
+        <inputEntry id="row_applicant_status_part_2b_admission_results_3_i1"><text>"(from Part 2A evaluation)"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_2b_admission_results_3_i2"><text>"Redirected"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_2b_admission_results_3_o1"><text>"A5.2 — Redirected [OAS]"</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_2b_admission_results_4">
+        <inputEntry id="row_applicant_status_part_2b_admission_results_4_i1"><text>"(from Part 2A evaluation)"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_2b_admission_results_4_i2"><text>"Waitlisted"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_2b_admission_results_4_o1"><text>"A5.3 — Waitlisted [OAS]"</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_2b_admission_results_5">
+        <inputEntry id="row_applicant_status_part_2b_admission_results_5_i1"><text>"(from Part 2A evaluation)"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_2b_admission_results_5_i2"><text>"Outside cutoff"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_2b_admission_results_5_o1"><text>"A5.5 — Not Qualified [OAS] (terminal)"</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_2b_admission_results_6">
+        <inputEntry id="row_applicant_status_part_2b_admission_results_6_i1"><text>"A5.3 — Waitlisted [OAS]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_2b_admission_results_6_i2"><text>"Slot opened"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_2b_admission_results_6_o1"><text>"A5.0 — Offered [OAS]"</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_2b_admission_results_7">
+        <inputEntry id="row_applicant_status_part_2b_admission_results_7_i1"><text>"A5.0 — Offered [OAS]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_2b_admission_results_7_i2"><text>"Offer received"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_2b_admission_results_7_o1"><text>"-&gt; Part 3: Acceptance"</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_2b_admission_results_8">
+        <inputEntry id="row_applicant_status_part_2b_admission_results_8_i1"><text>"A5.1 — Probationary [OAS]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_2b_admission_results_8_i2"><text>"Offer received"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_2b_admission_results_8_o1"><text>"-&gt; Part 3: Acceptance"</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_2b_admission_results_9">
+        <inputEntry id="row_applicant_status_part_2b_admission_results_9_i1"><text>"A5.2 — Redirected [OAS]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_2b_admission_results_9_i2"><text>"Offer received"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_2b_admission_results_9_o1"><text>"-&gt; Part 3: Acceptance"</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

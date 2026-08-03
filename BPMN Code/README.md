@@ -15,6 +15,32 @@ Granular BPMN 2.0 XML files matching every diagram in `final mermaid code/`. Eac
 1. Go to [demo.bpmn.io](https://demo.bpmn.io/)
 2. **Open File** → choose a `.bpmn` file
 
+## BPMN Modeler in Cursor / VS Code
+
+If the file opens in [demo.bpmn.io](https://demo.bpmn.io) but Cursor shows:
+
+`No editor found for id: file:///...part_1_account_to_submission.bpmn`
+
+that is **not a bad BPMN file** — Cursor lost the link to the BPMN extension for that tab.
+
+**Fix (in order):**
+
+1. **Close** the broken tab (do not click “Try again” in a loop).
+2. `Ctrl+Shift+P` → **Developer: Reload Window**
+3. In Explorer, **right-click** the `.bpmn` file → **Open With…** → **BPMN Modeler** (Miragon) or **BPMN.io Editor**
+4. If those are missing, install an extension (see `.vscode/extensions.json`):
+   - [BPMN Modeler](https://marketplace.visualstudio.com/items?itemName=miragon-gmbh.vs-code-bpmn-modeler) (Miragon)
+   - [BPMN.io Editor](https://marketplace.visualstudio.com/items?itemName=bpmn-io.vs-code-bpmn-io) (lighter alternative)
+5. Check **Output → bpmn.modeler** for extension errors after reopening.
+
+**Important:** If the Modeler tab failed once, saving from that tab can write a stripped ~8 KB file (no colors). After reload, if the file looks too small (~150 lines instead of ~210), regenerate:
+
+```bash
+python "BPMN Code/generate_bpmn.py" --only "1. applicant_status/part_1_account_to_submission.bpmn" --force
+```
+
+Then reload the window again before opening.
+
 ## Folder map (17 diagrams = 17 Mermaid sources)
 
 | Folder | BPMN file | Mermaid source |
@@ -73,6 +99,45 @@ Task types indicate who initiates the step:
 
 Regenerate after edits: `python "BPMN Code/generate_bpmn.py"`
 
+## Protecting manual edits in BPMN Modeler
+
+**Problem:** The `.bpmn` files in `1.`–`4.` folders are **your source of truth** (hand-edited in BPMN Modeler). `generate_bpmn.py` can overwrite every diagram it knows about — and the **Cursor agent has been running it** after layout changes, which reverted manual work even when you never ran the script yourself.
+
+**All 17 canonical diagrams are now listed in [`protected_bpmn.txt`](protected_bpmn.txt)** so agent or script runs skip them by default. A project rule in `.cursor/rules/bpmn-manual-edits.mdc` tells the agent not to regenerate unless you ask.
+
+**Three ways to stay safe:**
+
+### 1. Protection list (recommended)
+
+After you finish hand-tuning a diagram, add its path to [`protected_bpmn.txt`](protected_bpmn.txt):
+
+```text
+1. applicant_status/part_1_account_to_submission.bpmn
+2. student_status/part_2_residency_and_loa.bpmn
+```
+
+Then run the generator normally — listed files are **skipped**:
+
+```bash
+python "BPMN Code/generate_bpmn.py"
+```
+
+To regenerate a protected file anyway: remove it from the list, or use `--force`.
+
+### 2. Regenerate only one diagram
+
+When changing layout in `generate_bpmn.py` for a **single** file, use `--only` so other diagrams are untouched:
+
+```bash
+python "BPMN Code/generate_bpmn.py" --only "3. student_program_status/part_2_snas_sap_and_ineligible.bpmn"
+```
+
+### 3. Keep a manual copy folder
+
+Copy polished files to e.g. `BPMN Code/manual_published/` and treat that folder as read-only for the generator. The generator never writes there unless you add those paths to `DIAGRAMS`.
+
+**Also:** commit to git or use Cursor **Local History** (Timeline) before bulk regenerates.
+
 ## Colors
 
 Shapes are colored by **swimlane responsibility** using standard BPMN color extensions:
@@ -100,6 +165,14 @@ If Mermaid sources change, edit `generate_bpmn.py` and run:
 ```bash
 python "BPMN Code/generate_bpmn.py"
 ```
+
+See **Protecting manual edits** above before running. Options:
+
+| Command | Effect |
+|---------|--------|
+| `python generate_bpmn.py` | Regenerate all **non-protected** diagrams |
+| `python generate_bpmn.py --only "path/to/file.bpmn"` | Regenerate **one** diagram only |
+| `python generate_bpmn.py --force` | Ignore `protected_bpmn.txt` |
 
 ## DMN
 

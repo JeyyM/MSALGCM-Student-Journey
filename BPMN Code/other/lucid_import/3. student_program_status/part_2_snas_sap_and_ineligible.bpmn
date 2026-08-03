@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Program_Part2_SNASSAPIneligible" targetNamespace="http://dlsu.edu.ph/student-journey">
+  <bpmn:process id="Program_Part2_SNASSAPIneligible" name="P - Part 2: SNAS, SAP &amp; Ineligible" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Program_Part2_SNASSAPIneligible">
+      <bpmn:lane id="Lane_program" name="College / Program Office">
+        <bpmn:flowNodeRef>P1_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_4</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_student" name="Student"/>
+    </bpmn:laneSet>
+    <bpmn:task id="P1_1" name="P1.1 - Probationary"/>
+    <bpmn:task id="P1_0" name="P1.0 - Eligible"/>
+    <bpmn:task id="P1_3" name="P1.3 - Strict Probation (IS)"/>
+    <bpmn:task id="P1_2" name="P1.2 - SNAS"/>
+    <bpmn:endEvent id="P1_4" name="P1.4 - Ineligible"/>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="P1_0" targetRef="P1_2" name="SNAS criteria reached"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="P1_2" targetRef="P1_0" name="SNAS criteria not reached"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="P1_1" targetRef="P1_3" name="Strict probation (IS)"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="P1_3" targetRef="P1_0" name="Criteria met"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="P1_0" targetRef="P1_4" name="Retention breached"/>
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="P1_1" targetRef="P1_4" name="Retention breached"/>
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="P1_2" targetRef="P1_4" name="Retention breached"/>
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="P1_3" targetRef="P1_4" name="SAP failure"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Program_Part2_SNASSAPIneligible">
+    <bpmndi:BPMNPlane id="BPMNPlane_Program_Part2_SNASSAPIneligible" bpmnElement="Program_Part2_SNASSAPIneligible">
+      <bpmndi:BPMNShape id="P1_1_di" bpmnElement="P1_1">
+        <dc:Bounds x="220" y="180" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_0_di" bpmnElement="P1_0">
+        <dc:Bounds x="820" y="180" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_3_di" bpmnElement="P1_3">
+        <dc:Bounds x="1120" y="255" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_2_di" bpmnElement="P1_2">
+        <dc:Bounds x="1420" y="105" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_4_di" bpmnElement="P1_4">
+        <dc:Bounds x="2020" y="180" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="970" y="206"/>
+        <di:waypoint x="1195" y="206"/>
+        <di:waypoint x="1195" y="149"/>
+        <di:waypoint x="1420" y="149"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="1420" y="149"/>
+        <di:waypoint x="1420" y="290"/>
+        <di:waypoint x="970" y="290"/>
+        <di:waypoint x="970" y="206"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="370" y="221"/>
+        <di:waypoint x="745" y="221"/>
+        <di:waypoint x="745" y="284"/>
+        <di:waypoint x="1120" y="284"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="1120" y="271"/>
+        <di:waypoint x="1120" y="365"/>
+        <di:waypoint x="970" y="365"/>
+        <di:waypoint x="970" y="234"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="970" y="214"/>
+        <di:waypoint x="1495" y="214"/>
+        <di:waypoint x="1495" y="198"/>
+        <di:waypoint x="2020" y="198"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="370" y="214"/>
+        <di:waypoint x="1195" y="214"/>
+        <di:waypoint x="1195" y="198"/>
+        <di:waypoint x="2020" y="198"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1570" y="148"/>
+        <di:waypoint x="1795" y="148"/>
+        <di:waypoint x="1795" y="196"/>
+        <di:waypoint x="2020" y="196"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="1270" y="282"/>
+        <di:waypoint x="1645" y="282"/>
+        <di:waypoint x="1645" y="200"/>
+        <di:waypoint x="2020" y="200"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

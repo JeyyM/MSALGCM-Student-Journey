@@ -129,30 +129,32 @@
         </bpmn:extensionElements>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
-        <di:waypoint x="238" y="128"/>
-        <di:waypoint x="606" y="128"/>
-        <di:waypoint x="606" y="145"/>
-        <di:waypoint x="975" y="145"/>
+        <di:waypoint x="256" y="128"/>
+        <di:waypoint x="578" y="128"/>
+        <di:waypoint x="578" y="143"/>
+        <di:waypoint x="900" y="143"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
-        <di:waypoint x="418" y="128"/>
-        <di:waypoint x="786" y="128"/>
-        <di:waypoint x="786" y="145"/>
-        <di:waypoint x="1155" y="145"/>
+        <di:waypoint x="436" y="128"/>
+        <di:waypoint x="758" y="128"/>
+        <di:waypoint x="758" y="143"/>
+        <di:waypoint x="1080" y="143"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
-        <di:waypoint x="975" y="145"/>
-        <di:waypoint x="1155" y="145"/>
+        <di:waypoint x="1050" y="145"/>
+        <di:waypoint x="1080" y="145"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
-        <di:waypoint x="1155" y="145"/>
-        <di:waypoint x="975" y="145"/>
+        <di:waypoint x="1080" y="145"/>
+        <di:waypoint x="1080" y="220"/>
+        <di:waypoint x="1050" y="220"/>
+        <di:waypoint x="1050" y="145"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
-        <di:waypoint x="975" y="145"/>
-        <di:waypoint x="856" y="145"/>
-        <di:waypoint x="856" y="128"/>
-        <di:waypoint x="738" y="128"/>
+        <di:waypoint x="900" y="140"/>
+        <di:waypoint x="900" y="220"/>
+        <di:waypoint x="756" y="220"/>
+        <di:waypoint x="756" y="129"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

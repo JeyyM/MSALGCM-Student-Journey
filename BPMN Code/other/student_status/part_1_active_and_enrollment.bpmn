@@ -109,20 +109,20 @@
         </bpmn:extensionElements>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
-        <di:waypoint x="238" y="258"/>
-        <di:waypoint x="391" y="258"/>
-        <di:waypoint x="391" y="275"/>
-        <di:waypoint x="545" y="275"/>
+        <di:waypoint x="256" y="259"/>
+        <di:waypoint x="363" y="259"/>
+        <di:waypoint x="363" y="271"/>
+        <di:waypoint x="470" y="271"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
-        <di:waypoint x="545" y="275"/>
-        <di:waypoint x="795" y="275"/>
+        <di:waypoint x="620" y="275"/>
+        <di:waypoint x="720" y="275"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
-        <di:waypoint x="795" y="275"/>
-        <di:waypoint x="891" y="275"/>
-        <di:waypoint x="891" y="258"/>
-        <di:waypoint x="988" y="258"/>
+        <di:waypoint x="870" y="268"/>
+        <di:waypoint x="920" y="268"/>
+        <di:waypoint x="920" y="260"/>
+        <di:waypoint x="970" y="260"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -1,0 +1,28 @@
+---
+description: BPMN .bpmn files are hand-edited; do not regenerate or overwrite without explicit user request
+alwaysApply: true
+---
+
+# BPMN manual edits are source of truth
+
+The numbered folders under `BPMN Code/` (`1. applicant_status/` … `4. combined_lifecycle/`) contain **hand-tuned `.bpmn` files**. The user does **not** run `generate_bpmn.py`; they edit in BPMN Modeler or ask for targeted XML changes.
+
+## Never do without explicit user request
+
+- Run `python "BPMN Code/generate_bpmn.py"` (full or partial regenerate)
+- Overwrite or rewrite `.bpmn` files under `BPMN Code/1.` … `BPMN Code/4.`
+- Overwrite `lucid_import/` copies of protected diagrams
+
+## Safe ways to help
+
+- Edit **one** specific `.bpmn` the user names, preserving their layout unless they ask to change it
+- Edit `generate_bpmn.py`, README, or reports **without** running the generator afterward
+- If regeneration is truly needed: confirm with the user, use `--only "path/to/one/file.bpmn"`, and respect `protected_bpmn.txt`
+
+## Protection list
+
+All canonical diagrams are listed in `BPMN Code/protected_bpmn.txt`. Treat every path there as read-only unless the user asks to regenerate that file.
+
+## If the user lost manual work
+
+Suggest Cursor **Timeline / Local History** on the `.bpmn` file, or `git checkout -- path` if committed.

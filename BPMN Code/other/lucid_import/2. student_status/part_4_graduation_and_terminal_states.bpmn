@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Student_Part4_GraduationTerminal" targetNamespace="http://dlsu.edu.ph/student-journey">
+  <bpmn:process id="Student_Part4_GraduationTerminal" name="S - Part 4: Graduation &amp; Terminal" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Student_Part4_GraduationTerminal">
+      <bpmn:lane id="Lane_student" name="Student">
+        <bpmn:flowNodeRef>S4_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_registrar" name="Enrollment &amp; Records">
+        <bpmn:flowNodeRef>S2_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>S4_0</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_disciplinary" name="Disciplinary Office">
+        <bpmn:flowNodeRef>S4_2</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:task id="S2_0" name="S2.0 - Active"/>
+    <bpmn:endEvent id="S4_0" name="S4.0 - Graduated"/>
+    <bpmn:endEvent id="S4_1" name="S4.1 - Exited (good standing)"/>
+    <bpmn:endEvent id="S4_2" name="S4.2 - Disqualified"/>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="S2_0" targetRef="S4_0" name="All programs graduated"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="S2_0" targetRef="S4_1" name="University exit"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="S2_0" targetRef="S4_2" name="Disqualification"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Student_Part4_GraduationTerminal">
+    <bpmndi:BPMNPlane id="BPMNPlane_Student_Part4_GraduationTerminal" bpmnElement="Student_Part4_GraduationTerminal">
+      <bpmndi:BPMNShape id="S2_0_di" bpmnElement="S2_0">
+        <dc:Bounds x="220" y="285" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S4_0_di" bpmnElement="S4_0">
+        <dc:Bounds x="820" y="285" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S4_1_di" bpmnElement="S4_1">
+        <dc:Bounds x="1120" y="125" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S4_2_di" bpmnElement="S4_2">
+        <dc:Bounds x="1420" y="445" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="370" y="318"/>
+        <di:waypoint x="595" y="318"/>
+        <di:waypoint x="595" y="304"/>
+        <di:waypoint x="820" y="304"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="370" y="304"/>
+        <di:waypoint x="370" y="225"/>
+        <di:waypoint x="1120" y="225"/>
+        <di:waypoint x="1120" y="147"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="370" y="329"/>
+        <di:waypoint x="370" y="395"/>
+        <di:waypoint x="1420" y="395"/>
+        <di:waypoint x="1420" y="461"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

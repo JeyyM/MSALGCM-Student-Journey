@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Combined_HighLevelOverview" targetNamespace="http://dlsu.edu.ph/student-journey">
+  <bpmn:process id="Combined_HighLevelOverview" name="Combined - High-Level Lifecycle Overview" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Combined_HighLevelOverview">
+      <bpmn:lane id="Lane_applicant" name="Applicant / Prospective Student">
+        <bpmn:flowNodeRef>Start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>APPLICANT</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_admissions" name="Admissions Office">
+        <bpmn:flowNodeRef>ACCEPTED</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_student_lane" name="Student Life &amp; Enrollment">
+        <bpmn:flowNodeRef>ACTIVE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>DISRUPT</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_program_lane" name="Program / Academic Affairs">
+        <bpmn:flowNodeRef>PROGRAM</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_outcome" name="University Outcome">
+        <bpmn:flowNodeRef>OUTCOME</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start" name="Start"/>
+    <bpmn:task id="APPLICANT" name="Applicant phase (A0–A5.x)"/>
+    <bpmn:task id="ACCEPTED" name="Accepted (A6.0–A7.x)"/>
+    <bpmn:task id="ACTIVE" name="Active Student (S1.0–S2.x)"/>
+    <bpmn:task id="DISRUPT" name="LOA / AWOL / Suspended"/>
+    <bpmn:task id="PROGRAM" name="Program Standing (P1.0–P2.0)"/>
+    <bpmn:task id="OUTCOME" name="Graduation / Exit / Terminal"/>
+    <bpmn:endEvent id="End" name="Terminal"/>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="Start" targetRef="APPLICANT"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="APPLICANT" targetRef="ACCEPTED" name="Admitted / reserved"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="APPLICANT" targetRef="OUTCOME" name="Rejected / cancelled"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="ACCEPTED" targetRef="ACTIVE" name="Becomes student"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="ACTIVE" targetRef="DISRUPT" name="Leave / discipline"/>
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="DISRUPT" targetRef="ACTIVE" name="Returnee re-enrolls"/>
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="ACTIVE" targetRef="OUTCOME" name="Graduate or exit"/>
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="ACTIVE" targetRef="PROGRAM" name="Academic standing"/>
+    <bpmn:sequenceFlow id="Flow_9" sourceRef="PROGRAM" targetRef="OUTCOME" name="All programs graduated"/>
+    <bpmn:sequenceFlow id="Flow_10" sourceRef="OUTCOME" targetRef="End"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Combined_HighLevelOverview">
+    <bpmndi:BPMNPlane id="BPMNPlane_Combined_HighLevelOverview" bpmnElement="Combined_HighLevelOverview">
+      <bpmndi:BPMNShape id="Start_di" bpmnElement="Start">
+        <dc:Bounds x="220" y="125" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="APPLICANT_di" bpmnElement="APPLICANT">
+        <dc:Bounds x="520" y="125" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ACCEPTED_di" bpmnElement="ACCEPTED">
+        <dc:Bounds x="820" y="285" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ACTIVE_di" bpmnElement="ACTIVE">
+        <dc:Bounds x="1420" y="462" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DISRUPT_di" bpmnElement="DISRUPT">
+        <dc:Bounds x="1720" y="537" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="PROGRAM_di" bpmnElement="PROGRAM">
+        <dc:Bounds x="1720" y="640" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="OUTCOME_di" bpmnElement="OUTCOME">
+        <dc:Bounds x="2020" y="800" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_di" bpmnElement="End">
+        <dc:Bounds x="2320" y="800" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="256" y="144"/>
+        <di:waypoint x="388" y="144"/>
+        <di:waypoint x="388" y="156"/>
+        <di:waypoint x="520" y="156"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="661" y="195"/>
+        <di:waypoint x="661" y="240"/>
+        <di:waypoint x="829" y="240"/>
+        <di:waypoint x="829" y="285"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="670" y="194"/>
+        <di:waypoint x="670" y="497"/>
+        <di:waypoint x="2020" y="497"/>
+        <di:waypoint x="2020" y="801"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="970" y="342"/>
+        <di:waypoint x="970" y="408"/>
+        <di:waypoint x="1420" y="408"/>
+        <di:waypoint x="1420" y="475"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="1570" y="516"/>
+        <di:waypoint x="1645" y="516"/>
+        <di:waypoint x="1645" y="553"/>
+        <di:waypoint x="1720" y="553"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="1720" y="553"/>
+        <di:waypoint x="1720" y="647"/>
+        <di:waypoint x="1570" y="647"/>
+        <di:waypoint x="1570" y="516"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1557" y="532"/>
+        <di:waypoint x="1557" y="666"/>
+        <di:waypoint x="2033" y="666"/>
+        <di:waypoint x="2033" y="800"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="1554" y="532"/>
+        <di:waypoint x="1554" y="586"/>
+        <di:waypoint x="1736" y="586"/>
+        <di:waypoint x="1736" y="640"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9">
+        <di:waypoint x="1861" y="710"/>
+        <di:waypoint x="1861" y="755"/>
+        <di:waypoint x="2029" y="755"/>
+        <di:waypoint x="2029" y="800"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10">
+        <di:waypoint x="2170" y="830"/>
+        <di:waypoint x="2245" y="830"/>
+        <di:waypoint x="2245" y="819"/>
+        <di:waypoint x="2320" y="819"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

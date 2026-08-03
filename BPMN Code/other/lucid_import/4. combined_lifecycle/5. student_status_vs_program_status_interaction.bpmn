@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Combined_StudentProgramInteraction" targetNamespace="http://dlsu.edu.ph/student-journey">
+  <bpmn:process id="Combined_StudentProgramInteraction" name="Combined - Student vs Program Interaction" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Combined_StudentProgramInteraction">
+      <bpmn:lane id="Lane_program_lane" name="Program Office">
+        <bpmn:flowNodeRef>PALL</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>PINC</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>PINE</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_student_lane" name="Student Records">
+        <bpmn:flowNodeRef>SGRAD</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SEXIT</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SAWE</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>SACT</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:task id="PALL" name="All programs → P3.0 Graduated"/>
+    <bpmn:task id="SGRAD" name="Student → S4.0 Graduated"/>
+    <bpmn:task id="SEXIT" name="Student exit, program active"/>
+    <bpmn:task id="PINC" name="Program → P3.1 Incomplete"/>
+    <bpmn:task id="PINE" name="P1.4 Ineligible + shift pending"/>
+    <bpmn:task id="SAWE" name="Student → S1.0 Without Enrollment"/>
+    <bpmn:task id="SACT" name="Student → S2.0 Active"/>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="PALL" targetRef="SGRAD" name="forces"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="SEXIT" targetRef="PINC" name="forces"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="PINE" targetRef="SAWE" name="forces"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="SAWE" targetRef="SACT" name="shift approved"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Combined_StudentProgramInteraction">
+    <bpmndi:BPMNPlane id="BPMNPlane_Combined_StudentProgramInteraction" bpmnElement="Combined_StudentProgramInteraction">
+      <bpmndi:BPMNShape id="PALL_di" bpmnElement="PALL">
+        <dc:Bounds x="220" y="187" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SGRAD_di" bpmnElement="SGRAD">
+        <dc:Bounds x="820" y="472" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SEXIT_di" bpmnElement="SEXIT">
+        <dc:Bounds x="220" y="552" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="PINC_di" bpmnElement="PINC">
+        <dc:Bounds x="820" y="267" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="PINE_di" bpmnElement="PINE">
+        <dc:Bounds x="220" y="347" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SAWE_di" bpmnElement="SAWE">
+        <dc:Bounds x="820" y="632" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SACT_di" bpmnElement="SACT">
+        <dc:Bounds x="1420" y="632" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="369" y="257"/>
+        <di:waypoint x="369" y="364"/>
+        <di:waypoint x="821" y="364"/>
+        <di:waypoint x="821" y="472"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="369" y="552"/>
+        <di:waypoint x="369" y="444"/>
+        <di:waypoint x="821" y="444"/>
+        <di:waypoint x="821" y="337"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="369" y="417"/>
+        <di:waypoint x="369" y="524"/>
+        <di:waypoint x="821" y="524"/>
+        <di:waypoint x="821" y="632"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="970" y="667"/>
+        <di:waypoint x="1420" y="667"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

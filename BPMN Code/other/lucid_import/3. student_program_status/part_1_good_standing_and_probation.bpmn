@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Program_Part1_GoodStandingProbation" targetNamespace="http://dlsu.edu.ph/student-journey">
+  <bpmn:process id="Program_Part1_GoodStandingProbation" name="P - Part 1: Good Standing &amp; Probation" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Program_Part1_GoodStandingProbation">
+      <bpmn:lane id="Lane_program" name="College / Program Office">
+        <bpmn:flowNodeRef>Start_N</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Start_P</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Next</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_student" name="Student"/>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start_N" name="Normal admission"/>
+    <bpmn:startEvent id="Start_P" name="Probationary offer"/>
+    <bpmn:task id="P1_0" name="P1.0 - Eligible"/>
+    <bpmn:task id="P1_1" name="P1.1 - Probationary"/>
+    <bpmn:endEvent id="End_Next" name="Continues in Parts 2–3"/>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_N" targetRef="P1_0"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Start_P" targetRef="P1_1"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="P1_0" targetRef="P1_1" name="Standards not met"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="P1_1" targetRef="P1_0" name="Probation lifted"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="P1_0" targetRef="End_Next"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Program_Part1_GoodStandingProbation">
+    <bpmndi:BPMNPlane id="BPMNPlane_Program_Part1_GoodStandingProbation" bpmnElement="Program_Part1_GoodStandingProbation">
+      <bpmndi:BPMNShape id="Start_N_di" bpmnElement="Start_N">
+        <dc:Bounds x="220" y="105" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_P_di" bpmnElement="Start_P">
+        <dc:Bounds x="220" y="255" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_0_di" bpmnElement="P1_0">
+        <dc:Bounds x="820" y="180" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_1_di" bpmnElement="P1_1">
+        <dc:Bounds x="1120" y="180" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Next_di" bpmnElement="End_Next">
+        <dc:Bounds x="1720" y="180" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="256" y="126"/>
+        <di:waypoint x="538" y="126"/>
+        <di:waypoint x="538" y="204"/>
+        <di:waypoint x="820" y="204"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="256" y="272"/>
+        <di:waypoint x="688" y="272"/>
+        <di:waypoint x="688" y="220"/>
+        <di:waypoint x="1120" y="220"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="970" y="215"/>
+        <di:waypoint x="1120" y="215"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="1120" y="215"/>
+        <di:waypoint x="1120" y="290"/>
+        <di:waypoint x="970" y="290"/>
+        <di:waypoint x="970" y="215"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="970" y="213"/>
+        <di:waypoint x="1345" y="213"/>
+        <di:waypoint x="1345" y="198"/>
+        <di:waypoint x="1720" y="198"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

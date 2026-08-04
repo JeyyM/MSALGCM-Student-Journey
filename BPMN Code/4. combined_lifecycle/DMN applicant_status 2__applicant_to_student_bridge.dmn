@@ -18,25 +18,36 @@
         </inputExpression>
       </input>
       <output id="out1_status_2_applicant_to_student_bridge" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_status_2_applicant_to_student_bridge" label="Rationale" name="rationale" typeRef="string"/>
       <rule id="row_status_2_applicant_to_student_bridge_1">
         <inputEntry id="row_status_2_applicant_to_student_bridge_1_i1"><text>"A7.0 — Officially Admitted [Admissions]"</text></inputEntry>
         <inputEntry id="row_status_2_applicant_to_student_bridge_1_i2"><text>"Becomes student"</text></inputEntry>
         <outputEntry id="row_status_2_applicant_to_student_bridge_1_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_status_2_applicant_to_student_bridge_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_status_2_applicant_to_student_bridge_2">
         <inputEntry id="row_status_2_applicant_to_student_bridge_2_i1"><text>"A7.1 — Provisionally Admitted [Admissions]"</text></inputEntry>
         <inputEntry id="row_status_2_applicant_to_student_bridge_2_i2"><text>"Becomes student (provisional)"</text></inputEntry>
         <outputEntry id="row_status_2_applicant_to_student_bridge_2_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_status_2_applicant_to_student_bridge_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_status_2_applicant_to_student_bridge_3">
         <inputEntry id="row_status_2_applicant_to_student_bridge_3_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
-        <inputEntry id="row_status_2_applicant_to_student_bridge_3_i2"><text>"Normal admission"</text></inputEntry>
-        <outputEntry id="row_status_2_applicant_to_student_bridge_3_o1"><text>"P1.0 — Eligible [Program Office]"</text></outputEntry>
+        <inputEntry id="row_status_2_applicant_to_student_bridge_3_i2"><text>"Enrolled / enlisted"</text></inputEntry>
+        <outputEntry id="row_status_2_applicant_to_student_bridge_3_o1"><text>"S2.0 — Active [Registrar]"</text></outputEntry>
+        <outputEntry id="row_status_2_applicant_to_student_bridge_3_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_status_2_applicant_to_student_bridge_4">
         <inputEntry id="row_status_2_applicant_to_student_bridge_4_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
-        <inputEntry id="row_status_2_applicant_to_student_bridge_4_i2"><text>"Probationary offer"</text></inputEntry>
-        <outputEntry id="row_status_2_applicant_to_student_bridge_4_o1"><text>"P1.1 — Probationary [Program Office]"</text></outputEntry>
+        <inputEntry id="row_status_2_applicant_to_student_bridge_4_i2"><text>"Normal admission"</text></inputEntry>
+        <outputEntry id="row_status_2_applicant_to_student_bridge_4_o1"><text>"P1.0 — Eligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_status_2_applicant_to_student_bridge_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_status_2_applicant_to_student_bridge_5">
+        <inputEntry id="row_status_2_applicant_to_student_bridge_5_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
+        <inputEntry id="row_status_2_applicant_to_student_bridge_5_i2"><text>"Probationary offer"</text></inputEntry>
+        <outputEntry id="row_status_2_applicant_to_student_bridge_5_o1"><text>"P1.1 — Probationary [Program Office]"</text></outputEntry>
+        <outputEntry id="row_status_2_applicant_to_student_bridge_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
     </decisionTable>
   </decision>

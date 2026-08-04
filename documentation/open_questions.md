@@ -1,5 +1,7 @@
 # Open Questions for Stakeholders
 
+> **Update (2026-06-15):** Corrections implementation applied in-repo with executive defaults where noted. See [`executive_defaults.md`](executive_defaults.md) and [`workbook_patches/README.md`](workbook_patches/README.md). Items below remain for **formal stakeholder confirmation** — defaults can be reversed.
+
 These questions arose during analysis. They are grouped by topic. Many come directly from the workbook's own Notes tab and from yellow/green-highlighted "needs confirmation" cells; others are inconsistencies found while reconciling the tabs.
 
 ---

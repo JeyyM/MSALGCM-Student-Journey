@@ -115,6 +115,8 @@ These assumptions were necessary to produce coherent documentation. They should 
 | [`student_status_flow.md`](student_status_flow.md) | Student status lifecycle + diagram + edge cases |
 | [`student_program_status_flow.md`](student_program_status_flow.md) | Academic program status flow + current/future-state notes |
 | [`status_combination_rules.md`](status_combination_rules.md) | Allowed/blocked Student × Program combinations |
+| [`workbook_patches/README.md`](workbook_patches/README.md) | Excel patch guide + Post-M3 combination matrix CSV |
+| [`executive_defaults.md`](executive_defaults.md) | Interim defaults for stakeholder-deferred items |
 | [`lifecycle_summary.md`](lifecycle_summary.md) | Plain-English end-to-end walkthrough |
 | [`open_questions.md`](open_questions.md) | Questions for stakeholders, grouped by topic |
 | [`diagrams.md`](diagrams.md) | All Mermaid diagrams collected together |

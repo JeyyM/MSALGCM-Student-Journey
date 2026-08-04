@@ -17,10 +17,12 @@ This is the accepting-state view of the student FSM.
 
 ## Mermaid Diagram
 
+Copy-paste source: [`../../../final mermaid code/student_status/part_4_graduation_and_terminal_states.mmd`](../../../final%20mermaid%20code/student_status/part_4_graduation_and_terminal_states.mmd)
+
 ```mermaid
 stateDiagram-v2
     state "S2.0 - Active" as S2_0
-    state "S4.0 - Graduated [Terminal?]" as S4_0
+    state "S4.0 - Graduated [Alumni may continue]" as S4_0
     state "S4.1 - Exited on Good Standing [Terminal]" as S4_1
     state "S4.2 - Exited - Permanent Disqualification [Terminal]" as S4_2
 
@@ -37,7 +39,7 @@ stateDiagram-v2
 | Code | Mermaid ID | Label | Type | Notes |
 |---|---|---|---|---|
 | S2.0 | S2_0 | S2.0 - Active | Active | Primary source |
-| S4.0 | S4_0 | S4.0 - Graduated | Terminal? | Not explicitly terminal in workbook |
+| S4.0 | S4_0 | S4.0 - Graduated | Non-terminal (enrollment) | Workbook omits TERMINAL; alumni/BS→MS may continue |
 | S4.1 | S4_1 | S4.1 - Exited on Good Standing | Terminal | |
 | S4.2 | S4_2 | S4.2 - Exited - Permanent Disqualification | Terminal | |
 
@@ -53,10 +55,10 @@ stateDiagram-v2
 
 | Possible Transition | Reason Not Included | What Needs Confirmation |
 |---|---|---|
-| S4.0 → further enrollment (BS/MS) | Open question (Notes #6) | Student status after a program graduates in ladderized programs |
+| S4.0 → further enrollment (BS/MS) | Modeled as "Alumni may continue" label; details TBD | Exact ladderized/alumni re-enrollment rules (Notes #6) |
 | Graduated + clearance hold | Not modeled as a status (Notes #7) | Whether a separate "graduated-with-hold" status is needed |
 | Other states → S4.1 (S1.0, S2.1, S2.2, S2.3, S3.1, S3.2) | Collapsed to S2.0 for clarity | Confirm full allowed-previous exit list |
 
 ## Reader Notes
 
-`S4.0 Graduated` is labeled **`[Terminal?]`** deliberately: unlike `S4.1`/`S4.2`, the workbook does **not** mark the *student* status Graduated as TERMINAL. It is routed to `[*]` here for completeness, but whether graduates continue (e.g. BS→MS or alumni handling) is unresolved. The single source `S2.0` is shown; the exit (`S4.1`) is reachable from many states per the transition table.
+`S4.0 Graduated` is labeled **`[Alumni may continue]`** per executive default (corrections #7, #21): the workbook does **not** mark the *student* status Graduated as TERMINAL, and graduates may re-enroll (e.g. BS→MS). It is routed to `[*]` here for diagram completeness only — unlike `S4.1`/`S4.2`, it is **not** a hard terminal in the business model. The single source `S2.0` is shown; the exit (`S4.1`) is reachable from many states per the transition table.

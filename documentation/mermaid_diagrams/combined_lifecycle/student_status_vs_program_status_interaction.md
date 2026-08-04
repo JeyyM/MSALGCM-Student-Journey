@@ -71,8 +71,8 @@ flowchart TD
 | Full 91-cell matrix as a graph | Unreadable; kept as tables | — |
 | All `Yes?` pairs (e.g. Residency × Probationary) | Deferred per decisions | Stakeholder confirmation |
 | LOA + Probationary | Combo tab says Yes, Notes #3 tentatively No | Which source is authoritative |
-| Legacy vs canonical code mapping | Schemes differ (`P1.3`, `S3.x`) | Regenerate combination tab with canonical codes |
+| Legacy vs canonical code mapping | Schemes differ (`P1.3`, `S3.x`) | **Resolved in-repo** — see `combination_matrix_post_m3.csv`; Excel patch pending |
 
 ## Reader Notes
 
-The cross-impact flowchart shows only the three places where one dimension **forces** the other; everywhere else the two dimensions move independently. The combination tables intentionally use the workbook's legacy codes (per the cascade rule in [`../../decisions.md`](../../decisions.md)) — do not mix them with the canonical `P1.3 = Strict Probationary` / `P1.4 = Ineligible` scheme used in the per-dimension diagrams until the tab is reconciled.
+The cross-impact flowchart shows only the three places where one dimension **forces** the other; everywhere else the two dimensions move independently. The **in-repo combination matrix** (`combination_matrix_post_m3.csv`, `status_combination_rules.md`) uses canonical Post-M3 codes (`P1.3 = Strict Probationary`, `P1.4 = Ineligible`, `S4.0 Graduated`). Apply the same matrix to the Excel workbook via [`../../workbook_patches/README.md`](../../workbook_patches/README.md).

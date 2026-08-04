@@ -28,7 +28,7 @@ stateDiagram-v2
     S2_0 --> S2_1: Registered for residency
     S2_1 --> S2_0: Re-enrolled
     S2_0 --> S2_2: LOA approved (within max)
-    S2_0 --> S2_3: LOA period exceeded
+    S2_0 --> S2_3: LOA max exceeded / last enrollment > 6 trimesters
     S2_2 --> S1_0: Returnee approved
     S2_3 --> S1_0: Returnee approved
     S1_0 --> S2_0: Enrolled / enlisted
@@ -51,7 +51,7 @@ stateDiagram-v2
 | S2_0 → S2_1 | Registered for residency | Student registered for the Residency Activity (UG/GS/SOL) | High |
 | S2_1 → S2_0 | Re-enrolled | Returns from residency to normal enrollment | Medium |
 | S2_0 → S2_2 | LOA approved (within max) | Filed LOA AND period ≤ max AND last enrollment ≤ 6 trimesters ago | High |
-| S2_0 → S2_3 | LOA period exceeded | Filed LOA AND period > max AND last enrollment > 6 trimesters ago | High |
+| S2_0 → S2_3 | LOA max exceeded / last enrollment > 6 trimesters | Filed LOA AND period > max AND last enrollment > 6 trimesters ago | High |
 | S2_2 → S1_0 | Returnee approved | Approved as returnee (re-enters without enrollment) | Medium |
 | S2_3 → S1_0 | Returnee approved | Approved as returnee | Medium |
 | S1_0 → S2_0 | Enrolled / enlisted | Returnee enrolls again | High |

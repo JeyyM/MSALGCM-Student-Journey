@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Program_Part1_GoodStandingProbation" targetNamespace="http://dlsu.edu.ph/student-journey" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_Program_Part1_GoodStandingProbation" targetNamespace="http://dlsu.edu.ph/student-journey" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:modeler="http://camunda.org/schema/modeler/1.0">
   <bpmn:collaboration id="Collaboration_Program_Part1_GoodStandingProbation">
-    <bpmn:participant id="Participant_Program_Part1_GoodStandingProbation" name="P — Part 1: Good Standing &#38; Probation" processRef="Program_Part1_GoodStandingProbation" />
+    <bpmn:participant id="Participant_Program_Part1_GoodStandingProbation" name="P — Part 1: Good Standing &amp; Probation" processRef="Program_Part1_GoodStandingProbation" />
   </bpmn:collaboration>
-  <bpmn:process id="Program_Part1_GoodStandingProbation" name="P — Part 1: Good Standing &#38; Probation" isExecutable="false">
+  <bpmn:process id="Program_Part1_GoodStandingProbation" name="P — Part 1: Good Standing &amp; Probation" isExecutable="false">
     <bpmn:laneSet id="LaneSet_Program_Part1_GoodStandingProbation">
       <bpmn:lane id="Lane_program" name="College / Program Office">
         <bpmn:flowNodeRef>P1_0</bpmn:flowNodeRef>

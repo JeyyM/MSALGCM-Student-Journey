@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Applicant_Part4_TerminalExceptions" targetNamespace="http://dlsu.edu.ph/student-journey">
+  <bpmn:process id="Applicant_Part4_TerminalExceptions" name="A - Part 4: Terminal &amp; Exception States" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Applicant_Part4_TerminalExceptions">
+      <bpmn:lane id="Lane_applicant" name="Applicant">
+        <bpmn:flowNodeRef>A7_2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A8_1</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_oas" name="OAS / Admissions Office">
+        <bpmn:flowNodeRef>A6_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A6_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A7_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A7_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A8_0</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_eval" name="OAS / Evaluation">
+        <bpmn:flowNodeRef>A3_2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A4_2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A5_5</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:endEvent id="A3_2" name="A3.2 - Not Qualified (initial)"/>
+    <bpmn:endEvent id="A4_2" name="A4.2 - Not Qualified (no exam)"/>
+    <bpmn:endEvent id="A5_5" name="A5.5 - Not Qualified"/>
+    <bpmn:task id="A6_0" name="A6.0 - Reserved"/>
+    <bpmn:endEvent id="A6_1" name="A6.1 - Cancelled (non-payment)"/>
+    <bpmn:task id="A7_0" name="A7.0 - Officially Admitted"/>
+    <bpmn:task id="A7_1" name="A7.1 - Provisionally Admitted"/>
+    <bpmn:endEvent id="A8_0" name="A8.0 - Cancelled (no reqs)"/>
+    <bpmn:task id="A7_2" name="A7.2 - Deferred"/>
+    <bpmn:endEvent id="A8_1" name="A8.1 - Cancelled (withdrawal)"/>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="A6_0" targetRef="A6_1" name="Did not pay fee"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="A6_0" targetRef="A7_2" name="Did not enroll"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="A7_1" targetRef="A8_0" name="1 year lapsed"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="A7_0" targetRef="A8_1" name="Withdrew"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="A7_1" targetRef="A8_1" name="Withdrew"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Applicant_Part4_TerminalExceptions">
+    <bpmndi:BPMNPlane id="BPMNPlane_Applicant_Part4_TerminalExceptions" bpmnElement="Applicant_Part4_TerminalExceptions">
+      <bpmndi:BPMNShape id="A3_2_di" bpmnElement="A3_2">
+        <dc:Bounds x="220" y="450" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A4_2_di" bpmnElement="A4_2">
+        <dc:Bounds x="500" y="450" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A5_5_di" bpmnElement="A5_5">
+        <dc:Bounds x="780" y="450" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A6_0_di" bpmnElement="A6_0">
+        <dc:Bounds x="220" y="285" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A6_1_di" bpmnElement="A6_1">
+        <dc:Bounds x="500" y="350" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A7_0_di" bpmnElement="A7_0">
+        <dc:Bounds x="780" y="285" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A7_1_di" bpmnElement="A7_1">
+        <dc:Bounds x="1060" y="285" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A8_0_di" bpmnElement="A8_0">
+        <dc:Bounds x="1340" y="285" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A7_2_di" bpmnElement="A7_2">
+        <dc:Bounds x="500" y="120" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A8_1_di" bpmnElement="A8_1">
+        <dc:Bounds x="1340" y="120" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="370" y="336"/>
+        <di:waypoint x="435" y="336"/>
+        <di:waypoint x="435" y="364"/>
+        <di:waypoint x="500" y="364"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="354" y="285"/>
+        <di:waypoint x="354" y="237"/>
+        <di:waypoint x="516" y="237"/>
+        <di:waypoint x="516" y="190"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="1210" y="314"/>
+        <di:waypoint x="1275" y="314"/>
+        <di:waypoint x="1275" y="304"/>
+        <di:waypoint x="1340" y="304"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="930" y="293"/>
+        <di:waypoint x="930" y="219"/>
+        <di:waypoint x="1340" y="219"/>
+        <di:waypoint x="1340" y="145"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="1178" y="285"/>
+        <di:waypoint x="1178" y="219"/>
+        <di:waypoint x="1340" y="219"/>
+        <di:waypoint x="1340" y="153"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -13,7 +13,7 @@ Decisions and simplifications made while turning the planning layer into final M
 - All states declared with `state "Code - Name" as ID` so IDs are Mermaid-safe (no dots/spaces/slashes).
 - Code `A1.0` → ID `A1_0`, `S2.3` → `S2_3`, `P1.4` → `P1_4`.
 - Terminal states carry `[Terminal]` in the label and route to `[*]`.
-- `S4.0 Graduated` carries `[Terminal?]` (student-status Graduated is not explicitly terminal in the workbook).
+- `S4.0 Graduated` carries `[Alumni may continue]` (student-status Graduated is not explicitly terminal in the workbook; executive default per corrections #7).
 - Tentative (Low-certainty but shown) edges carry `[Tentative]` in the transition label.
 - `Unknown`-certainty transitions are never drawn.
 

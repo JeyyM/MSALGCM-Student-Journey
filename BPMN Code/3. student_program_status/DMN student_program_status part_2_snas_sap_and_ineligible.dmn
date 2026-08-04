@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="def_program_status_part_2_snas_sap_and_ineligible"
+             name="DMN student_program_status part_2_snas_sap_and_ineligible"
+             namespace="https://studentjourneymatrix.local/program_part_2_snas_sap_and_ineligible">
+  <decision id="decision_program_status_part_2_snas_sap_and_ineligible" name="Program Status — Part 2: SNAS, SAP &amp; Ineligible">
+    <decisionTable id="dt_program_status_part_2_snas_sap_and_ineligible" hitPolicy="UNIQUE">
+      <input id="in1_program_status_part_2_snas_sap_and_ineligible" label="Current State">
+        <inputExpression id="in1e_program_status_part_2_snas_sap_and_ineligible" typeRef="string">
+          <text>current_state</text>
+        </inputExpression>
+      </input>
+      <input id="in2_program_status_part_2_snas_sap_and_ineligible" label="Event / Outcome">
+        <inputExpression id="in2e_program_status_part_2_snas_sap_and_ineligible" typeRef="string">
+          <text>event</text>
+        </inputExpression>
+      </input>
+      <output id="out1_program_status_part_2_snas_sap_and_ineligible" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_program_status_part_2_snas_sap_and_ineligible" label="Rationale" name="rationale" typeRef="string"/>
+      <rule id="row_program_status_part_2_snas_sap_and_ineligible_1">
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_1_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_1_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_1_o1"><text>"P1.4 — Ineligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_2_snas_sap_and_ineligible_2">
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_2_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_2_i2"><text>"SNAS criteria reached"</text></inputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_2_o1"><text>"P1.2 — SNAS [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_2_snas_sap_and_ineligible_3">
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_3_i1"><text>"P1.1 — Probationary [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_3_i2"><text>"Retention breached"</text></inputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_3_o1"><text>"P1.4 — Ineligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_3_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_2_snas_sap_and_ineligible_4">
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_4_i1"><text>"P1.1 — Probationary [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_4_i2"><text>"Strict probation (IS)"</text></inputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_4_o1"><text>"P1.3 — Strict Probation (IS) [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_2_snas_sap_and_ineligible_5">
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_5_i1"><text>"P1.2 — SNAS [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_5_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_5_o1"><text>"P1.4 — Ineligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_2_snas_sap_and_ineligible_6">
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_6_i1"><text>"P1.2 — SNAS [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_6_i2"><text>"SNAS criteria not reached"</text></inputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_6_o1"><text>"P1.0 — Eligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_6_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_2_snas_sap_and_ineligible_7">
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_7_i1"><text>"P1.3 — Strict Probation (IS) [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_7_i2"><text>"Criteria met"</text></inputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_7_o1"><text>"P1.0 — Eligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_7_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_2_snas_sap_and_ineligible_8">
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_8_i1"><text>"P1.3 — Strict Probation (IS) [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_2_snas_sap_and_ineligible_8_i2"><text>"SAP failure"</text></inputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_8_o1"><text>"P1.4 — Ineligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_2_snas_sap_and_ineligible_8_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

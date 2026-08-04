@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="def_student_status_part_4_graduation_and_terminal_states"
+             name="DMN student_status part_4_graduation_and_terminal_states"
+             namespace="https://studentjourneymatrix.local/student_part_4_graduation_and_terminal_states">
+  <decision id="decision_student_status_part_4_graduation_and_terminal_states" name="Student Status — Part 4: Graduation &amp; Terminal">
+    <decisionTable id="dt_student_status_part_4_graduation_and_terminal_states" hitPolicy="UNIQUE">
+      <input id="in1_student_status_part_4_graduation_and_terminal_states" label="Current State">
+        <inputExpression id="in1e_student_status_part_4_graduation_and_terminal_states" typeRef="string">
+          <text>current_state</text>
+        </inputExpression>
+      </input>
+      <input id="in2_student_status_part_4_graduation_and_terminal_states" label="Event / Outcome">
+        <inputExpression id="in2e_student_status_part_4_graduation_and_terminal_states" typeRef="string">
+          <text>event</text>
+        </inputExpression>
+      </input>
+      <output id="out1_student_status_part_4_graduation_and_terminal_states" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_student_status_part_4_graduation_and_terminal_states" label="Rationale" name="rationale" typeRef="string"/>
+      <rule id="row_student_status_part_4_graduation_and_terminal_states_1">
+        <inputEntry id="row_student_status_part_4_graduation_and_terminal_states_1_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_4_graduation_and_terminal_states_1_i2"><text>"All programs graduated"</text></inputEntry>
+        <outputEntry id="row_student_status_part_4_graduation_and_terminal_states_1_o1"><text>"S4.0 — Graduated (Alumni may continue) [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_4_graduation_and_terminal_states_1_o2"><text>"Workbook omits TERMINAL on S4.0; alumni/BS→MS may re-enroll (executive default #7)."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_4_graduation_and_terminal_states_2">
+        <inputEntry id="row_student_status_part_4_graduation_and_terminal_states_2_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_4_graduation_and_terminal_states_2_i2"><text>"Disqualification"</text></inputEntry>
+        <outputEntry id="row_student_status_part_4_graduation_and_terminal_states_2_o1"><text>"S4.2 — Disqualified [Disciplinary]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_4_graduation_and_terminal_states_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_4_graduation_and_terminal_states_3">
+        <inputEntry id="row_student_status_part_4_graduation_and_terminal_states_3_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_4_graduation_and_terminal_states_3_i2"><text>"University exit"</text></inputEntry>
+        <outputEntry id="row_student_status_part_4_graduation_and_terminal_states_3_o1"><text>"S4.1 — Exited (good standing) [Student]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_4_graduation_and_terminal_states_3_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

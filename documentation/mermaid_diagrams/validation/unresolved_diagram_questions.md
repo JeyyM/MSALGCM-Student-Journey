@@ -21,7 +21,7 @@ Questions that could change the correctness of the Mermaid diagrams. Grouped by 
 | 8 | Exact return paths: does a returnee always re-enter at `S1.0`? Does a suspended student return to `S2.0` or `S1.0`? | part_2, part_3 | Returnee→S1.0 and Suspended→S2.0 marked **[Tentative]** |
 | 9 | Do residency/LOA/prolonged-leave states feed AWOL and suspension identically to `S2.0`? | part_3 | Only `S2.0` (and `S3.1`) sources drawn |
 | 10 | Can a suspended student exit on **good standing** (`S3.2 → S4.1`)? | part_3 | In allowed-previous; collapsed/noted |
-| 11 | Is `S4.0 Graduated` actually terminal, or do graduates continue (BS→MS, alumni)? | part_4 | Labeled `[Terminal?]` |
+| 11 | Is `S4.0 Graduated` actually terminal, or do graduates continue (BS→MS, alumni)? | part_4 | Labeled `[Alumni may continue]` (executive default) |
 | 12 | Should "Graduated with clearance hold" be a separate status? | part_4 | Not modeled |
 | 13 | Do `S2.2`/`S2.3 LOA` students keep campus/SLC access? | part_2 | Not a transition; noted only |
 
@@ -39,9 +39,9 @@ Questions that could change the correctness of the Mermaid diagrams. Grouped by 
 
 | # | Question | Affected diagram(s) | Current handling |
 |---|---|---|---|
-| 19 | When will the combination tab be regenerated with **canonical** codes (`P1.3 = Strict Probationary`, `S4.x` exits)? | interaction | Legacy codes used, flagged |
-| 20 | Is `S2.2 Under LOA` + `P1.1 Probationary` allowed (combo tab: Yes; Notes #3: tentatively No)? | interaction | Listed as Yes with conflict note |
-| 21 | Are the `Yes?` pairs (Residency×Probationary/SNAS/Ineligible, LOA×SNAS/Candidate, Suspended×Candidate) allowed? | interaction | Treated as **not allowed** (deferred) |
+| 19 | When will the combination tab be regenerated with **canonical** codes (`P1.3 = Strict Probationary`, `S4.x` exits)? | interaction, parallel FSM | **Done in-repo** (`combination_matrix_post_m3.csv`); Excel import pending |
+| 20 | Is `S2.2 Under LOA` + `P1.1 Probationary` allowed (combo tab: Yes; Notes #3: tentatively No)? | interaction | **Yes** in in-repo matrix (executive default) |
+| 21 | Are the `Yes?` pairs (Residency×Probationary/SNAS/Ineligible, LOA×SNAS/Candidate, Suspended×Candidate) allowed? | interaction | **No** in in-repo matrix (former Yes? → No) |
 | 22 | Is the Exit → `P3.1 Incomplete` update automatic or manual? | interaction, program part_3 | Drawn as forced impact |
 
 ## Scope questions (affect whether statuses exist at all)

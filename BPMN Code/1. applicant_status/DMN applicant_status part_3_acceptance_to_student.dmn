@@ -4,7 +4,7 @@
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
              id="def_applicant_status_part_3_acceptance_to_student"
              name="DMN applicant_status part_3_acceptance_to_student"
-             namespace="https://studentjourneymatrix.local/applicant_status_part_3_acceptance_to_student">
+             namespace="https://studentjourneymatrix.local/applicant_part_3_acceptance_to_student">
   <decision id="decision_applicant_status_part_3_acceptance_to_student" name="Applicant Status — Part 3: Acceptance to Student">
     <decisionTable id="dt_applicant_status_part_3_acceptance_to_student" hitPolicy="UNIQUE">
       <input id="in1_applicant_status_part_3_acceptance_to_student" label="Current State">
@@ -18,35 +18,60 @@
         </inputExpression>
       </input>
       <output id="out1_applicant_status_part_3_acceptance_to_student" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_applicant_status_part_3_acceptance_to_student" label="Rationale" name="rationale" typeRef="string"/>
       <rule id="row_applicant_status_part_3_acceptance_to_student_1">
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_1_i1"><text>"A6.0 — Reserved [Admissions]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_1_i1"><text>"(requirements check)"</text></inputEntry>
         <inputEntry id="row_applicant_status_part_3_acceptance_to_student_1_i2"><text>"Complete"</text></inputEntry>
         <outputEntry id="row_applicant_status_part_3_acceptance_to_student_1_o1"><text>"A7.0 — Officially Admitted [Admissions]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_3_acceptance_to_student_2">
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_2_i1"><text>"A6.0 — Reserved [Admissions]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_2_i1"><text>"(requirements check)"</text></inputEntry>
         <inputEntry id="row_applicant_status_part_3_acceptance_to_student_2_i2"><text>"Pending"</text></inputEntry>
         <outputEntry id="row_applicant_status_part_3_acceptance_to_student_2_o1"><text>"A7.1 — Provisionally Admitted [Admissions]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_3_acceptance_to_student_3">
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_3_i1"><text>"A7.1 — Provisionally Admitted [Admissions]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_3_i2"><text>"Requirements completed"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_3_o1"><text>"A7.0 — Officially Admitted [Admissions]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_3_i1"><text>"-&gt; Part 3: Acceptance (from A5.x offer)"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_3_i2"><text>"Official Acceptance fee paid/waived"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_3_o1"><text>"A6.0 — Reserved [Admissions]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_3_o2"><text>"Post-M3: Official Acceptance / acceptance fee (not M3 Enrollment Reservation Fee)."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_3_acceptance_to_student_4">
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_4_i1"><text>"A7.0 — Officially Admitted [Admissions]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_4_i2"><text>"Becomes student"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_4_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_4_i1"><text>"A6.0 — Reserved [Admissions]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_4_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_4_o1"><text>"Requirements complete? [Admissions]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_3_acceptance_to_student_5">
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_5_i1"><text>"A7.1 — Provisionally Admitted [Admissions]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_5_i2"><text>"Becomes student (provisional)"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_5_i1"><text>"A7.0 — Officially Admitted [Admissions]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_5_i2"><text>"Becomes student"</text></inputEntry>
         <outputEntry id="row_applicant_status_part_3_acceptance_to_student_5_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_3_acceptance_to_student_6">
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_6_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_6_i2"><text>"(continues)"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_6_o1"><text>"Student status continues [Registrar]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_6_i1"><text>"A7.1 — Provisionally Admitted [Admissions]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_6_i2"><text>"Becomes student (provisional)"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_6_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_6_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_3_acceptance_to_student_7">
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_7_i1"><text>"A7.1 — Provisionally Admitted [Admissions]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_7_i2"><text>"Requirements completed"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_7_o1"><text>"A7.0 — Officially Admitted [Admissions]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_7_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_3_acceptance_to_student_8">
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_8_i1"><text>"Admission offer [Applicant]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_8_i2"><text>"Acceptance fee paid/waived"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_8_o1"><text>"A6.0 — Reserved [Admissions]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_8_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_3_acceptance_to_student_9">
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_9_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_3_acceptance_to_student_9_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_9_o1"><text>"Student status continues [Registrar]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_3_acceptance_to_student_9_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
     </decisionTable>
   </decision>

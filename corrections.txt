@@ -1,225 +1,304 @@
 CSC615M Student/Applicant Journey Matrix — Corrections Log
-Source: cross-sheet audit of Applicant_Student Status.xlsx (read-only)
-Canonical reference: Post-M3 WIP tabs (Applicant, Student, Student Program)
+================================================================================
+Sources audited:
+  - Applicant_Student Status.xlsx (cross-sheet audit, read-only)
+  - final mermaid code/ (compared against corrections — see below)
+  - documentation/decisions.md (filter used when building Mermaid)
 
-For each item: Problem → Recommended fix
+Authority hierarchy (what to trust, in order):
+  1. Post-M3 WIP tabs (Applicant, Student, Student Program) — status definitions
+  2. documentation/decisions.md — strikethrough excluded, Yes? deferred, Post-M3 codes
+  3. final mermaid code/ — diagrams built from 1 + 2 (NOT from the legacy combination tab)
+  4. Excel combination tab — OUT OF DATE; uses legacy P1.3/S3.0 codes until regenerated
+
+For each item:
+  Problem → Mermaid status → Fix target → Recommended fix
+
+Mermaid status key:
+  [OK]       Already matches Post-M3 + decisions.md — do not change Mermaid
+  [DEFERRED] Intentionally left open per decisions.md Rule 2 — stakeholder first
+  [PARTIAL]  Present but simplified vs workbook detail
+  [GAP]      Missing from Mermaid (minor); optional enrichment
+  [N/A]      Workbook-only; no Mermaid impact
 
 ================================================================================
 CRITICAL — CODE SCHEME / CROSS-SHEET MISMATCH
 ================================================================================
 
 1. P1.3 means two different statuses
-   Problem: Post-M3 Program tab defines P1.3 = Strict Probationary (IS only).
-            Combination tab defines P1.3 = Ineligible (TERMINAL).
-            Post-M3 puts Ineligible on P1.4; combination tab has no P1.4 column.
-   Fix: Regenerate the combination tab against Post-M3 program codes.
-        Add a P1.4 Ineligible column; relabel P1.3 column as Strict Probationary (IS only).
-        Re-evaluate every row/column that referenced old P1.3 = Ineligible.
-        Until regenerated, annotate the combo tab header: "P1.3 = Ineligible (legacy); see Post-M3 for P1.3/P1.4 split."
+   Problem: Post-M3 Program tab: P1.3 = Strict Probationary (IS only), P1.4 = Ineligible.
+            Combination tab: P1.3 = Ineligible (TERMINAL); no P1.4 column.
+   Mermaid: [OK] part_2_snas_sap_and_ineligible.mmd (P1.3 Strict, P1.4 Ineligible).
+            Combined diagrams use P1.4 for Ineligible (COMBO-T004). Parallel FSM has P1_4
+            but not P1_3 (optional enrichment only).
+   Fix target: WORKBOOK (combination tab). Do NOT rewrite Mermaid to match legacy combo tab.
+   Fix: Regenerate combination tab against Post-M3 codes.
+        Add P1.4 Ineligible column; relabel P1.3 as Strict Probationary (IS only).
+        Migrate every old "P1.3 = Ineligible" rule to P1.4.
+        Until regenerated, annotate combo header: "Legacy P1.3 = Ineligible → see P1.4."
 
 2. Graduated student code mismatch (S3.0 vs S4.0)
-   Problem: Post-M3 Student tab uses S4.0 = Graduated.
-            Combination tab still uses S3.0 = "Inactive - Graduated" (old M3 scheme).
-   Fix: Replace all S3.0 references in the combination tab with S4.0.
-        Update the student status label to "Graduated" (match Post-M3 row 7).
-        Re-run allowed/disallowed pairs for the graduated-student block.
+   Problem: Post-M3: S4.0 = Graduated. Combination tab: S3.0 = "Inactive - Graduated."
+   Mermaid: [OK] All .mmd files use S4.0.
+   Fix target: WORKBOOK (combination tab only).
+   Fix: Replace S3.0 with S4.0 in combination tab; relabel "Graduated"; re-run pairs for that block.
 
 3. Combination tab covers only part of the student lifecycle
-   Problem: Combination tab includes only S1.0, S2.0, S2.1, S2.2, S3.0.
-            Missing from combo: S2.3 Prolonged Leave, S3.1 AWOL, S3.2 Suspended,
-            S4.0 Graduated (canonical), S4.1 Exited on Good Standing, S4.2 Exited - Permanent Disqualification.
-            Matrix ends at row 13; no blocks for inactive/exit statuses.
+   Problem: Combo has S1.0, S2.0, S2.1, S2.2, S3.0 only. Missing S2.3, S3.1, S3.2, S4.0, S4.1, S4.2.
+   Mermaid: [OK] Per-dimension student_status/*.mmd covers all statuses.
+            [PARTIAL] parallel_student_program_constrained_fsm.mmd is an abbreviated integrated view
+            (by design — detail lives in per-dimension files).
+   Fix target: WORKBOOK (combination tab). Optional: enrich parallel FSM later, not required for #3.
    Fix: Add combination blocks for each missing Post-M3 student status.
-        For terminal exits (S4.1, S4.2), follow the existing rule pattern: pair only with P3.1 Incomplete unless stakeholders say otherwise.
-        Confirm S4.0 × P3.0 (all programs graduated) as the primary graduated pair.
+        Terminal exits (S4.1, S4.2): pair with P3.1 Incomplete unless stakeholders say otherwise.
+        Confirm S4.0 × P3.0 as primary graduated pair (Mermaid already models COMBO-T001 this way).
 
-4. P1.4 Strict Probationary absent from combination tab
-   Problem: Post-M3 adds P1.3 Strict Probationary and P1.4 Ineligible.
-            Combination tab has neither Strict Probationary nor P1.4.
-   Fix: Add P1.3 (Strict Probationary, IS only) and P1.4 (Ineligible, TERMINAL) as program columns.
-        Define allowed pairs for IS students only where P1.3 applies.
-        Migrate old "P1.3 Ineligible" combo rules to P1.4.
+4. Strict Probationary and P1.4 absent from combination tab
+   Problem: Post-M3 has P1.3 Strict Probationary + P1.4 Ineligible; combo has neither correctly.
+   Mermaid: [OK] part_2_snas_sap_and_ineligible.mmd has both. [GAP] parallel FSM omits P1_3 node.
+   Fix target: WORKBOOK (combination tab). Optional Mermaid: add P1_3 to parallel FSM.
+   Fix: Add P1.3 and P1.4 columns to combo tab; migrate old Ineligible rules to P1.4;
+        define IS-only pairs for P1.3.
 
 ================================================================================
 HIGH — INTERNAL RULE CONFLICTS
 ================================================================================
 
 5. LOA + Probationary: Notes vs Combination tab
-   Problem: Notes tab #3 says a student cannot have Under LOA + Probationary (flagged "not sure").
-            Combination tab marks S2.2 × P1.1 = Yes.
-   Fix: Stakeholder decision required. Then align both places to the same answer.
-        If NOT allowed: change S2.2 × P1.1 to No in the combination tab; add a note in Notes #3 confirming the rule.
-        If allowed: revise Notes #3 to remove "cannot" and document any conditions (e.g., multi-program, grace period).
+   Problem: Notes #3 tentatively "cannot" LOA + Probationary; combo marks S2.2 × P1.1 = Yes.
+   Mermaid: [DEFERRED] Does not affirm combo Yes. Parallel FSM defers Yes? per decisions.md;
+            blocks S2.2+P1.4 only. README says "Active + Probationary" generically (not LOA-specific).
+   Fix target: STAKEHOLDER → then WORKBOOK (Notes + combo). Do not change Mermaid until decided.
+   Fix: Stakeholder decision. Align Notes #3 and combo tab. Mermaid update only if outcome differs
+        from current deferred stance (decisions.md Rule 2: treat uncertain pairs as not allowed).
 
 6. Active/Inactive taxonomy vs status labels
-   Problem: Notes #1 lists LOA and Graduated under "Inactive."
-            Post-M3 labels S2.2 as "Active - Under LOA" and S4.0 as "Graduated" (not inactive-prefixed).
-            S2.3 is "Inactive - Prolonged Leave" but uses S2.x code prefix (active family).
-   Fix: Decide and document one taxonomy:
-        Option A — Matrix wins: revise Notes #1 so LOA is Active (limited access may still apply); list Graduated separately (not under Inactive bullet, or as "Inactive outcome").
-        Option B — Notes wins: rename S2.2 to "Inactive - Under LOA" (requires code or label change) and align S2.3 numbering (e.g., move to S3.x if truly inactive).
-        Either way, add a glossary row: Active = S1.x/S2.0–S2.2; Inactive = S2.3/S3.x/S4.x (or whatever is agreed).
+   Problem: Notes #1 lists LOA/Graduated under Inactive; Post-M3 uses Active-Under LOA, S2.3 on S2.x.
+   Mermaid: [OK] Follows Post-M3 matrix labels (part_2_residency_and_loa.mmd, README Section 2).
+   Fix target: WORKBOOK (Notes tab) + glossary. Mermaid already chose matrix-over-Notes.
+   Fix: Option A (recommended, matches Mermaid): revise Notes #1 to match Post-M3 taxonomy.
+        Add glossary: Active = S1.x/S2.0–S2.2; Inactive = S2.3/S3.x/S4.x.
 
 7. S4.0 Graduated not marked TERMINAL
-   Problem: P3.0, S4.1, S4.2, P1.4, P3.1 are marked TERMINAL STATE.
-            S4.0 Graduated is not marked terminal.
-            Notes #6 raises BS/MS continuation after program graduation.
-   Fix: Stakeholder decision:
-        If alumni / BS-MS continuation is expected: keep S4.0 non-terminal; add note "Non-terminal — supports multi-program / ladderized paths."
-        If student journey ends at graduation: add TERMINAL STATE to S4.0 and document exception for BS/MS separately.
-        Align combination tab and diagrams after decision.
+   Problem: Workbook omits TERMINAL on S4.0; Notes #6 raises BS/MS continuation.
+   Mermaid: [DEFERRED] "S4.0 - Graduated [Terminal?]" in part_4_graduation_and_terminal_states.mmd.
+   Fix target: STAKEHOLDER → then WORKBOOK + Mermaid label (remove or confirm "?").
+   Fix: If BS/MS/alumni continuation: keep non-terminal; add workbook note. Mermaid: drop "?".
+        If terminal: mark TERMINAL in workbook; Mermaid: change to [Terminal].
 
 8. A5.4 Reconsidered revives terminal A5.5
-   Problem: A5.5 Not Qualified is TERMINAL STATE.
-            A5.4 Reconsidered lists A5.5 as allowed previous — effectively reopening a terminal state.
-   Fix: Clarify intent:
-        If reconsideration is valid: change A5.5 to non-terminal OR add footnote "Terminal for original application; reconsideration opens A5.4 as a new branch."
-        If not valid: remove A5.5 from A5.4 allowed-previous list; require re-application as new A0 instead.
-        Document whether a new application ID is created on reconsideration.
+   Problem: A5.5 TERMINAL; A5.4 lists A5.5 as allowed previous.
+   Mermaid: [OK] A5.4 intentionally NOT drawn (excluded per diagram_creation_notes.md, Rule 2).
+            part_2b ends A5.5 at terminal with no appeal loop.
+   Fix target: STAKEHOLDER → then WORKBOOK if appeal confirmed; Mermaid only if adding APP-T032+.
+   Fix: If appeal valid: clarify A5.5 semantics in workbook; add A5.4 → A6.x to Mermaid.
+        If not valid: remove A5.5 from A5.4 allowed-previous in workbook (Mermaid already omits).
 
-9. P2.0 Candidate for Graduation — allowed-previous vs combination pairs
-   Problem: Post-M3 Program tab: P2.0 allowed previous = P1.0 only.
-            Combination tab allows S2.0 paired with P1.1, P1.2, P1.3 columns that include P2.0 = Yes.
-   Fix: If rule is "must be Eligible to become Candidate": set S2.0 × P2.0 to No unless P1.0 on that program;
-        document multi-program rule in M10-style scenario cells (eligible on graduating program, other programs may differ).
-        If non-eligible standings can candidacy: update Post-M3 P2.0 allowed-previous to include P1.1/P1.2 (and P1.3/P1.4 as applicable).
+9. P2.0 Candidate — allowed-previous vs combination pairs
+   Problem: Post-M3: P2.0 previous = P1.0 only. Combo allows S2.0 × P2.0 with P1.1/P1.2/P1.3 = Yes.
+   Mermaid: [OK] part_3_graduation_and_terminal_states.mmd: only P1_0 → P2_0.
+   Fix target: WORKBOOK (combination tab). Do not change Mermaid to match combo.
+   Fix: Align combo with Post-M3/Mermaid (P2.0 requires P1.0 on that program) OR update Post-M3
+        if multi-program candidacy is confirmed — then update Mermaid too.
 
-10. P1.4 Ineligible marked TERMINAL but shift scenario implies recovery
-    Problem: Post-M3: P1.4 Ineligible = TERMINAL STATE on program dimension.
-             Combo E10: Ineligible triggers S1.0 (without enrollment), then Active when shift approved.
-    Fix: Keep P1.4 terminal for the current program record; document shifting as a separate process (not a P-status transition):
-         "Ineligible on Program A → Manage Shifting Application → new program enrollment; student may return to S2.0 Active."
-         Add cross-impact rule (COMBO-T004/T005 style) in combination tab, not as un-terminaling P1.4.
-         Clarify whether old program row stays P1.4 or moves to P3.1 Incomplete on shift.
+10. P1.4 Ineligible TERMINAL but shift scenario implies recovery
+    Problem: P1.4 terminal on program; combo E10 describes shift → S1.0 → Active.
+    Mermaid: [OK] COMBO-T004/T005 in cross_impact_rules.mmd, student_status_vs_program_interaction.mmd,
+             parallel_student_program_constrained_fsm.mmd — P1.4 stays terminal; shift is cross-dimension.
+    Fix target: WORKBOOK (combo E10 must reference P1.4 not legacy P1.3). Mermaid/BPMN already correct.
+    Fix: Point combo scenario at P1.4; document shift as process not un-terminaling P1.4.
+         Clarify old program row: stays P1.4 vs P3.1 Incomplete on shift (stakeholder).
 
 ================================================================================
 MEDIUM — M3 vs POST-M3 DRIFT
 ================================================================================
 
 11. Terminology rename incomplete in M3 archive tabs
-    Problem: M3 tabs still use "Official Confirmation" and "Enrollment Reservation Fee."
-             Post-M3 uses "Official Acceptance" and "Official Acceptance Fee."
-             M3 Student tab row 12 mixes both fee names in one cell.
-    Fix: Leave M3 tabs as historical archive OR add a banner row: "Superseded — see Post-M3 WIP tab."
-         Ensure all live references (Post-M3, Contents, diagrams) use Official Acceptance / Official Acceptance Fee only.
-         Fix M3 Student row 12 mixed label if M3 tab is kept readable.
+    Problem: M3 uses Official Confirmation / Enrollment Reservation Fee; Post-M3 uses Official Acceptance.
+    Mermaid: [OK] Uses Official Acceptance / acceptance fee throughout.
+    Fix target: WORKBOOK (M3 archive + Contents). Mermaid/BPMN already correct.
+    Fix: Banner on M3 tabs "Superseded — see Post-M3 WIP." Fix M3 Student row 12 mixed label if kept.
 
 12. Deprecated applicant codes — inconsistent strikethrough in M3
-    Problem: M3: A3.3 / Exam Not Required is struck through.
-             A9.0 code is not struck; "Inactive" label is struck in row 7 but not row 8.
-    Fix: In M3 tab, strike through entire A9.0 column (code + labels + transitions) for consistency.
-         Post-M3 already excludes these; add one-line note on M3 tab: "A3.3, A9.0 removed in Post-M3."
+    Problem: A3.3 struck; A9.0 column partially struck.
+    Mermaid: [OK] A3.3 excluded; exam-not-required → A4.3 (part_2a). A9.0 not present.
+    Fix target: WORKBOOK (M3 visual cleanup only).
+    Fix: Strike entire A9.0 column in M3; add note "A3.3, A9.0 removed in Post-M3."
 
 13. Deprecated student exits in M3 (S3.5, S3.6, S3.7)
-    Problem: M3 lists S3.5 Exclusion, S3.6 Expelled, S3.7 Transferred (struck through).
-             Post-M3 consolidates into S4.2 Exited - Permanent Disqualification.
-    Fix: No change needed on M3 if strikethrough is clear.
-         Ensure combination tab and all diagrams use S4.2 only; do not reference S3.5–S3.7 in new work.
+    Problem: M3 struck-through exits; Post-M3 consolidates to S4.2.
+    Mermaid: [OK] S4.2 only (part_3, part_4). No S3.5–S3.7.
+    Fix target: WORKBOOK (combo tab when regenerated). Mermaid already correct.
+    Fix: Ensure combo uses S4.2; never reference S3.5–S3.7 in new work.
 
-14. Program column reorder when Strict Probationary was inserted
-    Problem: M3 column order: D=Strict Probationary, E=SNAS, F=Ineligible, G=Under Evaluation (struck).
-             Post-M3: D=SNAS, E=Strict Probationary, F=—, G=P1.4 Ineligible, H=P2.0, etc.
-             Any doc keyed to column letters or old P1.x numbers will be wrong.
-    Fix: Re-key all combination and diagram references by code+label, not column position.
-         Publish a one-page code map: Old P1.3 Ineligible → New P1.4; New P1.3 = Strict Probationary (IS only).
+14. Program column reorder when Strict Probationary inserted
+    Problem: M3 vs Post-M3 column positions differ; old P1.3 = Ineligible.
+    Mermaid: [OK] Keyed by code+label, not column letter.
+    Fix target: WORKBOOK + documentation/status_combination_rules.md (legacy mapping note).
+    Fix: Publish code map: Old P1.3 Ineligible → P1.4; New P1.3 = Strict Probationary (IS only).
+         Remove decisions.md "keep legacy combo numbering" exception after combo regen (item #1).
 
-15. S2.3 Prolonged Leave — new status, incomplete transition rules
-    Problem: S2.3 added in Post-M3 only; not in combination tab.
-             Transition cells F16–F20 (LOA filing, LOA > maximum, trimester counts) are struck through.
-             Entry/exit conditions for Prolonged Leave are ambiguous.
-    Fix: Stakeholders confirm final rule (likely AND of: LOA > maximum AND last enrollment > 6 trimesters ago — per struck text).
-         Un-strike or replace F16–F20 with the confirmed rule set.
-         Add S2.3 block to combination tab once rules are final.
+15. S2.3 Prolonged Leave — incomplete transition rules in workbook
+    Problem: S2.3 new in Post-M3; combo missing; workbook cells F16–F20 struck/ambiguous.
+    Mermaid: [PARTIAL] S2.3 present (part_2_residency_and_loa.mmd) with simplified
+             "LOA period exceeded" — not full AND/trimester logic from struck workbook cells.
+    Fix target: STAKEHOLDER (full rule) → WORKBOOK → optionally refine Mermaid edge label.
+    Fix: Confirm entry rule; update workbook; add S2.3 to combo tab; optionally detail Mermaid transition.
 
 ================================================================================
 MEDIUM — NEEDS STAKEHOLDER CONFIRMATION
 ================================================================================
 
 16. Five "Yes?" uncertain cells in combination tab
-    Problem: S2.1 × P1.1, S2.1 × P1.2, S2.1 × P1.3, S2.2 × P1.2, S2.2 × P2.0 are marked Yes? (not Yes/No).
-    Fix: Resolve each with stakeholders; replace Yes? with Yes or No.
-         Update Notes #3 if LOA/Residency rules are affected.
+    Problem: S2.1/S2.2 × various P statuses marked Yes? in combo.
+    Mermaid: [DEFERRED] decisions.md Rule 2: treat as NOT allowed until confirmed.
+             Parallel FSM comment: "Yes? cells deferred."
+    Fix target: STAKEHOLDER → WORKBOOK (combo). Mermaid unchanged unless decision is Yes.
+    Fix: Replace Yes? with Yes or No in combo; update Notes #3 if LOA/Residency affected.
 
 17. SAP / grade criteria not finalized
-    Problem: Post-M3 Program notes: "below 75 needs to be updated"; Grade 1/2/3 example marked "kindly confirm if correct."
-             Probationary vs SAP rules differ for new/old students and IS vs other levels.
-    Fix: Obtain official SAP grade thresholds from handbook/stakeholders; replace placeholder "below 75."
-         Confirm worked example; encode final criteria in P1.1 → P1.3 → P1.4 transition notes.
-         Do not hard-code thresholds in app/diagrams until confirmed.
+    Problem: "below 75 needs to be updated"; Grade 1/2/3 example unconfirmed.
+    Mermaid: [DEFERRED] No numeric threshold in part_2_snas_sap_and_ineligible.mmd.
+    Fix target: STAKEHOLDER → WORKBOOK (Program tab notes). Do not add numbers to Mermaid until confirmed.
+    Fix: Obtain official thresholds; update workbook notes only until confirmed.
 
 18. SNAS acronym and criteria undefined
-    Problem: Workbook uses SNAS operationally only ("SNAS criteria reached/not reached"); no expansion or formal criteria.
-    Fix: Add glossary entry: full expansion + criteria document reference.
-         Link P1.2 SNAS entry/exit events to that criteria in the Program tab notes.
+    Problem: Operational use only; no expansion or formal criteria in workbook.
+    Mermaid: [DEFERRED] Same gap — "SNAS criteria reached/not reached" without expansion.
+    Fix target: STAKEHOLDER → glossary + workbook. Mermaid labels OK as-is until expansion known.
+    Fix: Add glossary entry + criteria reference; link P1.2 events in Program tab.
 
 19. LOA campus/system access unresolved (Notes #8)
-    Problem: Notes ask whether LOA students get campus/SLC access.
-             S2.2 is Active (Notes #1 implies full access for Active); may conflict with "limited access when inactive."
-    Fix: Document access policy for S2.2: full / limited / none for campus and SLC.
-         Update Notes #1 and #8 with the decision; add attribute "access_level" if not a separate status.
+    Problem: Access policy for LOA students not decided.
+    Mermaid: [DEFERRED] Not modeled (access is out of scope for status FSM).
+    Fix target: STAKEHOLDER → Notes + optional attribute in data model (not a new status in Mermaid).
+    Fix: Document policy; update Notes #1 and #8.
 
 20. Clearance hold on Graduated (Notes #7)
-    Problem: Notes ask whether "Graduated but still with Clearance Hold" should be a separate status. Not modeled.
-    Fix: Decide: separate status vs flag/attribute on S4.0 or P3.0.
-         Recommended: hold as attribute (clearance_hold = true), not a new status, unless registration blocks require otherwise.
+    Problem: Separate status vs attribute not decided.
+    Mermaid: [DEFERRED] Not modeled.
+    Fix target: STAKEHOLDER → data model / workbook. Not a Mermaid state unless decided otherwise.
+    Fix: Recommend attribute clearance_hold on S4.0/P3.0 unless registration requires a status.
 
 21. BS/MS post-graduation behavior (Notes #6)
-    Problem: Future-state question: student status after one stage of BS/MS graduates.
-    Fix: Stakeholder decision; document whether S4.0 is non-terminal for ladderized students and whether shift is required.
-         Align with item #7 (S4.0 terminal flag).
+    Problem: Student status after partial BS/MS graduation unknown.
+    Mermaid: [DEFERRED] Tied to item #7 (S4.0 [Terminal?]).
+    Fix target: STAKEHOLDER → then workbook + Mermaid S4.0 terminal label.
+    Fix: Decide ladderized behavior; align with item #7.
 
 ================================================================================
 LOWER — EDITORIAL / CLARITY
 ================================================================================
 
-22. Duplicate A7.0 Officially Admitted columns
-    Problem: Two columns labeled A7.0 Officially Admitted TERMINAL; one hands off to S1.0, one to S2.0.
-    Fix: Disambiguate labels: e.g., A7.0a "Officially Admitted (not yet enrolled)" → S1.0;
-         A7.0b "Officially Admitted (enrolled)" → S2.0 — OR use one A7.0 with branching note on enrollment condition.
-         Do not duplicate the same code without documented branch logic.
+22. Duplicate A7.0 Officially Admitted columns in workbook
+    Problem: Two A7.0 columns hand off to S1.0 vs S2.0.
+    Mermaid: [OK] Resolved differently: A7.0 → S1.0 (part_3, bridge); S1.0 → S2.0 on enroll (part_1).
+    Fix target: WORKBOOK (disambiguate or document branch). Mermaid pattern is the reference model.
+    Fix: Align workbook to Mermaid pattern: one A7.0 → S1.0; enrollment S1.0 → S2.0 separately.
 
-23. A7.2 Deferred — no student status handoff
-    Problem: A7.0/A7.1 map to S1.0 or S2.0; A7.2 Deferred has no S* code in rows 8–9.
-    Fix: Confirm whether Deferred applicants remain pre-student (no S code) until converted to A7.0/A7.1 or A8.x.
-         Add explicit note: "No student status until admission finalized."
+23. A7.2 Deferred — no student status handoff in workbook
+    Problem: A7.2 has no S* code in applicant matrix rows 8–9.
+    Mermaid: [OK] A7.2 in part_4 (pre-student); no S handoff until A7.0/A7.1.
+    Fix target: WORKBOOK (add clarifying note). Mermaid already models correctly.
+    Fix: Note in workbook: "No student status until admission finalized (A7.0/A7.1)."
 
 24. A5.1 Offered - Probationary excludes UG
-    Problem: A5.1 applicable levels = IS/GS/SOL only; most other applicant statuses include UG.
-    Fix: Confirm intentional: if yes, add note "UG does not receive probationary admission offers."
-         If no, add UG to A5.1 levels column.
+    Problem: A5.1 levels = IS/GS/SOL only in workbook.
+    Mermaid: [GAP] A5.1 drawn without level-scope annotation.
+    Fix target: STAKEHOLDER → WORKBOOK; optional Mermaid note "(IS/GS/SOL only)" on A5.1 state.
+    Fix: Confirm intentional; add level note to workbook and optionally Mermaid label.
 
 25. Contents tab date vs tab names
-    Problem: Contents says Post-M3 tabs edited "Oct9, M3"; tab names say SEP 19 / SEP 26.
-    Fix: Update Contents descriptions with correct session dates or add "last edited" column with Oct 9 note.
+    Mermaid: [N/A]
+    Fix target: WORKBOOK (Contents tab only).
 
-26. Typo in Post-M3 Applicant tab
-    Problem: Row 5: "Applicant/Admission Application Statuses Combinaiton"
-    Fix: Correct spelling to "Combination."
+26. Typo "Combinaiton" in Post-M3 Applicant tab
+    Mermaid: [N/A]
+    Fix target: WORKBOOK only.
 
 27. Struck Applicant Status Active/Inactive row (Post-M3 row 6)
-    Problem: Row 6 (Applicant Status / Active / Inactive) is struck through but sits among live data; easy to misread.
-    Fix: Move deprecated row to a "Removed items" appendix section OR add comment: "Deprecated — see AC7 note; not part of model."
+    Problem: Deprecated row visible among live data.
+    Mermaid: [OK] Never included (decisions.md Rule 1).
+    Fix target: WORKBOOK (move or comment). Mermaid already excludes.
 
-28. Combination pairs that may need business review (even after code fix)
-    Problem: S1.0 × P1.2 SNAS = No; S1.0 × P1.3 (legacy Ineligible) = Yes with shift scenario;
-             S2.2 × P1.3 Ineligible = No; S3.0 × P3.0 = Yes only pair for legacy graduated row.
-    Fix: After code regeneration, re-validate each pair with stakeholders.
-         S1.0 × P1.2 = No: confirm "without enrollment cannot be SNAS."
-         S2.2 × P1.3 = No: confirm LOA + ineligible disallowed (consistent with item #5 pattern).
-         S4.0 × P3.0: confirm as canonical "all programs graduated" pair for new S4.0 block.
+28. Combination pairs needing business review after code fix
+    Problem: Legacy pairs (S1.0×P1.2 No, S1.0×old P1.3 Yes, S3.0×P3.0 Yes, etc.).
+    Mermaid: [OK] Canonical examples in parallel FSM: allows S4.0+P3.0; blocks S1.0+P2.0, S2.0+P3.0,
+             S2.2+P1.4; COMBO-T004 uses P1.4 not legacy P1.3.
+    Fix target: WORKBOOK (combo after regen). Validate pairs against Mermaid + decisions.md.
+    Fix: After items #1–#4, re-validate each pair. Use Mermaid parallel FSM examples as sanity check.
 
 ================================================================================
-RECOMMENDED ORDER OF WORK
+REVISED ORDER OF WORK (after Mermaid comparison)
 ================================================================================
 
-Phase 1 — Stakeholder decisions (block diagram/combo regeneration):
+The original Phase 4 ("sync Mermaid/BPMN") is mostly unnecessary — Mermaid already reflects
+Post-M3 + decisions.md. BPMN in folders 3 and 4 largely matches Mermaid; combo tab is the laggard.
+
+Phase 1 — Stakeholder decisions (block combo regen and a few labels):
   Items 5, 7, 8, 16, 17, 18, 19, 20, 21
 
-Phase 2 — Regenerate combination tab:
-  Items 1, 2, 3, 4, 6, 9, 10, 15, 28
+Phase 2 — Regenerate Excel combination tab to match Mermaid + Post-M3:
+  Items 1, 2, 3, 4, 9, 10, 28
+  Also update documentation/status_combination_rules.md and close decisions.md Rule 3 exception.
 
-Phase 3 — Workbook cleanup:
-  Items 11–14, 22–27
+Phase 3 — Workbook prose / archive cleanup (Mermaid already aligned):
+  Items 6, 11, 12, 13, 14, 15, 22, 23, 24, 25, 26, 27
 
-Phase 4 — Sync downstream artifacts (Mermaid, BPMN, lifecycle-validator):
-  Apply finalized codes and combo rules after Phase 2.
+Phase 4 — Optional enrichment (only if desired; not blocking):
+  Add P1_3 to parallel_student_program_constrained_fsm.mmd / .bpmn
+  Add A5.1 level annotation; detail S2.3 transition after item #15 confirmed
+  Sync lifecycle-validator combinations.js after Phase 2 combo regen
+
+Phase 5 — BPMN touch-up (minimal):
+  Most BPMN already matches Mermaid. After Phase 2, verify combo-dependent BPMN/DMN labels only.
+  Do NOT regenerate protected BPMN folders without explicit request.
+
+================================================================================
+QUICK REFERENCE — MERMAID vs CORRECTION ITEM
+================================================================================
+
+Already correct in Mermaid (fix workbook, not diagrams):  1, 2, 6, 9, 10, 11, 13, 14, 22, 23, 27, 28
+Intentionally deferred in Mermaid (stakeholder first):     5, 7, 8, 16, 17, 18, 19, 20, 21
+Partial / simplified in Mermaid:                           3, 15
+Minor Mermaid gap (optional):                              ~~4 (P1_3 in parallel FSM), 24 (A5.1 levels)~~ — both DONE
+Workbook-only:                                             25, 26
+
+================================================================================
+IMPLEMENTATION STATUS (in-repo, 2026-06-15)
+================================================================================
+
+Legend: DONE = addressed in repo | PATCH = workbook patch guide ready | DEFAULT = executive default applied | STAKE = needs stakeholder sign-off in Excel
+
+| # | Status | Where addressed |
+|---|--------|-----------------|
+| 1 | DONE | combination_matrix_post_m3.csv, combinationMatrix.js, status_combination_rules.md |
+| 2 | DONE | Same matrix (S4.0 not S3.0) |
+| 3 | DONE | Full 10×8 matrix includes S2.3, S3.2, S4.x |
+| 4 | DONE | P1.3 + P1.4 columns; parallel FSM .mmd + .bpmn |
+| 5 | DEFAULT | S2.2×P1.1 kept Yes; documented in executive_defaults.md |
+| 6 | DONE | glossary.md Active/Inactive taxonomy + workbook_patches/README.md Notes #1 |
+| 7 | DONE | S4.0 "Alumni may continue" in Mermaid + BPMN part_4 |
+| 8 | DONE | A5.4 omitted per decisions.md (no change) |
+| 9 | DONE | Matrix: P2.0 pairs require active enrollment paths |
+| 10 | DONE | COMBO-T004 uses P1.4 in diagrams + matrix |
+| 11 | PATCH | workbook_patches/README.md M3 banner |
+| 12 | PATCH | workbook_patches/README.md A9.0 strike |
+| 13 | DONE | Matrix uses S4.2; no S3.5–S3.7 |
+| 14 | DONE | LEGACY_CODE_MAP in combinationMatrix.js + glossary |
+| 15 | DEFAULT | S2.3 pairs inferred; edge label refined in Mermaid |
+| 16 | DONE | All former Yes? → No in matrix |
+| 17 | DEFAULT | No numeric SAP threshold (decisions.md Rule 2) |
+| 18 | DEFAULT | SNAS glossary note unchanged; expansion TBD |
+| 19 | DEFAULT | Out of scope for FSM (executive_defaults.md) |
+| 20 | DEFAULT | clearance_hold attribute recommendation |
+| 21 | DEFAULT | Linked to #7 S4.0 non-terminal enrollment |
+| 22 | PATCH | workbook_patches/README.md A7.0 pattern |
+| 23 | PATCH | workbook_patches/README.md A7.2 note |
+| 24 | DONE | A5.1 (IS/GS/SOL) in Mermaid + BPMN part_2b |
+| 25 | PATCH | workbook_patches/README.md Contents date |
+| 26 | PATCH | workbook_patches/README.md typo fix |
+| 27 | PATCH | workbook_patches/README.md row 6 comment |
+| 28 | DONE | Full matrix re-validated against Post-M3 + diagrams |
+
+Excel workbook: apply patches from documentation/workbook_patches/ when editing Applicant_Student Status.xlsx.

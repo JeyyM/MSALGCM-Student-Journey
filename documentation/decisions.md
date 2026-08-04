@@ -46,10 +46,8 @@ When tabs disagree:
    - Student exits consolidated into `S4.0 Graduated`, `S4.1 Exited on Good Standing`, `S4.2 Exited - Permanent Disqualification`.
    - Program statuses: `P1.0 Eligible`, `P1.1 Probationary`, `P1.2 SNAS`, `P1.3 Strict Probationary`, `P1.4 Ineligible`, `P2.0 Candidate for Graduation`, `P3.0 Graduated`, `P3.1 Incomplete`.
 
-2. **Exception: if adopting the latest would cause cascading breakage, keep the older scheme** (favor internal consistency over freshness).
-   - **Known cascade — program-status code numbering.** The combination tab (`SEP 19 - Student/StudentProgramStatusesCombination`) is built on the *older* numbering where `P1.2 = SNAS` and **`P1.3 = Ineligible`** (no Strict Probationary code). Re-numbering to the new `P1.3 = Strict Probationary` / `P1.4 = Ineligible` breaks every reference in that tab.
-     - **Decision:** until the combination tab is regenerated against the new codes, **keep the old numbering when working *with the combination matrix*** so its rows stay valid. Use the new numbering everywhere else. Reconcile both into one scheme as a dedicated task (tracked in `open_questions.md` #11, #36).
-   - **Known cascade — older student exit codes (`S3.0`–`S3.7`) in the combination tab.** The combination tab also uses the old student-status codes (`S3.0 Graduated`, `S3.2 Exited`, `S3.3 Suspended`, etc.). Same rule: keep them old *within that matrix* until it's regenerated; use the canonical `S*` codes everywhere else.
+2. **Exception (resolved 2026-06):** The combination tab has been **regenerated in-repo** as `combination_matrix_post_m3.csv` + `src/data/combinationMatrix.js` using Post-M3 codes. When updating the Excel workbook, import that matrix (see `documentation/workbook_patches/README.md`). Until Excel is patched, use the in-repo matrix as authority over the legacy combo tab.
+   - **Legacy map:** Old P1.3 Ineligible → P1.4; new P1.3 = Strict Probationary (IS only). Old S3.0 Graduated → S4.0.
 
 > Rule of thumb: "latest wins" for individual values/labels; "don't half-migrate" for code schemes that other tabs depend on — migrate the whole web at once or not at all.
 

@@ -1,6 +1,8 @@
 import { STATES, DIMENSIONS } from '../data/lifecycle.js';
+import { getStateDepartment } from '../data/departments.js';
 import { validateCombination } from '../data/combinations.js';
 import ValidityBadge from './ValidityBadge.jsx';
+import DepartmentBadge from './DepartmentBadge.jsx';
 
 function StatusCard({ stateId, dimKey, muted }) {
   const dim = DIMENSIONS[dimKey];
@@ -13,17 +15,23 @@ function StatusCard({ stateId, dimKey, muted }) {
     );
   }
   const s = STATES[stateId];
+  const dept = getStateDepartment(stateId);
   return (
     <div
       className={`status-card ${muted ? 'status-card--muted' : ''} ${s.kind === 'terminal' ? 'status-card--terminal' : ''}`}
-      style={{ '--dim-color': dim.color }}
+      style={{ '--dept-color': dept.color, '--dept-bg': dept.bg }}
     >
-      <span className="status-card__dim">{dim.label}</span>
+      <div className="status-card__meta">
+        <span className="status-card__dim">{dim.label}</span>
+        <div className="status-card__badges">
+          {s.kind === 'terminal' && <span className="status-card__tag">Terminal</span>}
+          {s.kind === 'handoff' && <span className="status-card__tag status-card__tag--handoff">Hand-off</span>}
+          <DepartmentBadge dept={dept} size="sm" />
+        </div>
+      </div>
       <span className="status-card__code">{s.code}</span>
       <span className="status-card__name">{s.label}</span>
       <span className="status-card__desc">{s.desc}</span>
-      {s.kind === 'terminal' && <span className="status-card__tag">Terminal</span>}
-      {s.kind === 'handoff' && <span className="status-card__tag status-card__tag--handoff">Hand-off</span>}
     </div>
   );
 }
@@ -36,7 +44,6 @@ export default function StatusPanel({ current }) {
     <section className="panel status-panel">
       <header className="panel__header">
         <h2>Current status</h2>
-        <span className="panel__hint">Live snapshot — always visible</span>
       </header>
 
       {inApplicant ? (

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Applicant_Part1_AccountToSubmission" targetNamespace="http://dlsu.edu.ph/student-journey">
+  <bpmn:process id="Applicant_Part1_AccountToSubmission" name="A - Part 1: Account to Submission" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Applicant_Part1_AccountToSubmission">
+      <bpmn:lane id="Lane_applicant" name="Applicant">
+        <bpmn:flowNodeRef>Start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A1_0</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_oas" name="OAS / Admissions Office">
+        <bpmn:flowNodeRef>GW_Req</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A2_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A2_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Next</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="Start" name="Account created"/>
+    <bpmn:task id="A0" name="A0 - Draft"/>
+    <bpmn:task id="A1_0" name="A1.0 - Submitted Form"/>
+    <bpmn:exclusiveGateway id="GW_Req" name="Requirements OK?"/>
+    <bpmn:task id="A2_1" name="A2.1 - Deficiencies"/>
+    <bpmn:task id="A2_0" name="A2.0 - Complete Requirements"/>
+    <bpmn:endEvent id="End_Next" name="Continue to evaluation"/>
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="Start" targetRef="A0" name="Account created"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="A0" targetRef="A1_0" name="Application submitted"/>
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="A1_0" targetRef="GW_Req"/>
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="GW_Req" targetRef="A2_0" name="Complete"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="GW_Req" targetRef="A2_1" name="Deficiencies"/>
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="A2_1" targetRef="A2_0" name="Requirements completed"/>
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="A2_0" targetRef="A2_1" name="OAS requires resubmit"/>
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="A2_0" targetRef="End_Next" name="Proceed"/>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Applicant_Part1_AccountToSubmission">
+    <bpmndi:BPMNPlane id="BPMNPlane_Applicant_Part1_AccountToSubmission" bpmnElement="Applicant_Part1_AccountToSubmission">
+      <bpmndi:BPMNShape id="Start_di" bpmnElement="Start">
+        <dc:Bounds x="220" y="110" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A0_di" bpmnElement="A0">
+        <dc:Bounds x="470" y="110" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A1_0_di" bpmnElement="A1_0">
+        <dc:Bounds x="720" y="110" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GW_Req_di" bpmnElement="GW_Req" isMarkerVisible="true">
+        <dc:Bounds x="970" y="250" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A2_1_di" bpmnElement="A2_1">
+        <dc:Bounds x="1220" y="240" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A2_0_di" bpmnElement="A2_0">
+        <dc:Bounds x="1470" y="240" width="150" height="70"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Next_di" bpmnElement="End_Next">
+        <dc:Bounds x="1720" y="240" width="36" height="36"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="256" y="129"/>
+        <di:waypoint x="363" y="129"/>
+        <di:waypoint x="363" y="141"/>
+        <di:waypoint x="470" y="141"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="620" y="145"/>
+        <di:waypoint x="720" y="145"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="849" y="180"/>
+        <di:waypoint x="849" y="219"/>
+        <di:waypoint x="970" y="219"/>
+        <di:waypoint x="970" y="259"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="1020" y="275"/>
+        <di:waypoint x="1470" y="275"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="1020" y="275"/>
+        <di:waypoint x="1220" y="275"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="1370" y="275"/>
+        <di:waypoint x="1470" y="275"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1470" y="275"/>
+        <di:waypoint x="1470" y="350"/>
+        <di:waypoint x="1370" y="350"/>
+        <di:waypoint x="1370" y="275"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="1620" y="268"/>
+        <di:waypoint x="1670" y="268"/>
+        <di:waypoint x="1670" y="260"/>
+        <di:waypoint x="1720" y="260"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

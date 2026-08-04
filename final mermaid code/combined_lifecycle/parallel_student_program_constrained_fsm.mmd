@@ -30,6 +30,7 @@ flowchart TB
         P1_0["P1.0 Eligible"]
         P1_1["P1.1 Probationary"]
         P1_2["P1.2 SNAS"]
+        P1_3["P1.3 Strict Probationary (IS)"]
         P1_4["P1.4 Ineligible"]
         P2_0["P2.0 Candidate for Graduation"]
         P3_0["P3.0 Graduated"]
@@ -37,6 +38,9 @@ flowchart TB
 
         P1_0 -->|SNAS criteria| P1_2
         P1_2 -->|criteria not reached| P1_0
+        P1_1 -->|strict probation IS| P1_3
+        P1_3 -->|criteria met| P1_0
+        P1_3 -->|SAP failure| P1_4
         P1_1 -->|requirements met| P1_0
         P1_0 -->|retention breached| P1_4
         P1_0 -->|graduation check passed| P2_0
@@ -46,7 +50,7 @@ flowchart TB
     subgraph VALID["Combination tab — validation layer (V(S,P))"]
         direction LR
         CONFIG["Runtime configuration (S, P)"] --> MATRIX["V(S,P): Yes / No per pairing"]
-        MATRIX --> RULES["Allowed: S2.0+P1.1, S3.1+P1.0, S4.0+P3.0<br/>Blocked: S1.0+P2.0, S2.0+P3.0, S2.2+P1.4<br/>Yes? cells deferred (decisions.md)"]
+        MATRIX --> RULES["Allowed: S2.0+P1.3, S3.1+P1.0, S4.0+P3.0<br/>Blocked: S1.0+P2.0, S2.0+P3.0, S2.2+P1.4<br/>Full matrix: combination_matrix_post_m3.csv"]
     end
 
     S2_0 --> CONFIG

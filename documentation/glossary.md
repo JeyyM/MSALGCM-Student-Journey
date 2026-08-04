@@ -25,7 +25,7 @@ Canonical source: `SEP 19 Post-M3 WIP - Applicant/StudentStatuses`.
 | A4.2 | Not Qualified - Did not take Admission Exam | Applicant Status (Terminal) | Terminal; no slots / period lapsed. |
 | A4.3 | Further Evaluation Required | Applicant Status | Exam not required, or further screening (interview, etc.) needed. |
 | A5.0 | Offered | Applicant Status | Scores within cutoff / passed further evaluation. |
-| A5.1 | Offered - Probationary | Applicant Status | Offer with extra requirements to maintain stay → leads to program status Probationary. |
+| A5.1 | Offered - Probationary | Applicant Status | **IS/GS/SOL only** (excludes UG). Offer with extra requirements → program P1.1. |
 | A5.2 | Offered - Redirected | Applicant Status | Qualified for a different strand/program than applied for. |
 | A5.3 | Waitlisted | Applicant Status | Qualified but no slot; may be considered if others decline. |
 | A5.4 | Reconsidered | Applicant Status | Re-evaluated after an appeal. |
@@ -81,7 +81,7 @@ Canonical source: `SEP 26 Post-M3 WIP - StudentProgramStatuses`.
 | P3.1 | Incomplete | Program Status (Terminal) | University exit submitted before completing the program. |
 | — | Under Evaluation | Program Status | **Deprecated** — appeared as `P1.4 Under Evaluation` in M3 (shifting application), struck through; removed in Post-M3. |
 
-> **Code-numbering conflict:** In the M3 program tab and the combination tab, `P1.2 = SNAS` and `P1.3 = Ineligible` (no Strict Probationary code). In the canonical Post-M3 tab, `P1.2 = SNAS`, `P1.3 = Strict Probationary`, `P1.4 = Ineligible`. The combination tab therefore uses the **older** numbering.
+> **Code-numbering (resolved in-repo):** The combination matrix has been regenerated against Post-M3 codes in `combination_matrix_post_m3.csv`. Legacy combo tab used P1.3 = Ineligible; canonical uses P1.3 = Strict Probationary, P1.4 = Ineligible. See `status_combination_rules.md`.
 
 ---
 
@@ -139,6 +139,15 @@ Canonical source: `SEP 26 Post-M3 WIP - StudentProgramStatuses`.
 | Enlisted | Reserved/registered for subjects (distinct from fully enrolled) | Condition | "Student is enlisted" is an OR condition for Active (S2.0). |
 | Block / Disciplinary verdict | Decision from a disciplinary process | Condition | Drives Suspended (S3.2) and Exited - Permanent Disqualification (S4.2). |
 | CHED Data Element Manual | External reference (Commission on Higher Education) | Reference | Notes tab references "Status as a student in good standing," "Status as a recipient of financial aid." |
+
+### Active vs Inactive taxonomy (Post-M3, corrections #6)
+
+| Bucket | Includes | Excludes |
+|--------|----------|----------|
+| **Active** (university activity) | S1.0 Without Enrollment, S2.0 Active, S2.1 Residency, S2.2 Under LOA | S2.3, S3.x, S4.x |
+| **Inactive** | S2.3 Prolonged Leave, S3.1 AWOL, S3.2 Suspended, S4.0 Graduated, S4.1/S4.2 Exited | S2.2 Under LOA (classified Active-Under LOA on Post-M3 matrix) |
+
+Notes tab #1 legacy wording grouped LOA/Graduated under Inactive; **Post-M3 matrix labels take precedence** per `decisions.md` Rule 3.
 
 ---
 

@@ -1,4 +1,5 @@
 import { useLifecycleMachine } from './hooks/useLifecycleMachine.js';
+import { DEPARTMENTS, DEPARTMENT_LEGEND } from './data/departments.js';
 import PhaseStepper from './components/PhaseStepper.jsx';
 import StatusPanel from './components/StatusPanel.jsx';
 import ChoicePanel from './components/ChoicePanel.jsx';
@@ -12,7 +13,6 @@ export default function App() {
       <header className="app__bar">
         <div className="app__title">
           <h1>Student Lifecycle Validator</h1>
-          <p>Walk the applicant → student → program status model to validate it against real cases.</p>
         </div>
         <div className="app__controls">
           <button className="ctrl" onClick={machine.undo} disabled={!machine.canUndo} title="Undo last action">
@@ -40,11 +40,15 @@ export default function App() {
       </main>
 
       <footer className="app__foot">
-        <span className="legend"><i style={{ background: '#6366f1' }} /> Applicant</span>
-        <span className="legend"><i style={{ background: '#0ea5e9' }} /> Student status</span>
-        <span className="legend"><i style={{ background: '#10b981' }} /> Program status</span>
-        <span className="legend"><i style={{ background: '#f59e0b' }} /> Cross-impact</span>
-        <span className="legend legend--note">Codes follow the canonical Post-M3 WIP scheme.</span>
+        {DEPARTMENT_LEGEND.map((id) => {
+          const d = DEPARTMENTS[id];
+          return (
+            <span className="legend" key={id}>
+              <i style={{ background: d.color }} /> {d.label}
+            </span>
+          );
+        })}
+        <span className="legend legend--note">Post-M3 codes · combination matrix validates S×P pairs</span>
       </footer>
     </div>
   );

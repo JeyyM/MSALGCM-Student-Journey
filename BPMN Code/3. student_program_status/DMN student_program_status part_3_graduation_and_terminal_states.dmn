@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="def_program_status_part_3_graduation_and_terminal_states"
+             name="DMN student_program_status part_3_graduation_and_terminal_states"
+             namespace="https://studentjourneymatrix.local/program_part_3_graduation_and_terminal_states">
+  <decision id="decision_program_status_part_3_graduation_and_terminal_states" name="Program Status — Part 3: Graduation &amp; Terminal">
+    <decisionTable id="dt_program_status_part_3_graduation_and_terminal_states" hitPolicy="UNIQUE">
+      <input id="in1_program_status_part_3_graduation_and_terminal_states" label="Current State">
+        <inputExpression id="in1e_program_status_part_3_graduation_and_terminal_states" typeRef="string">
+          <text>current_state</text>
+        </inputExpression>
+      </input>
+      <input id="in2_program_status_part_3_graduation_and_terminal_states" label="Event / Outcome">
+        <inputExpression id="in2e_program_status_part_3_graduation_and_terminal_states" typeRef="string">
+          <text>event</text>
+        </inputExpression>
+      </input>
+      <output id="out1_program_status_part_3_graduation_and_terminal_states" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_program_status_part_3_graduation_and_terminal_states" label="Rationale" name="rationale" typeRef="string"/>
+      <rule id="row_program_status_part_3_graduation_and_terminal_states_1">
+        <inputEntry id="row_program_status_part_3_graduation_and_terminal_states_1_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_3_graduation_and_terminal_states_1_i2"><text>"Graduation check passed"</text></inputEntry>
+        <outputEntry id="row_program_status_part_3_graduation_and_terminal_states_1_o1"><text>"P2.0 — Candidate for Graduation [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_3_graduation_and_terminal_states_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_3_graduation_and_terminal_states_2">
+        <inputEntry id="row_program_status_part_3_graduation_and_terminal_states_2_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_3_graduation_and_terminal_states_2_i2"><text>"University exit"</text></inputEntry>
+        <outputEntry id="row_program_status_part_3_graduation_and_terminal_states_2_o1"><text>"P3.1 — Incomplete [Student]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_3_graduation_and_terminal_states_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_3_graduation_and_terminal_states_3">
+        <inputEntry id="row_program_status_part_3_graduation_and_terminal_states_3_i1"><text>"P2.0 — Candidate for Graduation [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_3_graduation_and_terminal_states_3_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_program_status_part_3_graduation_and_terminal_states_3_o1"><text>"P3.1 — Incomplete [Student]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_3_graduation_and_terminal_states_3_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_3_graduation_and_terminal_states_4">
+        <inputEntry id="row_program_status_part_3_graduation_and_terminal_states_4_i1"><text>"P2.0 — Candidate for Graduation [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_3_graduation_and_terminal_states_4_i2"><text>"Commencement + 1 week"</text></inputEntry>
+        <outputEntry id="row_program_status_part_3_graduation_and_terminal_states_4_o1"><text>"P3.0 — Graduated [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_3_graduation_and_terminal_states_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

@@ -18,25 +18,30 @@
         </inputExpression>
       </input>
       <output id="out1_cross_impact_rules_part4" label="Forced Outcome" name="forced_outcome" typeRef="string"/>
+      <output id="out2_cross_impact_rules_part4" label="Rationale" name="rationale" typeRef="string"/>
       <rule id="row_cross_impact_rules_part4_1">
         <inputEntry id="row_cross_impact_rules_part4_1_i1"><text>"All programs → P3.0 Graduated [Program Office]"</text></inputEntry>
         <inputEntry id="row_cross_impact_rules_part4_1_i2"><text>"forces"</text></inputEntry>
-        <outputEntry id="row_cross_impact_rules_part4_1_o1"><text>"COMBO-T001: Student → S4.0 Graduated [Registrar]"</text></outputEntry>
+        <outputEntry id="row_cross_impact_rules_part4_1_o1"><text>"COMBO-T001: Student → S4.0 Graduated (Alumni may continue) [Registrar]"</text></outputEntry>
+        <outputEntry id="row_cross_impact_rules_part4_1_o2"><text>"When every program is P3.0, student becomes S4.0 (non-terminal for re-enrollment)."</text></outputEntry>
       </rule>
       <rule id="row_cross_impact_rules_part4_2">
         <inputEntry id="row_cross_impact_rules_part4_2_i1"><text>"Student exit, program active [Student]"</text></inputEntry>
         <inputEntry id="row_cross_impact_rules_part4_2_i2"><text>"forces"</text></inputEntry>
         <outputEntry id="row_cross_impact_rules_part4_2_o1"><text>"COMBO-T003: Program → P3.1 Incomplete [Program Office]"</text></outputEntry>
+        <outputEntry id="row_cross_impact_rules_part4_2_o2"><text>"University exit while program still active sets program to Incomplete."</text></outputEntry>
       </rule>
       <rule id="row_cross_impact_rules_part4_3">
         <inputEntry id="row_cross_impact_rules_part4_3_i1"><text>"P1.4 Ineligible + shift pending [Program Office]"</text></inputEntry>
         <inputEntry id="row_cross_impact_rules_part4_3_i2"><text>"forces"</text></inputEntry>
         <outputEntry id="row_cross_impact_rules_part4_3_o1"><text>"COMBO-T004: Student → S1.0 Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_cross_impact_rules_part4_3_o2"><text>"Ineligible triggers shift process; student returns to Without Enrollment."</text></outputEntry>
       </rule>
       <rule id="row_cross_impact_rules_part4_4">
         <inputEntry id="row_cross_impact_rules_part4_4_i1"><text>"COMBO-T004: Student → S1.0 [Registrar]"</text></inputEntry>
         <inputEntry id="row_cross_impact_rules_part4_4_i2"><text>"shift approved"</text></inputEntry>
         <outputEntry id="row_cross_impact_rules_part4_4_o1"><text>"COMBO-T005: Shift approved → S2.0 Active [Registrar]"</text></outputEntry>
+        <outputEntry id="row_cross_impact_rules_part4_4_o2"><text>"Approved shift re-activates student for new program enrollment."</text></outputEntry>
       </rule>
     </decisionTable>
   </decision>

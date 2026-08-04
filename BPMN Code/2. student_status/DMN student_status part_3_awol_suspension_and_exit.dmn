@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="def_student_status_part_3_awol_suspension_and_exit"
+             name="DMN student_status part_3_awol_suspension_and_exit"
+             namespace="https://studentjourneymatrix.local/student_part_3_awol_suspension_and_exit">
+  <decision id="decision_student_status_part_3_awol_suspension_and_exit" name="Student Status — Part 3: AWOL, Suspension &amp; Exit">
+    <decisionTable id="dt_student_status_part_3_awol_suspension_and_exit" hitPolicy="UNIQUE">
+      <input id="in1_student_status_part_3_awol_suspension_and_exit" label="Current State">
+        <inputExpression id="in1e_student_status_part_3_awol_suspension_and_exit" typeRef="string">
+          <text>current_state</text>
+        </inputExpression>
+      </input>
+      <input id="in2_student_status_part_3_awol_suspension_and_exit" label="Event / Outcome">
+        <inputExpression id="in2e_student_status_part_3_awol_suspension_and_exit" typeRef="string">
+          <text>event</text>
+        </inputExpression>
+      </input>
+      <output id="out1_student_status_part_3_awol_suspension_and_exit" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_student_status_part_3_awol_suspension_and_exit" label="Rationale" name="rationale" typeRef="string"/>
+      <rule id="row_student_status_part_3_awol_suspension_and_exit_1">
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_1_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_1_i2"><text>"Did not enroll, no LOA"</text></inputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_1_o1"><text>"S3.1 — AWOL [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_3_awol_suspension_and_exit_2">
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_2_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_2_i2"><text>"Disciplinary suspension"</text></inputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_2_o1"><text>"S3.2 — Suspended [Disciplinary]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_3_awol_suspension_and_exit_3">
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_3_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_3_i2"><text>"Disqualification"</text></inputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_3_o1"><text>"S4.2 — Disqualified [Disciplinary]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_3_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_3_awol_suspension_and_exit_4">
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_4_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_4_i2"><text>"University exit"</text></inputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_4_o1"><text>"S4.1 — Exited (good standing) [Student]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_3_awol_suspension_and_exit_5">
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_5_i1"><text>"S3.1 — AWOL [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_5_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_5_o1"><text>"S4.1 — Exited (good standing) [Student]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_3_awol_suspension_and_exit_6">
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_6_i1"><text>"S3.1 — AWOL [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_6_i2"><text>"Returnee approved"</text></inputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_6_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_6_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_3_awol_suspension_and_exit_7">
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_7_i1"><text>"S3.2 — Suspended [Disciplinary]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_7_i2"><text>"Disqualification"</text></inputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_7_o1"><text>"S4.2 — Disqualified [Disciplinary]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_7_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_3_awol_suspension_and_exit_8">
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_8_i1"><text>"S3.2 — Suspended [Disciplinary]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_3_awol_suspension_and_exit_8_i2"><text>"Suspension served"</text></inputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_8_o1"><text>"S2.0 — Active [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_3_awol_suspension_and_exit_8_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

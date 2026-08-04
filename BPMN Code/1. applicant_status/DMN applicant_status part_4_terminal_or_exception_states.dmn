@@ -4,7 +4,7 @@
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
              id="def_applicant_status_part_4_terminal_or_exception_states"
              name="DMN applicant_status part_4_terminal_or_exception_states"
-             namespace="https://studentjourneymatrix.local/applicant_status_part_4_terminal_or_exception_states">
+             namespace="https://studentjourneymatrix.local/applicant_part_4_terminal_or_exception_states">
   <decision id="decision_applicant_status_part_4_terminal_or_exception_states" name="Applicant Status — Part 4: Terminal &amp; Exception States">
     <decisionTable id="dt_applicant_status_part_4_terminal_or_exception_states" hitPolicy="UNIQUE">
       <input id="in1_applicant_status_part_4_terminal_or_exception_states" label="Current State">
@@ -18,30 +18,36 @@
         </inputExpression>
       </input>
       <output id="out1_applicant_status_part_4_terminal_or_exception_states" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_applicant_status_part_4_terminal_or_exception_states" label="Rationale" name="rationale" typeRef="string"/>
       <rule id="row_applicant_status_part_4_terminal_or_exception_states_1">
         <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_1_i1"><text>"A6.0 — Reserved [Admissions]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_1_i2"><text>"Did not pay fee"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_1_o1"><text>"A6.1 — Cancelled (non-payment) [Admissions] (terminal)"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_1_i2"><text>"Did not enroll"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_1_o1"><text>"A7.2 — Deferred [Applicant]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_4_terminal_or_exception_states_2">
         <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_2_i1"><text>"A6.0 — Reserved [Admissions]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_2_i2"><text>"Did not enroll"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_2_o1"><text>"A7.2 — Deferred [Applicant]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_2_i2"><text>"Did not pay fee"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_2_o1"><text>"A6.1 — Cancelled (non-payment) [Admissions]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_4_terminal_or_exception_states_3">
-        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_3_i1"><text>"A7.1 — Provisionally Admitted [Admissions]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_3_i2"><text>"1 year lapsed"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_3_o1"><text>"A8.0 — Cancelled (no reqs) [Admissions] (terminal)"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_3_i1"><text>"A7.0 — Officially Admitted [Admissions]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_3_i2"><text>"Withdrew"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_3_o1"><text>"A8.1 — Cancelled (withdrawal) [Applicant]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_3_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_4_terminal_or_exception_states_4">
-        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_4_i1"><text>"A7.0 — Officially Admitted [Admissions]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_4_i2"><text>"Withdrew"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_4_o1"><text>"A8.1 — Cancelled (withdrawal) [Applicant] (terminal)"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_4_i1"><text>"A7.1 — Provisionally Admitted [Admissions]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_4_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_4_o1"><text>"A8.1 — Cancelled (withdrawal) [Applicant]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_4_terminal_or_exception_states_5">
         <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_5_i1"><text>"A7.1 — Provisionally Admitted [Admissions]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_5_i2"><text>"Withdrew"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_5_o1"><text>"A8.1 — Cancelled (withdrawal) [Applicant] (terminal)"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_4_terminal_or_exception_states_5_i2"><text>"1 year lapsed"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_5_o1"><text>"A8.0 — Cancelled (no reqs) [Admissions]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_4_terminal_or_exception_states_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
     </decisionTable>
   </decision>

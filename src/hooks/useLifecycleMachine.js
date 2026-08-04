@@ -7,7 +7,12 @@ function reducer(state, action) {
   switch (action.type) {
     case 'APPLY': {
       const current = state.history[state.index];
-      const next = { ...current, ...action.changes, via: action.label };
+      const next = {
+        ...current,
+        ...action.changes,
+        via: action.label,
+        _action: action.meta,
+      };
       const history = state.history.slice(0, state.index + 1).concat(next);
       return { history, index: history.length - 1 };
     }
@@ -37,7 +42,7 @@ function computeActions(current, pastSnapshots) {
       actions.push({
         id: 'handoff',
         dim: 'X',
-        label: `Becomes a student → S1.0${wasProbationary ? ' + Probationary program' : ''}`,
+        label: `Registrar: officially admitted → S1.0${wasProbationary ? ' + P1.1 Probationary' : ' + P1.0 Eligible'}`,
         changes: { applicant: null, student: 'S1_0', program: wasProbationary ? 'P1_1' : 'P1_0' },
       });
     }
@@ -131,7 +136,16 @@ export function useLifecycleMachine() {
     [current, pastSnapshots]
   );
 
-  const apply = useCallback((action) => dispatch({ type: 'APPLY', changes: action.changes, label: action.label }), []);
+  const apply = useCallback(
+    (action) =>
+      dispatch({
+        type: 'APPLY',
+        changes: action.changes,
+        label: action.label,
+        meta: { id: action.id, dim: action.dim, to: action.to ?? null },
+      }),
+    []
+  );
   const undo = useCallback(() => dispatch({ type: 'UNDO' }), []);
   const redo = useCallback(() => dispatch({ type: 'REDO' }), []);
   const reset = useCallback(() => dispatch({ type: 'RESET' }), []);

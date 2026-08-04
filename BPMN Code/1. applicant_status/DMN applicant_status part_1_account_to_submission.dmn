@@ -4,7 +4,7 @@
              xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
              id="def_applicant_status_part_1_account_to_submission"
              name="DMN applicant_status part_1_account_to_submission"
-             namespace="https://studentjourneymatrix.local/applicant_status_part_1_account_to_submission">
+             namespace="https://studentjourneymatrix.local/applicant_part_1_account_to_submission">
   <decision id="decision_applicant_status_part_1_account_to_submission" name="Applicant Status — Part 1: Account to Submission">
     <decisionTable id="dt_applicant_status_part_1_account_to_submission" hitPolicy="UNIQUE">
       <input id="in1_applicant_status_part_1_account_to_submission" label="Current State">
@@ -18,40 +18,54 @@
         </inputExpression>
       </input>
       <output id="out1_applicant_status_part_1_account_to_submission" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_applicant_status_part_1_account_to_submission" label="Rationale" name="rationale" typeRef="string"/>
       <rule id="row_applicant_status_part_1_account_to_submission_1">
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_1_i1"><text>"(none — new account)"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_1_i2"><text>"Account created"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_1_account_to_submission_1_o1"><text>"A0 — Draft [Applicant]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_1_i1"><text>"(requirements check)"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_1_i2"><text>"Complete"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_1_o1"><text>"A2.0 — Complete Requirements [OAS]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_1_account_to_submission_2">
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_2_i1"><text>"A0 — Draft [Applicant]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_2_i2"><text>"Application submitted"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_1_account_to_submission_2_o1"><text>"A1.0 — Submitted Form [Applicant]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_2_i1"><text>"(requirements check)"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_2_i2"><text>"Deficiencies"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_2_o1"><text>"A2.1 — Deficiencies [OAS]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_1_account_to_submission_3">
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_3_i1"><text>"A1.0 — Submitted Form [Applicant]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_3_i2"><text>"Complete"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_1_account_to_submission_3_o1"><text>"A2.0 — Complete Requirements [OAS]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_3_i1"><text>"A0 — Draft [Applicant]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_3_i2"><text>"Application submitted"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_3_o1"><text>"A1.0 — Submitted Form [Applicant]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_3_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_1_account_to_submission_4">
         <inputEntry id="row_applicant_status_part_1_account_to_submission_4_i1"><text>"A1.0 — Submitted Form [Applicant]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_4_i2"><text>"Deficiencies"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_1_account_to_submission_4_o1"><text>"A2.1 — Deficiencies [OAS]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_4_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_4_o1"><text>"Requirements OK? [OAS]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_1_account_to_submission_5">
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_5_i1"><text>"A2.1 — Deficiencies [OAS]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_5_i2"><text>"Requirements completed"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_1_account_to_submission_5_o1"><text>"A2.0 — Complete Requirements [OAS]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_5_i1"><text>"A2.0 — Complete Requirements [OAS]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_5_i2"><text>"OAS requires resubmit"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_5_o1"><text>"A2.1 — Deficiencies [OAS]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_1_account_to_submission_6">
         <inputEntry id="row_applicant_status_part_1_account_to_submission_6_i1"><text>"A2.0 — Complete Requirements [OAS]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_6_i2"><text>"OAS requires resubmit"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_1_account_to_submission_6_o1"><text>"A2.1 — Deficiencies [OAS]"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_6_i2"><text>"Proceed"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_6_o1"><text>"-&gt; Part 2A: Initial Evaluation"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_6_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
       <rule id="row_applicant_status_part_1_account_to_submission_7">
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_7_i1"><text>"A2.0 — Complete Requirements [OAS]"</text></inputEntry>
-        <inputEntry id="row_applicant_status_part_1_account_to_submission_7_i2"><text>"Proceed"</text></inputEntry>
-        <outputEntry id="row_applicant_status_part_1_account_to_submission_7_o1"><text>"-&gt; Part 2A: Initial Evaluation"</text></outputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_7_i1"><text>"A2.1 — Deficiencies [OAS]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_7_i2"><text>"Requirements completed"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_7_o1"><text>"A2.0 — Complete Requirements [OAS]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_7_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_applicant_status_part_1_account_to_submission_8">
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_8_i1"><text>"Account created [Applicant]"</text></inputEntry>
+        <inputEntry id="row_applicant_status_part_1_account_to_submission_8_i2"><text>"Account created"</text></inputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_8_o1"><text>"A0 — Draft [Applicant]"</text></outputEntry>
+        <outputEntry id="row_applicant_status_part_1_account_to_submission_8_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
       </rule>
     </decisionTable>
   </decision>

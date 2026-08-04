@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Applicant_Part3_AcceptanceToStudent" targetNamespace="http://dlsu.edu.ph/student-journey" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.9.0">
+  <bpmn:collaboration id="Collaboration_Applicant_Part3_AcceptanceToStudent">
+    <bpmn:participant id="Participant_Applicant_Part3_AcceptanceToStudent" name="A — Part 3: Acceptance to Student" processRef="Applicant_Part3_AcceptanceToStudent" />
+  </bpmn:collaboration>
+  <bpmn:process id="Applicant_Part3_AcceptanceToStudent" name="A — Part 3: Acceptance to Student" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Applicant_Part3_AcceptanceToStudent">
+      <bpmn:lane id="Lane_applicant" name="Applicant">
+        <bpmn:flowNodeRef>Start</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_oas" name="OAS / Admissions Office">
+        <bpmn:flowNodeRef>A6_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_Req</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A7_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A7_0</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_registrar" name="University Records (Registrar)">
+        <bpmn:flowNodeRef>S1_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Student</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:serviceTask id="A6_0" name="A6.0 — Reserved [Admissions]">
+      <bpmn:extensionElements />
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="GW_Req" name="Requirements complete? [Admissions]">
+      <bpmn:extensionElements />
+    </bpmn:exclusiveGateway>
+    <bpmn:serviceTask id="A7_0" name="A7.0 — Officially Admitted [Admissions]">
+      <bpmn:extensionElements />
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="S1_0" name="S1.0 — Without Enrollment [Registrar]">
+      <bpmn:extensionElements />
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="End_Student" name="Student status continues [Registrar]">
+      <bpmn:extensionElements />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1" name="Acceptance fee paid/waived" sourceRef="Start" targetRef="A6_0" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="A6_0" targetRef="GW_Req" />
+    <bpmn:sequenceFlow id="Flow_3" name="Complete" sourceRef="GW_Req" targetRef="A7_0" />
+    <bpmn:sequenceFlow id="Flow_4" name="Pending" sourceRef="GW_Req" targetRef="A7_1" />
+    <bpmn:sequenceFlow id="Flow_5" name="Requirements completed" sourceRef="A7_1" targetRef="A7_0" />
+    <bpmn:sequenceFlow id="Flow_6" name="Becomes student" sourceRef="A7_0" targetRef="S1_0" />
+    <bpmn:sequenceFlow id="Flow_7" name="Becomes student (provisional)" sourceRef="A7_1" targetRef="S1_0" />
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="S1_0" targetRef="End_Student" />
+    <bpmn:startEvent id="Start" name="Admission offer [Applicant]">
+      <bpmn:extensionElements />
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="A7_1" name="A7.1 — Provisionally Admitted [Admissions]">
+      <bpmn:extensionElements />
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Applicant_Part3_AcceptanceToStudent">
+    <bpmndi:BPMNPlane id="BPMNPlane_Applicant_Part3_AcceptanceToStudent" bpmnElement="Collaboration_Applicant_Part3_AcceptanceToStudent">
+      <bpmndi:BPMNShape id="Participant_Applicant_Part3_AcceptanceToStudent_di" bpmnElement="Participant_Applicant_Part3_AcceptanceToStudent" isHorizontal="true">
+        <dc:Bounds x="190" y="60" width="1926" height="520" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_registrar_di" bpmnElement="Lane_registrar" isHorizontal="true">
+        <dc:Bounds x="220" y="410" width="1896" height="150" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_oas_di" bpmnElement="Lane_oas" isHorizontal="true">
+        <dc:Bounds x="220" y="200" width="1896" height="210" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_applicant_di" bpmnElement="Lane_applicant" isHorizontal="true">
+        <dc:Bounds x="220" y="80" width="1896" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A6_0_di" bpmnElement="A6_0">
+        <dc:Bounds x="500" y="285" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GW_Req_di" bpmnElement="GW_Req" isMarkerVisible="true">
+        <dc:Bounds x="780" y="295" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A7_1_di" bpmnElement="A7_1">
+        <dc:Bounds x="1060" y="220" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="A7_0_di" bpmnElement="A7_0">
+        <dc:Bounds x="1340" y="285" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S1_0_di" bpmnElement="S1_0">
+        <dc:Bounds x="1620" y="450" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_Student_di" bpmnElement="End_Student">
+        <dc:Bounds x="1900" y="450" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1851" y="496" width="137" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Start_di" bpmnElement="Start">
+        <dc:Bounds x="302" y="120" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="282" y="156" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="338" y="138" />
+        <di:waypoint x="370" y="138" />
+        <di:waypoint x="370" y="320" />
+        <di:waypoint x="500" y="320" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="397" y="286" width="76" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="650" y="320" />
+        <di:waypoint x="780" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="830" y="320" />
+        <di:waypoint x="1340" y="320" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1061" y="333" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="830" y="315" />
+        <di:waypoint x="945" y="315" />
+        <di:waypoint x="945" y="270" />
+        <di:waypoint x="1060" y="270" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="959" y="253" width="41" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="1210" y="255" />
+        <di:waypoint x="1415" y="255" />
+        <di:waypoint x="1415" y="280" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1252" y="230" width="135" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="1490" y="320" />
+        <di:waypoint x="1695" y="320" />
+        <di:waypoint x="1695" y="450" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1552" y="295" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1210" y="255" />
+        <di:waypoint x="1230" y="255" />
+        <di:waypoint x="1230" y="485" />
+        <di:waypoint x="1620" y="485" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1292" y="468" width="178" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="1770" y="479" />
+        <di:waypoint x="1835" y="479" />
+        <di:waypoint x="1835" y="469" />
+        <di:waypoint x="1900" y="469" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

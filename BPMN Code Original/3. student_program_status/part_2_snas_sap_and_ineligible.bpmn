@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Program_Part2_SNASSAPIneligible" targetNamespace="http://dlsu.edu.ph/student-journey">
+  <bpmn:collaboration id="Collaboration_Program_Part2_SNASSAPIneligible">
+    <bpmn:participant id="Participant_Program_Part2_SNASSAPIneligible" name="P — Part 2: SNAS, SAP &#38; Ineligible" processRef="Program_Part2_SNASSAPIneligible" />
+  </bpmn:collaboration>
+  <bpmn:process id="Program_Part2_SNASSAPIneligible" name="P — Part 2: SNAS, SAP &#38; Ineligible" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Program_Part2_SNASSAPIneligible">
+      <bpmn:lane id="Lane_program" name="College / Program Office">
+        <bpmn:flowNodeRef>P1_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>P1_4</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_student" name="Student" />
+    </bpmn:laneSet>
+    <bpmn:sequenceFlow id="Flow_1" name="SNAS criteria reached" sourceRef="P1_0" targetRef="P1_2" />
+    <bpmn:sequenceFlow id="Flow_2" name="SNAS criteria not reached" sourceRef="P1_2" targetRef="P1_0" />
+    <bpmn:sequenceFlow id="Flow_3" name="Strict probation (IS)" sourceRef="P1_1" targetRef="P1_3" />
+    <bpmn:sequenceFlow id="Flow_4" name="Criteria met" sourceRef="P1_3" targetRef="P1_0" />
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="P1_0" targetRef="P1_4" />
+    <bpmn:sequenceFlow id="Flow_6" name="Retention breached" sourceRef="P1_1" targetRef="P1_4" />
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="P1_2" targetRef="P1_4" />
+    <bpmn:sequenceFlow id="Flow_8" name="SAP failure" sourceRef="P1_3" targetRef="P1_4" />
+    <bpmn:serviceTask id="P1_1" name="P1.1 — Probationary [Program Office]">
+      <bpmn:extensionElements />
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="P1_3" name="P1.3 — Strict Probation (IS) [Program Office]">
+      <bpmn:extensionElements />
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="P1_0" name="P1.0 — Eligible [Program Office]">
+      <bpmn:extensionElements />
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="P1_2" name="P1.2 — SNAS [Program Office]">
+      <bpmn:extensionElements />
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="P1_4" name="P1.4 — Ineligible [Program Office]">
+      <bpmn:extensionElements />
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Program_Part2_SNASSAPIneligible">
+    <bpmndi:BPMNPlane id="BPMNPlane_Program_Part2_SNASSAPIneligible" bpmnElement="Collaboration_Program_Part2_SNASSAPIneligible">
+      <bpmndi:BPMNShape id="Participant_Program_Part2_SNASSAPIneligible_di" bpmnElement="Participant_Program_Part2_SNASSAPIneligible" isHorizontal="true">
+        <dc:Bounds x="190" y="60" width="1260" height="470" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_student_di" bpmnElement="Lane_student" isHorizontal="true">
+        <dc:Bounds x="220" y="350" width="1230" height="160" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_program_di" bpmnElement="Lane_program" isHorizontal="true">
+        <dc:Bounds x="220" y="80" width="1230" height="270" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_1_di" bpmnElement="P1_1">
+        <dc:Bounds x="265" y="180" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_3_di" bpmnElement="P1_3">
+        <dc:Bounds x="535" y="265" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_0_di" bpmnElement="P1_0">
+        <dc:Bounds x="685" y="105" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_2_di" bpmnElement="P1_2">
+        <dc:Bounds x="1143" y="105" width="150" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="P1_4_di" bpmnElement="P1_4">
+        <dc:Bounds x="1362" y="197" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1338" y="159.5" width="84" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="835" y="100" />
+        <di:waypoint x="1143" y="100" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="897" y="103" width="174" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="1193" y="175" />
+        <di:waypoint x="1193" y="260" />
+        <di:waypoint x="760" y="260" />
+        <di:waypoint x="760" y="175" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="879" y="243" width="152" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="320" y="250" />
+        <di:waypoint x="320" y="294" />
+        <di:waypoint x="535" y="294" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="383" y="265" width="74" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="590" y="265" />
+        <di:waypoint x="590" y="140" />
+        <di:waypoint x="685" y="140" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="599" y="123" width="57" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="760" y="175" />
+        <di:waypoint x="760" y="215" />
+        <di:waypoint x="1362" y="215" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="801" y="213" width="48" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="415" y="214" />
+        <di:waypoint x="889" y="214" />
+        <di:waypoint x="889" y="215" />
+        <di:waypoint x="1362" y="215" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1234" y="193" width="131" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1218" y="175" />
+        <di:waypoint x="1218" y="213" />
+        <di:waypoint x="1362" y="213" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1778" y="184" width="48" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="685" y="292" />
+        <di:waypoint x="1380" y="292" />
+        <di:waypoint x="1380" y="233" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1158" y="303" width="56" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

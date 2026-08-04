@@ -2,11 +2,11 @@
 
 ## Purpose
 
-Integrates the two per-dimension finite state machines with the **combination tab** (`SEP 19 - Student/StudentProgramStatusesCombination`) in one readable diagram:
+Integrates the two per-dimension finite state machines with the **combination matrix** in one readable diagram:
 
 1. **Student FSM** — university-level standing (`S*`)
 2. **Program FSM** — academic standing per program (`P*`)
-3. **Validation matrix** — which `(S, P)` pairs are allowed (table in docs, summarized in-diagram)
+3. **Validation matrix** — which `(S, P)` pairs are allowed (full grid in-repo, summarized in-diagram)
 4. **COMBO cross-impacts** — the few cases where one dimension **forces** an update in the other (dotted edges)
 
 This is a **constrained parallel composition**, not a single flat automaton and not a 91-node graph.
@@ -17,14 +17,14 @@ This is a **constrained parallel composition**, not a single flat automaton and 
 
 - Solid arrows → within-dimension transitions (see per-dimension part diagrams for full detail)
 - Dotted arrows → cross-dimension synchronized updates (`COMBO-T001`, `T003`, `T004`, `T005`)
-- Validation box → admissible set from the combination tab (full grid in [`../../status_combination_rules.md`](../../status_combination_rules.md))
+- Validation box → admissible set from [`../../status_combination_rules.md`](../../status_combination_rules.md) and `combination_matrix_post_m3.csv`
 
 ## Source Planning Files
 
 - [`../../diagram_planning/status_combination_transition_table.md`](../../diagram_planning/status_combination_transition_table.md)
 - [`../../diagram_planning/status_combination_diagram_plan.md`](../../diagram_planning/status_combination_diagram_plan.md)
 - [`../../status_combination_rules.md`](../../status_combination_rules.md)
-- [`../../decisions.md`](../../decisions.md) (`Yes?` pairs deferred)
+- [`../../workbook_patches/combination_matrix_post_m3.csv`](../workbook_patches/combination_matrix_post_m3.csv)
 
 ## Mermaid Diagram
 
@@ -56,6 +56,7 @@ flowchart TB
         P1_0["P1.0 Eligible"]
         P1_1["P1.1 Probationary"]
         P1_2["P1.2 SNAS"]
+        P1_3["P1.3 Strict Probationary (IS)"]
         P1_4["P1.4 Ineligible"]
         P2_0["P2.0 Candidate for Graduation"]
         P3_0["P3.0 Graduated"]
@@ -63,6 +64,9 @@ flowchart TB
 
         P1_0 -->|SNAS criteria| P1_2
         P1_2 -->|criteria not reached| P1_0
+        P1_1 -->|strict probation IS| P1_3
+        P1_3 -->|criteria met| P1_0
+        P1_3 -->|SAP failure| P1_4
         P1_1 -->|requirements met| P1_0
         P1_0 -->|retention breached| P1_4
         P1_0 -->|graduation check passed| P2_0
@@ -72,7 +76,7 @@ flowchart TB
     subgraph VALID["Combination tab — validation layer (V(S,P))"]
         direction LR
         CONFIG["Runtime configuration (S, P)"] --> MATRIX["V(S,P): Yes / No per pairing"]
-        MATRIX --> RULES["Allowed: S2.0+P1.1, S3.1+P1.0, S4.0+P3.0<br/>Blocked: S1.0+P2.0, S2.0+P3.0, S2.2+P1.4<br/>Yes? cells deferred (decisions.md)"]
+        MATRIX --> RULES["Allowed: S2.0+P1.3, S3.1+P1.0, S4.0+P3.0<br/>Blocked: S1.0+P2.0, S2.0+P3.0, S2.2+P1.4<br/>Full matrix: combination_matrix_post_m3.csv"]
     end
 
     S2_0 --> CONFIG
@@ -80,10 +84,10 @@ flowchart TB
 
     S1_0 -.->|initial pairing| P1_0
     S1_0 -.->|probationary offer| P1_1
-    P3_0 -.->|COMBO-T001 all programs P3.0| S4_0
-    S4_1 -.->|COMBO-T003 exit forces incomplete| P3_1
-    P1_4 -.->|COMBO-T004 ineligible + shift| S1_0
-    S1_0 -.->|COMBO-T005 shift approved| S2_0
+    P3_0 -.->|COMBO-T001 (All Programs Graduated)| S4_0
+    S4_1 -.->|COMBO-T003 (Exit Forces Incomplete)| P3_1
+    P1_4 -.->|COMBO-T004 (Ineligible + Shift Pending)| S1_0
+    S1_0 -.->|COMBO-T005 (Shift Approved)| S2_0
 ```
 
 ## How the three layers work together
@@ -108,14 +112,14 @@ flowchart TB
 
 | Item | Reason |
 |---|---|
-| Full 91-cell matrix as edges | Unreadable; see [`../../status_combination_rules.md`](../../status_combination_rules.md) |
+| Full 80-cell matrix as edges | Unreadable; see [`../../status_combination_rules.md`](../../status_combination_rules.md) |
 | Every student/program state | Simplified backbone; see per-dimension part files |
-| `Yes?` pairings | Deferred per [`../../decisions.md`](../../decisions.md) |
-| Legacy combination-tab codes | Diagram uses canonical Post-M3 codes |
+| Legacy Excel combination-tab codes | In-repo matrix uses canonical Post-M3 codes |
 
 ## Reader Notes
 
 - **Layout:** each FSM is a left-to-right **lane**; the two lanes plus the validation layer stack top-to-bottom. This keeps the diagram from sprawling sideways and shortens the cross-dimension arrows.
 - **Solid** edges = same dimension. **Dotted** edges = cross-dimension (COMBO) or initial `(S,P)` pairing at admission.
 - The independence of the two dimensions is conveyed by the **separate lanes** (no subgraph-to-subgraph arrow is drawn). AWOL/Suspended students **keeping** program standing (e.g. `S3.1` + `P1.0`) is validated by the matrix — not shown as FSM arrows.
+- **`P1.3 Strict Probationary`** is now included in the program lane (IS only; see program Part 2).
 - Minimal COMBO-only insert: [`../../../final mermaid code/combined_lifecycle/cross_impact_rules.mmd`](../../../final%20mermaid%20code/combined_lifecycle/cross_impact_rules.mmd)

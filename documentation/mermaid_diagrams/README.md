@@ -43,7 +43,7 @@ state "S4.1 - Exited on Good Standing [Terminal]" as S4_1
 S4_1 --> [*]
 ```
 
-`S4.0 - Graduated` is marked **`[Terminal?]`** because the workbook does not explicitly label the *student* status Graduated as terminal (see validation notes).
+`S4.0 - Graduated` is labeled **`[Alumni may continue]`** because the workbook does not mark the *student* status Graduated as terminal — graduates may re-enroll (e.g. BS→MS). See [`../executive_defaults.md`](../executive_defaults.md).
 
 ## How to read tentative transitions
 

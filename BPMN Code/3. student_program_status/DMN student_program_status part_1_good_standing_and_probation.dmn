@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="def_program_status_part_1_good_standing_and_probation"
+             name="DMN student_program_status part_1_good_standing_and_probation"
+             namespace="https://studentjourneymatrix.local/program_part_1_good_standing_and_probation">
+  <decision id="decision_program_status_part_1_good_standing_and_probation" name="Program Status — Part 1: Good Standing &amp; Probation">
+    <decisionTable id="dt_program_status_part_1_good_standing_and_probation" hitPolicy="UNIQUE">
+      <input id="in1_program_status_part_1_good_standing_and_probation" label="Current State">
+        <inputExpression id="in1e_program_status_part_1_good_standing_and_probation" typeRef="string">
+          <text>current_state</text>
+        </inputExpression>
+      </input>
+      <input id="in2_program_status_part_1_good_standing_and_probation" label="Event / Outcome">
+        <inputExpression id="in2e_program_status_part_1_good_standing_and_probation" typeRef="string">
+          <text>event</text>
+        </inputExpression>
+      </input>
+      <output id="out1_program_status_part_1_good_standing_and_probation" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_program_status_part_1_good_standing_and_probation" label="Rationale" name="rationale" typeRef="string"/>
+      <rule id="row_program_status_part_1_good_standing_and_probation_1">
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_1_i1"><text>"Normal admission [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_1_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_1_o1"><text>"P1.0 — Eligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_1_good_standing_and_probation_2">
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_2_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_2_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_2_o1"><text>"-&gt; Parts 2–3 (program lifecycle)"</text></outputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_1_good_standing_and_probation_3">
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_3_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_3_i2"><text>"Standards not met"</text></inputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_3_o1"><text>"P1.1 — Probationary [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_3_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_1_good_standing_and_probation_4">
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_4_i1"><text>"P1.1 — Probationary [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_4_i2"><text>"Probation lifted"</text></inputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_4_o1"><text>"P1.0 — Eligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_program_status_part_1_good_standing_and_probation_5">
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_5_i1"><text>"Probationary offer [Program Office]"</text></inputEntry>
+        <inputEntry id="row_program_status_part_1_good_standing_and_probation_5_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_5_o1"><text>"P1.1 — Probationary [Program Office]"</text></outputEntry>
+        <outputEntry id="row_program_status_part_1_good_standing_and_probation_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

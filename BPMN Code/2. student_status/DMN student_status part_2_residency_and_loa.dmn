@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="def_student_status_part_2_residency_and_loa"
+             name="DMN student_status part_2_residency_and_loa"
+             namespace="https://studentjourneymatrix.local/student_part_2_residency_and_loa">
+  <decision id="decision_student_status_part_2_residency_and_loa" name="Student Status — Part 2: Residency &amp; LOA">
+    <decisionTable id="dt_student_status_part_2_residency_and_loa" hitPolicy="UNIQUE">
+      <input id="in1_student_status_part_2_residency_and_loa" label="Current State">
+        <inputExpression id="in1e_student_status_part_2_residency_and_loa" typeRef="string">
+          <text>current_state</text>
+        </inputExpression>
+      </input>
+      <input id="in2_student_status_part_2_residency_and_loa" label="Event / Outcome">
+        <inputExpression id="in2e_student_status_part_2_residency_and_loa" typeRef="string">
+          <text>event</text>
+        </inputExpression>
+      </input>
+      <output id="out1_student_status_part_2_residency_and_loa" label="Next State" name="next_state" typeRef="string"/>
+      <output id="out2_student_status_part_2_residency_and_loa" label="Rationale" name="rationale" typeRef="string"/>
+      <rule id="row_student_status_part_2_residency_and_loa_1">
+        <inputEntry id="row_student_status_part_2_residency_and_loa_1_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_2_residency_and_loa_1_i2"><text>"Enrolled / enlisted"</text></inputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_1_o1"><text>"S2.0 — Active [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_2_residency_and_loa_2">
+        <inputEntry id="row_student_status_part_2_residency_and_loa_2_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_2_residency_and_loa_2_i2"><text>"LOA approved"</text></inputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_2_o1"><text>"S2.2 — Under LOA [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_2_residency_and_loa_3">
+        <inputEntry id="row_student_status_part_2_residency_and_loa_3_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_2_residency_and_loa_3_i2"><text>"LOA max exceeded / last enrollment &gt; 6 trimesters"</text></inputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_3_o1"><text>"S2.3 — Prolonged Leave [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_3_o2"><text>"Post-M3 S2.3; inferred pair rules in combination matrix (#15)."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_2_residency_and_loa_4">
+        <inputEntry id="row_student_status_part_2_residency_and_loa_4_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_2_residency_and_loa_4_i2"><text>"LOA period exceeded"</text></inputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_4_o1"><text>"S2.3 — Prolonged Leave [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_2_residency_and_loa_5">
+        <inputEntry id="row_student_status_part_2_residency_and_loa_5_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_2_residency_and_loa_5_i2"><text>"Registered for residency"</text></inputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_5_o1"><text>"S2.1 — Residency [Student]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_2_residency_and_loa_6">
+        <inputEntry id="row_student_status_part_2_residency_and_loa_6_i1"><text>"S2.1 — Residency [Student]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_2_residency_and_loa_6_i2"><text>"Re-enrolled"</text></inputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_6_o1"><text>"S2.0 — Active [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_6_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_2_residency_and_loa_7">
+        <inputEntry id="row_student_status_part_2_residency_and_loa_7_i1"><text>"S2.2 — Under LOA [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_2_residency_and_loa_7_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_7_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_7_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_2_residency_and_loa_8">
+        <inputEntry id="row_student_status_part_2_residency_and_loa_8_i1"><text>"S2.2 — Under LOA [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_2_residency_and_loa_8_i2"><text>"Returnee approved"</text></inputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_8_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_8_o2"><text>"Returnee re-enters without enrollment before S2.0."</text></outputEntry>
+      </rule>
+      <rule id="row_student_status_part_2_residency_and_loa_9">
+        <inputEntry id="row_student_status_part_2_residency_and_loa_9_i1"><text>"S2.3 — Prolonged Leave [Registrar]"</text></inputEntry>
+        <inputEntry id="row_student_status_part_2_residency_and_loa_9_i2"><text>"Returnee approved"</text></inputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_9_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_student_status_part_2_residency_and_loa_9_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

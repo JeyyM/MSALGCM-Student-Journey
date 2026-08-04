@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="def_6__combination_matrix_validation"
+             name="DMN applicant_status 6__combination_matrix_validation"
+             namespace="https://studentjourneymatrix.local/6__combination_matrix_validation">
+  <decision id="decision_combination_matrix_validation" name="Student × Program Combination Validation (Post-M3)">
+    <decisionTable id="dt_combination_matrix_validation" hitPolicy="UNIQUE">
+      <input id="in1_combination_matrix_validation" label="Student Status Code">
+        <inputExpression id="in1e_combination_matrix_validation" typeRef="string">
+          <text>student_code</text>
+        </inputExpression>
+      </input>
+      <input id="in2_combination_matrix_validation" label="Program Status Code">
+        <inputExpression id="in2e_combination_matrix_validation" typeRef="string">
+          <text>program_code</text>
+        </inputExpression>
+      </input>
+      <output id="out1_combination_matrix_validation" label="Allowed" name="allowed" typeRef="string"/>
+      <output id="out2_combination_matrix_validation" label="Rationale" name="rationale" typeRef="string"/>
+      <rule id="row_combination_matrix_validation_1">
+        <inputEntry id="row_combination_matrix_validation_1_i1"><text>"S1.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_1_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_1_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_1_o2"><text>"Admitted/returnee; eligible program standing before enrollment."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_2">
+        <inputEntry id="row_combination_matrix_validation_2_i1"><text>"S1.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_2_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_2_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_2_o2"><text>"Probationary admission offer (A5.1) before first enrollment."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_3">
+        <inputEntry id="row_combination_matrix_validation_3_i1"><text>"S1.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_3_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_3_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_3_o2"><text>"SNAS requires enrolled academic activity."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_4">
+        <inputEntry id="row_combination_matrix_validation_4_i1"><text>"S1.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_4_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_4_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_4_o2"><text>"Strict Probationary (IS SAP) follows enrollment and prior P1.1."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_5">
+        <inputEntry id="row_combination_matrix_validation_5_i1"><text>"S1.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_5_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_5_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_5_o2"><text>"Ineligible on program; shift pending → S1.0 (COMBO-T004)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_6">
+        <inputEntry id="row_combination_matrix_validation_6_i1"><text>"S1.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_6_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_6_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_6_o2"><text>"Cannot be a graduation candidate before enrolling."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_7">
+        <inputEntry id="row_combination_matrix_validation_7_i1"><text>"S1.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_7_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_7_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_7_o2"><text>"Without enrollment cannot have a graduated program."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_8">
+        <inputEntry id="row_combination_matrix_validation_8_i1"><text>"S1.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_8_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_8_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_8_o2"><text>"Without enrollment should not have an incomplete program."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_9">
+        <inputEntry id="row_combination_matrix_validation_9_i1"><text>"S2.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_9_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_9_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_9_o2"><text>"Normal enrolled student in good standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_10">
+        <inputEntry id="row_combination_matrix_validation_10_i1"><text>"S2.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_10_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_10_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_10_o2"><text>"Active with academic warning."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_11">
+        <inputEntry id="row_combination_matrix_validation_11_i1"><text>"S2.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_11_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_11_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_11_o2"><text>"Active with SNAS standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_12">
+        <inputEntry id="row_combination_matrix_validation_12_i1"><text>"S2.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_12_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_12_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_12_o2"><text>"Active IS student on Strict Probationary (SAP)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_13">
+        <inputEntry id="row_combination_matrix_validation_13_i1"><text>"S2.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_13_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_13_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_13_o2"><text>"Allowed when another program is not Ineligible (multi-program)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_14">
+        <inputEntry id="row_combination_matrix_validation_14_i1"><text>"S2.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_14_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_14_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_14_o2"><text>"Active graduation candidate."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_15">
+        <inputEntry id="row_combination_matrix_validation_15_i1"><text>"S2.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_15_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_15_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_15_o2"><text>"Graduated program should drive student to S4.0 (COMBO-T001)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_16">
+        <inputEntry id="row_combination_matrix_validation_16_i1"><text>"S2.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_16_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_16_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_16_o2"><text>"Incomplete program implies exit, not active enrollment."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_17">
+        <inputEntry id="row_combination_matrix_validation_17_i1"><text>"S2.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_17_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_17_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_17_o2"><text>"Residency student in good program standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_18">
+        <inputEntry id="row_combination_matrix_validation_18_i1"><text>"S2.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_18_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_18_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_18_o2"><text>"Legacy &quot;Yes?&quot; — treated as No per decisions.md Rule 2."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_19">
+        <inputEntry id="row_combination_matrix_validation_19_i1"><text>"S2.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_19_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_19_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_19_o2"><text>"Legacy &quot;Yes?&quot; — treated as No per decisions.md Rule 2."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_20">
+        <inputEntry id="row_combination_matrix_validation_20_i1"><text>"S2.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_20_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_20_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_20_o2"><text>"Legacy &quot;Yes?&quot; (Ineligible) — No; Strict Probationary unlikely during residency."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_21">
+        <inputEntry id="row_combination_matrix_validation_21_i1"><text>"S2.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_21_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_21_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_21_o2"><text>"Legacy &quot;Yes?&quot; — treated as No per decisions.md Rule 2."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_22">
+        <inputEntry id="row_combination_matrix_validation_22_i1"><text>"S2.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_22_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_22_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_22_o2"><text>"Residency activity excludes candidacy for graduation."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_23">
+        <inputEntry id="row_combination_matrix_validation_23_i1"><text>"S2.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_23_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_23_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_23_o2"><text>"Graduated program incompatible with active residency."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_24">
+        <inputEntry id="row_combination_matrix_validation_24_i1"><text>"S2.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_24_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_24_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_24_o2"><text>"Incomplete program incompatible with active residency."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_25">
+        <inputEntry id="row_combination_matrix_validation_25_i1"><text>"S2.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_25_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_25_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_25_o2"><text>"LOA retains prior eligible standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_26">
+        <inputEntry id="row_combination_matrix_validation_26_i1"><text>"S2.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_26_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_26_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_26_o2"><text>"Legacy combo Yes; Notes #3 tentative No — kept Yes pending stakeholder (#5)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_27">
+        <inputEntry id="row_combination_matrix_validation_27_i1"><text>"S2.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_27_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_27_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_27_o2"><text>"Legacy &quot;Yes?&quot; — treated as No per decisions.md Rule 2."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_28">
+        <inputEntry id="row_combination_matrix_validation_28_i1"><text>"S2.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_28_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_28_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_28_o2"><text>"Strict Probationary requires active IS enrollment track."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_29">
+        <inputEntry id="row_combination_matrix_validation_29_i1"><text>"S2.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_29_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_29_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_29_o2"><text>"Ineligible not allowed while on LOA."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_30">
+        <inputEntry id="row_combination_matrix_validation_30_i1"><text>"S2.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_30_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_30_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_30_o2"><text>"Legacy &quot;Yes?&quot; — treated as No per decisions.md Rule 2."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_31">
+        <inputEntry id="row_combination_matrix_validation_31_i1"><text>"S2.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_31_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_31_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_31_o2"><text>"Graduated program incompatible with LOA."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_32">
+        <inputEntry id="row_combination_matrix_validation_32_i1"><text>"S2.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_32_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_32_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_32_o2"><text>"Incomplete program incompatible with LOA."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_33">
+        <inputEntry id="row_combination_matrix_validation_33_i1"><text>"S2.3"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_33_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_33_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_33_o2"><text>"Prolonged leave retains last eligible standing (inferred)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_34">
+        <inputEntry id="row_combination_matrix_validation_34_i1"><text>"S2.3"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_34_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_34_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_34_o2"><text>"Retains probationary standing while inactive (inferred)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_35">
+        <inputEntry id="row_combination_matrix_validation_35_i1"><text>"S2.3"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_35_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_35_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_35_o2"><text>"Retains SNAS standing while inactive (inferred)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_36">
+        <inputEntry id="row_combination_matrix_validation_36_i1"><text>"S2.3"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_36_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_36_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_36_o2"><text>"Strict Probationary requires active IS enrollment (inferred)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_37">
+        <inputEntry id="row_combination_matrix_validation_37_i1"><text>"S2.3"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_37_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_37_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_37_o2"><text>"Ineligible may persist while on prolonged leave."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_38">
+        <inputEntry id="row_combination_matrix_validation_38_i1"><text>"S2.3"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_38_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_38_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_38_o2"><text>"Cannot be graduation candidate while on prolonged leave."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_39">
+        <inputEntry id="row_combination_matrix_validation_39_i1"><text>"S2.3"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_39_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_39_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_39_o2"><text>"Graduated program incompatible with prolonged leave."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_40">
+        <inputEntry id="row_combination_matrix_validation_40_i1"><text>"S2.3"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_40_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_40_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_40_o2"><text>"Incomplete implies exit, not prolonged leave alone."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_41">
+        <inputEntry id="row_combination_matrix_validation_41_i1"><text>"S3.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_41_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_41_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_41_o2"><text>"AWOL retains last eligible standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_42">
+        <inputEntry id="row_combination_matrix_validation_42_i1"><text>"S3.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_42_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_42_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_42_o2"><text>"AWOL retains probationary standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_43">
+        <inputEntry id="row_combination_matrix_validation_43_i1"><text>"S3.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_43_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_43_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_43_o2"><text>"AWOL retains SNAS standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_44">
+        <inputEntry id="row_combination_matrix_validation_44_i1"><text>"S3.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_44_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_44_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_44_o2"><text>"AWOL retains Strict Probationary standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_45">
+        <inputEntry id="row_combination_matrix_validation_45_i1"><text>"S3.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_45_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_45_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_45_o2"><text>"AWOL may coexist with Ineligible (legacy P1.3→P1.4)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_46">
+        <inputEntry id="row_combination_matrix_validation_46_i1"><text>"S3.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_46_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_46_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_46_o2"><text>"AWOL cannot be graduation candidate."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_47">
+        <inputEntry id="row_combination_matrix_validation_47_i1"><text>"S3.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_47_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_47_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_47_o2"><text>"Graduated program should drive S4.0, not AWOL."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_48">
+        <inputEntry id="row_combination_matrix_validation_48_i1"><text>"S3.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_48_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_48_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_48_o2"><text>"Incomplete implies exit path, not AWOL alone."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_49">
+        <inputEntry id="row_combination_matrix_validation_49_i1"><text>"S3.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_49_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_49_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_49_o2"><text>"Suspension retains eligible standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_50">
+        <inputEntry id="row_combination_matrix_validation_50_i1"><text>"S3.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_50_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_50_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_50_o2"><text>"Suspension retains probationary standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_51">
+        <inputEntry id="row_combination_matrix_validation_51_i1"><text>"S3.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_51_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_51_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_51_o2"><text>"Suspension retains SNAS standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_52">
+        <inputEntry id="row_combination_matrix_validation_52_i1"><text>"S3.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_52_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_52_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_52_o2"><text>"Suspension retains Strict Probationary standing."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_53">
+        <inputEntry id="row_combination_matrix_validation_53_i1"><text>"S3.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_53_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_53_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_53_o2"><text>"Suspension may coexist with Ineligible."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_54">
+        <inputEntry id="row_combination_matrix_validation_54_i1"><text>"S3.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_54_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_54_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_54_o2"><text>"Legacy &quot;Yes?&quot; — treated as No per decisions.md Rule 2."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_55">
+        <inputEntry id="row_combination_matrix_validation_55_i1"><text>"S3.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_55_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_55_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_55_o2"><text>"Graduated program should drive S4.0."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_56">
+        <inputEntry id="row_combination_matrix_validation_56_i1"><text>"S3.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_56_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_56_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_56_o2"><text>"Incomplete implies exit, not suspension alone."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_57">
+        <inputEntry id="row_combination_matrix_validation_57_i1"><text>"S4.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_57_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_57_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_57_o2"><text>"Graduated student cannot have active academic standings."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_58">
+        <inputEntry id="row_combination_matrix_validation_58_i1"><text>"S4.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_58_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_58_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_58_o2"><text>"Graduated student cannot be probationary."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_59">
+        <inputEntry id="row_combination_matrix_validation_59_i1"><text>"S4.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_59_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_59_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_59_o2"><text>"Graduated student cannot be SNAS."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_60">
+        <inputEntry id="row_combination_matrix_validation_60_i1"><text>"S4.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_60_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_60_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_60_o2"><text>"Graduated student cannot be Strict Probationary."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_61">
+        <inputEntry id="row_combination_matrix_validation_61_i1"><text>"S4.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_61_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_61_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_61_o2"><text>"Graduated student cannot be Ineligible."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_62">
+        <inputEntry id="row_combination_matrix_validation_62_i1"><text>"S4.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_62_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_62_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_62_o2"><text>"Graduated student cannot be candidacy."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_63">
+        <inputEntry id="row_combination_matrix_validation_63_i1"><text>"S4.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_63_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_63_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_63_o2"><text>"Primary graduated pair (COMBO-T001)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_64">
+        <inputEntry id="row_combination_matrix_validation_64_i1"><text>"S4.0"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_64_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_64_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_64_o2"><text>"Graduated student should not have incomplete program."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_65">
+        <inputEntry id="row_combination_matrix_validation_65_i1"><text>"S4.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_65_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_65_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_65_o2"><text>"Exit converts active standing to Incomplete (COMBO-T003)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_66">
+        <inputEntry id="row_combination_matrix_validation_66_i1"><text>"S4.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_66_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_66_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_66_o2"><text>"Exit converts probationary to Incomplete."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_67">
+        <inputEntry id="row_combination_matrix_validation_67_i1"><text>"S4.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_67_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_67_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_67_o2"><text>"Exit converts SNAS to Incomplete."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_68">
+        <inputEntry id="row_combination_matrix_validation_68_i1"><text>"S4.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_68_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_68_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_68_o2"><text>"Exit converts Strict Probationary to Incomplete."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_69">
+        <inputEntry id="row_combination_matrix_validation_69_i1"><text>"S4.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_69_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_69_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_69_o2"><text>"Exit after Ineligible (legacy Yes)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_70">
+        <inputEntry id="row_combination_matrix_validation_70_i1"><text>"S4.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_70_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_70_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_70_o2"><text>"Exit after candidacy (legacy Yes; low likelihood)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_71">
+        <inputEntry id="row_combination_matrix_validation_71_i1"><text>"S4.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_71_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_71_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_71_o2"><text>"If program Graduated, student should be S4.0."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_72">
+        <inputEntry id="row_combination_matrix_validation_72_i1"><text>"S4.1"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_72_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_72_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_72_o2"><text>"Exit with incomplete program (COMBO-T003)."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_73">
+        <inputEntry id="row_combination_matrix_validation_73_i1"><text>"S4.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_73_i2"><text>"P1.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_73_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_73_o2"><text>"Terminal exit — only Incomplete program allowed."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_74">
+        <inputEntry id="row_combination_matrix_validation_74_i1"><text>"S4.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_74_i2"><text>"P1.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_74_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_74_o2"><text>"Terminal exit — only Incomplete program allowed."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_75">
+        <inputEntry id="row_combination_matrix_validation_75_i1"><text>"S4.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_75_i2"><text>"P1.2"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_75_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_75_o2"><text>"Terminal exit — only Incomplete program allowed."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_76">
+        <inputEntry id="row_combination_matrix_validation_76_i1"><text>"S4.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_76_i2"><text>"P1.3"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_76_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_76_o2"><text>"Terminal exit — only Incomplete program allowed."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_77">
+        <inputEntry id="row_combination_matrix_validation_77_i1"><text>"S4.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_77_i2"><text>"P1.4"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_77_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_77_o2"><text>"Terminal exit — only Incomplete program allowed."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_78">
+        <inputEntry id="row_combination_matrix_validation_78_i1"><text>"S4.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_78_i2"><text>"P2.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_78_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_78_o2"><text>"Terminal exit — only Incomplete program allowed."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_79">
+        <inputEntry id="row_combination_matrix_validation_79_i1"><text>"S4.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_79_i2"><text>"P3.0"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_79_o1"><text>"NO"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_79_o2"><text>"Terminal exit — only Incomplete program allowed."</text></outputEntry>
+      </rule>
+      <rule id="row_combination_matrix_validation_80">
+        <inputEntry id="row_combination_matrix_validation_80_i1"><text>"S4.2"</text></inputEntry>
+        <inputEntry id="row_combination_matrix_validation_80_i2"><text>"P3.1"</text></inputEntry>
+        <outputEntry id="row_combination_matrix_validation_80_o1"><text>"YES"</text></outputEntry>
+        <outputEntry id="row_combination_matrix_validation_80_o2"><text>"Only valid pairing for permanent disqualification exit."</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

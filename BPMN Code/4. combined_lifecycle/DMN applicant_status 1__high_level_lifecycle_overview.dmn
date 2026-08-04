@@ -18,40 +18,48 @@
         </inputExpression>
       </input>
       <output id="out1_phase_1_high_level_lifecycle" label="Next Phase" name="next_phase" typeRef="string"/>
+      <output id="out2_phase_1_high_level_lifecycle" label="Rationale" name="rationale" typeRef="string"/>
       <rule id="row_phase_1_high_level_lifecycle_1">
         <inputEntry id="row_phase_1_high_level_lifecycle_1_i1"><text>"(start)"</text></inputEntry>
         <inputEntry id="row_phase_1_high_level_lifecycle_1_i2"><text>"(default)"</text></inputEntry>
         <outputEntry id="row_phase_1_high_level_lifecycle_1_o1"><text>"Applicant phase (A0–A5.x) [Applicant]"</text></outputEntry>
+        <outputEntry id="row_phase_1_high_level_lifecycle_1_o2"><text>"Entry into admission application lifecycle."</text></outputEntry>
       </rule>
       <rule id="row_phase_1_high_level_lifecycle_2">
         <inputEntry id="row_phase_1_high_level_lifecycle_2_i1"><text>"Accepted (A6.0–A7.x) [Admissions]"</text></inputEntry>
         <inputEntry id="row_phase_1_high_level_lifecycle_2_i2"><text>"Becomes student"</text></inputEntry>
         <outputEntry id="row_phase_1_high_level_lifecycle_2_o1"><text>"Active Student (S1.0–S2.x) [Enrollment]"</text></outputEntry>
+        <outputEntry id="row_phase_1_high_level_lifecycle_2_o2"><text>"Hand-off at Official Admission; student may enroll from S1.0."</text></outputEntry>
       </rule>
       <rule id="row_phase_1_high_level_lifecycle_3">
         <inputEntry id="row_phase_1_high_level_lifecycle_3_i1"><text>"LOA / AWOL / Suspended [Enrollment]"</text></inputEntry>
         <inputEntry id="row_phase_1_high_level_lifecycle_3_i2"><text>"Returnee re-enrolls"</text></inputEntry>
         <outputEntry id="row_phase_1_high_level_lifecycle_3_o1"><text>"Active Student (S1.0–S2.x) [Enrollment]"</text></outputEntry>
+        <outputEntry id="row_phase_1_high_level_lifecycle_3_o2"><text>"Returnee path restores active university standing."</text></outputEntry>
       </rule>
       <rule id="row_phase_1_high_level_lifecycle_4">
         <inputEntry id="row_phase_1_high_level_lifecycle_4_i1"><text>"Active Student (S1.0–S2.x) [Enrollment]"</text></inputEntry>
         <inputEntry id="row_phase_1_high_level_lifecycle_4_i2"><text>"Graduate or exit"</text></inputEntry>
         <outputEntry id="row_phase_1_high_level_lifecycle_4_o1"><text>"Graduation / Exit / Terminal [University]"</text></outputEntry>
+        <outputEntry id="row_phase_1_high_level_lifecycle_4_o2"><text>"University-level exit or graduation outcome."</text></outputEntry>
       </rule>
       <rule id="row_phase_1_high_level_lifecycle_5">
         <inputEntry id="row_phase_1_high_level_lifecycle_5_i1"><text>"Active Student (S1.0–S2.x) [Enrollment]"</text></inputEntry>
         <inputEntry id="row_phase_1_high_level_lifecycle_5_i2"><text>"Academic standing"</text></inputEntry>
         <outputEntry id="row_phase_1_high_level_lifecycle_5_o1"><text>"Program Standing (P1.0–P2.0) [Program Office]"</text></outputEntry>
+        <outputEntry id="row_phase_1_high_level_lifecycle_5_o2"><text>"Program dimension tracked in parallel (see combination matrix)."</text></outputEntry>
       </rule>
       <rule id="row_phase_1_high_level_lifecycle_6">
         <inputEntry id="row_phase_1_high_level_lifecycle_6_i1"><text>"Program Standing (P1.0–P2.0) [Program Office]"</text></inputEntry>
         <inputEntry id="row_phase_1_high_level_lifecycle_6_i2"><text>"All programs graduated"</text></inputEntry>
         <outputEntry id="row_phase_1_high_level_lifecycle_6_o1"><text>"Graduation / Exit / Terminal [University]"</text></outputEntry>
+        <outputEntry id="row_phase_1_high_level_lifecycle_6_o2"><text>"COMBO-T001 when all programs reach P3.0."</text></outputEntry>
       </rule>
       <rule id="row_phase_1_high_level_lifecycle_7">
         <inputEntry id="row_phase_1_high_level_lifecycle_7_i1"><text>"Graduation / Exit / Terminal [University]"</text></inputEntry>
         <inputEntry id="row_phase_1_high_level_lifecycle_7_i2"><text>"(default)"</text></inputEntry>
         <outputEntry id="row_phase_1_high_level_lifecycle_7_o1"><text>"Terminal [University]"</text></outputEntry>
+        <outputEntry id="row_phase_1_high_level_lifecycle_7_o2"><text>"S4.1/S4.2 are hard terminals; S4.0 allows alumni continuation."</text></outputEntry>
       </rule>
     </decisionTable>
   </decision>

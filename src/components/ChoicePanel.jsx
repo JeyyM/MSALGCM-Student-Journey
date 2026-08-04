@@ -1,4 +1,6 @@
 import { STATES, DIMENSIONS } from '../data/lifecycle.js';
+import { getActionDepartment } from '../data/departments.js';
+import DepartmentBadge from './DepartmentBadge.jsx';
 
 const GROUP_ORDER = ['A', 'S', 'P', 'X'];
 
@@ -15,7 +17,6 @@ export default function ChoicePanel({ actions, onChoose, current }) {
     <section className="panel choice-panel">
       <header className="panel__header">
         <h2>Choose the next event</h2>
-        <span className="panel__hint">Only valid transitions from the current status are shown</span>
       </header>
 
       {actions.length === 0 && (
@@ -37,14 +38,18 @@ export default function ChoicePanel({ actions, onChoose, current }) {
             <div className="choice-grid">
               {group.items.map((action) => {
                 const target = action.to ? STATES[action.to] : null;
+                const dept = getActionDepartment(action);
                 return (
                   <button
                     key={action.id}
                     className="choice"
-                    style={{ '--dim-color': dim.color }}
+                    style={{ '--dept-color': dept.color, '--dept-bg': dept.bg }}
                     onClick={() => onChoose(action)}
                   >
-                    <span className="choice__label">{action.label}</span>
+                    <span className="choice__head">
+                      <span className="choice__label">{action.label}</span>
+                      <DepartmentBadge dept={dept} size="sm" />
+                    </span>
                     {target && (
                       <span className="choice__target">
                         → {target.code} {target.label}

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/"
+             xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/"
+             xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/"
+             id="def_3__parallel_student_program_constrained_fsm"
+             name="DMN applicant_status 3__parallel_student_program_constrained_fsm"
+             namespace="https://studentjourneymatrix.local/3__parallel_student_program_constrained_fsm">
+  <decision id="decision_axis_S_student_status_part3" name="Student-Status Axis (S) — Parallel FSM">
+    <decisionTable id="dt_axis_S_student_status_part3" hitPolicy="UNIQUE">
+      <input id="in1_axis_S_student_status_part3" label="Current S-State">
+        <inputExpression id="in1e_axis_S_student_status_part3" typeRef="string">
+          <text>current_S_state</text>
+        </inputExpression>
+      </input>
+      <input id="in2_axis_S_student_status_part3" label="Event / Outcome">
+        <inputExpression id="in2e_axis_S_student_status_part3" typeRef="string">
+          <text>event</text>
+        </inputExpression>
+      </input>
+      <output id="out1_axis_S_student_status_part3" label="Next S-State" name="next_S_state" typeRef="string"/>
+      <output id="out2_axis_S_student_status_part3" label="Rationale" name="rationale" typeRef="string"/>
+      <rule id="row_axis_S_student_status_part3_1">
+        <inputEntry id="row_axis_S_student_status_part3_1_i1"><text>"Admitted from A7.x [Admissions]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_1_i2"><text>"(default)"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_1_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_1_o2"><text>"Hand-off from applicant A7.x admission."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_2">
+        <inputEntry id="row_axis_S_student_status_part3_2_i1"><text>"Admitted from A7.x [Admissions]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_2_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_2_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_3">
+        <inputEntry id="row_axis_S_student_status_part3_3_i1"><text>"All programs → P3.0 Graduated [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_3_i2"><text>"forces (COMBO-T001)"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_3_o1"><text>"S4.0 — Graduated (Alumni may continue) [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_3_o2"><text>"Cross-dimension: all programs graduated → student S4.0."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_4">
+        <inputEntry id="row_axis_S_student_status_part3_4_i1"><text>"P1.4 — Ineligible + shift pending [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_4_i2"><text>"forces (COMBO-T004)"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_4_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_4_o2"><text>"Cross-dimension: ineligible program triggers shift → without enrollment."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_5">
+        <inputEntry id="row_axis_S_student_status_part3_5_i1"><text>"P1.4 — Ineligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_5_i2"><text>"COMBO-T004 (Ineligible + Shift Pending)"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_5_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_6">
+        <inputEntry id="row_axis_S_student_status_part3_6_i1"><text>"P3.0 — Graduated [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_6_i2"><text>"COMBO-T001 (All Programs Graduated)"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_6_o1"><text>"S4.0 — Graduated (Alumni may continue) [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_6_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_7">
+        <inputEntry id="row_axis_S_student_status_part3_7_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_7_i2"><text>"COMBO-T005 (Shift Approved)"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_7_o1"><text>"S2.0 — Active [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_7_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_8">
+        <inputEntry id="row_axis_S_student_status_part3_8_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_8_i2"><text>"enrolled"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_8_o1"><text>"S2.0 — Active [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_8_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_9">
+        <inputEntry id="row_axis_S_student_status_part3_9_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_9_i2"><text>"exit"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_9_o1"><text>"S4.1 — Exited [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_9_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_10">
+        <inputEntry id="row_axis_S_student_status_part3_10_i1"><text>"S2.0 — Active [Registrar]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_10_i2"><text>"LOA approved"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_10_o1"><text>"S2.2 — Under LOA [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_10_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_11">
+        <inputEntry id="row_axis_S_student_status_part3_11_i1"><text>"S2.2 — Under LOA [Registrar]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_11_i2"><text>"(transition)"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_11_o1"><text>"S3.1 — AWOL [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_11_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_S_student_status_part3_12">
+        <inputEntry id="row_axis_S_student_status_part3_12_i1"><text>"S3.1 — AWOL [Registrar]"</text></inputEntry>
+        <inputEntry id="row_axis_S_student_status_part3_12_i2"><text>"returnee"</text></inputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_12_o1"><text>"S1.0 — Without Enrollment [Registrar]"</text></outputEntry>
+        <outputEntry id="row_axis_S_student_status_part3_12_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="decision_axis_P_program_status_part3" name="Program-Status Axis (P) — Parallel FSM">
+    <decisionTable id="dt_axis_P_program_status_part3" hitPolicy="UNIQUE">
+      <input id="in1_axis_P_program_status_part3" label="Current P-State">
+        <inputExpression id="in1e_axis_P_program_status_part3" typeRef="string">
+          <text>current_P_state</text>
+        </inputExpression>
+      </input>
+      <input id="in2_axis_P_program_status_part3" label="Event / Outcome">
+        <inputExpression id="in2e_axis_P_program_status_part3" typeRef="string">
+          <text>event</text>
+        </inputExpression>
+      </input>
+      <output id="out1_axis_P_program_status_part3" label="Next P-State" name="next_P_state" typeRef="string"/>
+      <output id="out2_axis_P_program_status_part3" label="Rationale" name="rationale" typeRef="string"/>
+      <rule id="row_axis_P_program_status_part3_1">
+        <inputEntry id="row_axis_P_program_status_part3_1_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_1_i2"><text>"SNAS"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_1_o1"><text>"P1.2 — SNAS [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_1_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_2">
+        <inputEntry id="row_axis_P_program_status_part3_2_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_2_i2"><text>"University exit submitted"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_2_o1"><text>"P3.1 — Incomplete [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_2_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_3">
+        <inputEntry id="row_axis_P_program_status_part3_3_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_3_i2"><text>"grad check"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_3_o1"><text>"P2.0 — Candidacy [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_3_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_4">
+        <inputEntry id="row_axis_P_program_status_part3_4_i1"><text>"P1.0 — Eligible [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_4_i2"><text>"retention breach"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_4_o1"><text>"P1.4 — Ineligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_4_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_5">
+        <inputEntry id="row_axis_P_program_status_part3_5_i1"><text>"P1.1 — Probationary [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_5_i2"><text>"Retention breached"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_5_o1"><text>"P1.4 — Ineligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_5_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_6">
+        <inputEntry id="row_axis_P_program_status_part3_6_i1"><text>"P1.1 — Probationary [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_6_i2"><text>"Strict probation (IS)"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_6_o1"><text>"P1.3 — Strict Probation (IS) [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_6_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_7">
+        <inputEntry id="row_axis_P_program_status_part3_7_i1"><text>"P1.1 — Probationary [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_7_i2"><text>"University exit submitted"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_7_o1"><text>"P3.1 — Incomplete [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_7_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_8">
+        <inputEntry id="row_axis_P_program_status_part3_8_i1"><text>"P1.2 — SNAS [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_8_i2"><text>"University exit submitted"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_8_o1"><text>"P3.1 — Incomplete [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_8_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_9">
+        <inputEntry id="row_axis_P_program_status_part3_9_i1"><text>"P1.2 — SNAS [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_9_i2"><text>"cleared"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_9_o1"><text>"P1.0 — Eligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_9_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_10">
+        <inputEntry id="row_axis_P_program_status_part3_10_i1"><text>"P1.3 — Strict Probation (IS) [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_10_i2"><text>"Criteria met"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_10_o1"><text>"P1.0 — Eligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_10_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_11">
+        <inputEntry id="row_axis_P_program_status_part3_11_i1"><text>"P1.3 — Strict Probation (IS) [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_11_i2"><text>"SAP failure"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_11_o1"><text>"P1.4 — Ineligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_11_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_12">
+        <inputEntry id="row_axis_P_program_status_part3_12_i1"><text>"P2.0 — Candidacy [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_12_i2"><text>"University exit submitted"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_12_o1"><text>"P3.1 — Incomplete [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_12_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_13">
+        <inputEntry id="row_axis_P_program_status_part3_13_i1"><text>"P2.0 — Candidacy [Program Office]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_13_i2"><text>"commencement"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_13_o1"><text>"P3.0 — Graduated [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_13_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_14">
+        <inputEntry id="row_axis_P_program_status_part3_14_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_14_i2"><text>"initial pairing"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_14_o1"><text>"P1.0 — Eligible [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_14_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+      <rule id="row_axis_P_program_status_part3_15">
+        <inputEntry id="row_axis_P_program_status_part3_15_i1"><text>"S1.0 — Without Enrollment [Registrar]"</text></inputEntry>
+        <inputEntry id="row_axis_P_program_status_part3_15_i2"><text>"probationary offer"</text></inputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_15_o1"><text>"P1.1 — Probationary [Program Office]"</text></outputEntry>
+        <outputEntry id="row_axis_P_program_status_part3_15_o2"><text>"Derived from canonical BPMN sequence flow."</text></outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
